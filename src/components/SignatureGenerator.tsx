@@ -40,13 +40,13 @@ export const SignatureGenerator = () => {
   };
 
   const generateSignatureHTML = () => {
-    const photoSrc = signatureData.photo || 'https://via.placeholder.com/120';
+    const photoSrc = signatureData.photo || 'https://via.placeholder.com/140';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #ffffff; border-left: 4px solid #5da89c;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 650px; max-width: 650px; background: #ffffff; border-left: 4px solid #5da89c;">
   <tr>
     <td style="padding: 25px 30px;">
-      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width: 590px;">
         <!-- Header Row: Logo -->
         <tr>
           <td colspan="3" style="padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
@@ -56,9 +56,9 @@ export const SignatureGenerator = () => {
         
         <!-- Main Content Row -->
         <tr>
-          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 120px;">
+          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 140px;">
             <!-- Photo -->
-            <img src="${photoSrc}" alt="${signatureData.name}" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
+            <img src="${photoSrc}" alt="${signatureData.name}" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
           </td>
           
           <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 250px;">
@@ -115,7 +115,7 @@ export const SignatureGenerator = () => {
             </table>
           </td>
           
-          <td style="padding-top: 20px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 25px;">
+          <td style="padding-top: 20px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 25px; width: 175px;">
             <!-- Address and Website Column -->
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
