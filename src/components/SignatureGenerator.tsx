@@ -28,6 +28,28 @@ export const SignatureGenerator = () => {
 
   const [copied, setCopied] = useState(false);
 
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-numeric characters
+    const numbers = value.replace(/\D/g, '');
+    
+    // Limit to 10 digits
+    const limitedNumbers = numbers.slice(0, 10);
+    
+    // Format as (XXX) XXX-XXXX
+    if (limitedNumbers.length <= 3) {
+      return limitedNumbers;
+    } else if (limitedNumbers.length <= 6) {
+      return `(${limitedNumbers.slice(0, 3)}) ${limitedNumbers.slice(3)}`;
+    } else {
+      return `(${limitedNumbers.slice(0, 3)}) ${limitedNumbers.slice(3, 6)}-${limitedNumbers.slice(6)}`;
+    }
+  };
+
+  const handlePhoneChange = (field: 'phone' | 'officePhone', value: string) => {
+    const formatted = formatPhoneNumber(value);
+    setSignatureData({ ...signatureData, [field]: formatted });
+  };
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -260,9 +282,7 @@ export const SignatureGenerator = () => {
               <Input
                 id="phone"
                 value={signatureData.phone}
-                onChange={(e) =>
-                  setSignatureData({ ...signatureData, phone: e.target.value })
-                }
+                onChange={(e) => handlePhoneChange('phone', e.target.value)}
                 placeholder="Ej: (754) 757-0996"
               />
             </div>
@@ -272,9 +292,7 @@ export const SignatureGenerator = () => {
               <Input
                 id="officePhone"
                 value={signatureData.officePhone}
-                onChange={(e) =>
-                  setSignatureData({ ...signatureData, officePhone: e.target.value })
-                }
+                onChange={(e) => handlePhoneChange('officePhone', e.target.value)}
                 placeholder="Ej: (954) 280-3218"
               />
             </div>
