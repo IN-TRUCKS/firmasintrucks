@@ -40,156 +40,123 @@ export const SignatureGenerator = () => {
   };
 
   const generateSignatureHTML = () => {
-    // Convert image to base64 if it's a data URL, otherwise use the URL directly
-    const photoSrc = signatureData.photo || 'https://via.placeholder.com/180';
+    const photoSrc = signatureData.photo || 'https://via.placeholder.com/120';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; background: #ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #ffffff; border-left: 4px solid #5da89c;">
   <tr>
-    <td style="padding: 0;">
+    <td style="padding: 25px 30px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <!-- Header Row: Logo -->
         <tr>
-          <!-- Photo Section -->
-          <td style="width: 200px; padding: 30px 20px; vertical-align: top; background: linear-gradient(135deg, #1e4d8b 0%, #5da89c 100%); position: relative;">
-            <div style="text-align: center;">
-              <img src="${photoSrc}" alt="${signatureData.name}" style="width: 160px; height: 160px; border-radius: 50%; border: 5px solid rgba(255,255,255,0.3); object-fit: cover; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
-            </div>
-            <!-- Decorative dots -->
-            <div style="position: absolute; bottom: 20px; right: 20px; opacity: 0.4;">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                </tr>
-              </table>
-              <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 4px;">
-                <tr>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                  <td style="width: 6px; height: 6px; background: #ffffff; border-radius: 50%; padding: 0; padding-left: 4px;"></td>
-                </tr>
-              </table>
-            </div>
+          <td colspan="3" style="padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
+            <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 40px; display: block;" />
+          </td>
+        </tr>
+        
+        <!-- Main Content Row -->
+        <tr>
+          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 120px;">
+            <!-- Photo -->
+            <img src="${photoSrc}" alt="${signatureData.name}" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
           </td>
           
-          <!-- Content Section -->
-          <td style="padding: 30px 35px; vertical-align: top; background: #ffffff; border-right: 3px solid #5da89c;">
-            <table cellpadding="0" cellspacing="0" border="0" width="100%">
-              <!-- Logo -->
+          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 250px;">
+            <!-- Name and Position -->
+            <div style="margin-bottom: 15px;">
+              <div style="font-size: 24px; font-weight: 600; color: #2c3e50; margin-bottom: 4px; letter-spacing: -0.5px;">${signatureData.name}</div>
+              <div style="font-size: 13px; color: #5da89c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${signatureData.position}</div>
+            </div>
+            
+            <!-- Contact Info Column 1 -->
+            <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-bottom: 20px; text-align: right;">
-                  <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 45px; display: block; margin-left: auto;" />
-                </td>
-              </tr>
-              
-              <!-- Name and Position -->
-              <tr>
-                <td style="padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
-                  <div style="font-size: 32px; font-weight: 600; color: #2c3e50; margin-bottom: 6px; letter-spacing: -0.5px;">${signatureData.name}</div>
-                  <div style="font-size: 16px; color: #5da89c; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">${signatureData.position}</div>
-                </td>
-              </tr>
-              
-              <!-- Contact Information -->
-              <tr>
-                <td style="padding-top: 20px; padding-bottom: 20px;">
+                <td style="padding: 4px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="padding: 6px 0; vertical-align: middle;">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width: 20px; vertical-align: middle; padding-right: 10px;">
-                              <span style="color: #5da89c; font-size: 14px;">📱</span>
-                            </td>
-                            <td style="vertical-align: middle;">
-                              <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 14px; font-weight: 500;">M: ${signatureData.phone}</a>
-                            </td>
-                          </tr>
-                        </table>
+                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
+                        <span style="color: #5da89c; font-size: 13px;">📱</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 6px 0; vertical-align: middle;">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width: 20px; vertical-align: middle; padding-right: 10px;">
-                              <span style="color: #5da89c; font-size: 14px;">☎️</span>
-                            </td>
-                            <td style="vertical-align: middle;">
-                              <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 14px; font-weight: 500;">O: ${signatureData.officePhone}</a>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 6px 0; vertical-align: middle;">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width: 20px; vertical-align: middle; padding-right: 10px;">
-                              <span style="color: #5da89c; font-size: 14px;">✉️</span>
-                            </td>
-                            <td style="vertical-align: middle;">
-                              <a href="mailto:${signatureData.email}" style="color: #1e4d8b; text-decoration: none; font-size: 14px; font-weight: 500;">${signatureData.email}</a>
-                            </td>
-                          </tr>
-                        </table>
+                      <td style="vertical-align: middle;">
+                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.phone}</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
-              
-              <!-- Address and Website -->
               <tr>
-                <td style="padding-top: 15px; padding-bottom: 15px; border-top: 2px solid #f0f0f0;">
+                <td style="padding: 4px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="padding: 4px 0;">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width: 20px; vertical-align: top; padding-right: 10px; padding-top: 2px;">
-                              <span style="color: #5da89c; font-size: 12px;">📍</span>
-                            </td>
-                            <td style="vertical-align: top;">
-                              <span style="font-size: 12px; color: #666; line-height: 1.5;">6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309</span>
-                            </td>
-                          </tr>
-                        </table>
+                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
+                        <span style="color: #5da89c; font-size: 13px;">☎️</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 4px 0;">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                          <tr>
-                            <td style="width: 20px; vertical-align: middle; padding-right: 10px;">
-                              <span style="color: #5da89c; font-size: 12px;">🌐</span>
-                            </td>
-                            <td style="vertical-align: middle;">
-                              <a href="https://www.intruckscorp.com" style="color: #1e4d8b; text-decoration: none; font-size: 12px; font-weight: 500;">www.intruckscorp.com</a>
-                            </td>
-                          </tr>
-                        </table>
+                      <td style="vertical-align: middle;">
+                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.officePhone}</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
-              
-              <!-- License Information -->
               <tr>
-                <td style="padding-top: 15px;">
-                  <div style="font-size: 10px; color: #888; line-height: 1.6;">
-                    <div style="font-weight: 600; color: #666; margin-bottom: 3px;">IN TRUCKS INSURANCE CORP</div>
-                    <div>IN CALIFORNIA DBA IN TRUCKS INSURANCE SOLUTIONS</div>
-                    <div>LICENSE # 6006644</div>
-                  </div>
+                <td style="padding: 4px 0;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
+                        <span style="color: #5da89c; font-size: 13px;">✉️</span>
+                      </td>
+                      <td style="vertical-align: middle;">
+                        <a href="mailto:${signatureData.email}" style="color: #1e4d8b; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.email}</a>
+                      </td>
+                    </tr>
+                  </table>
                 </td>
               </tr>
             </table>
+          </td>
+          
+          <td style="padding-top: 20px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 25px;">
+            <!-- Address and Website Column -->
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding: 4px 0;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width: 18px; vertical-align: top; padding-right: 8px; padding-top: 1px;">
+                        <span style="color: #5da89c; font-size: 12px;">📍</span>
+                      </td>
+                      <td style="vertical-align: top;">
+                        <span style="font-size: 11px; color: #666; line-height: 1.5;">6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
+                        <span style="color: #5da89c; font-size: 12px;">🌐</span>
+                      </td>
+                      <td style="vertical-align: middle;">
+                        <a href="https://www.intruckscorp.com" style="color: #1e4d8b; text-decoration: none; font-size: 11px; font-weight: 500;">www.intruckscorp.com</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            
+            <!-- License Info -->
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
+              <div style="font-size: 9px; color: #888; line-height: 1.5;">
+                <div style="font-weight: 600; color: #666;">IN TRUCKS INSURANCE CORP</div>
+                <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                <div>INSURANCE SOLUTIONS</div>
+                <div>LICENSE # 6006644</div>
+              </div>
+            </div>
           </td>
         </tr>
       </table>
