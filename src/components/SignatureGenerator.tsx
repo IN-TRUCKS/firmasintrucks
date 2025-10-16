@@ -368,7 +368,7 @@ export const SignatureGenerator = () => {
                 id="phone"
                 value={signatureData.phone}
                 onChange={(e) => handlePhoneChange('phone', e.target.value)}
-                placeholder="Ej: (754) 757-0996"
+                placeholder="Ej: (000) 000-0000"
               />
             </div>
 
@@ -378,7 +378,7 @@ export const SignatureGenerator = () => {
                 id="officePhone"
                 value={signatureData.officePhone}
                 onChange={(e) => handlePhoneChange('officePhone', e.target.value)}
-                placeholder="Ej: (954) 280-3218"
+                placeholder="Ej: (000) 000-0000"
               />
             </div>
 
