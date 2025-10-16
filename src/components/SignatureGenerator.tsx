@@ -77,7 +77,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
               <tbody>
                 <tr>
                   {/* Columna franja verde-azul */}
-                  <td width="113" style={{ background: 'linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%)', verticalAlign: 'top' }}>
+                  <td width="113" style={{ backgroundColor: '#2d6a7e', verticalAlign: 'top' }}>
                     <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
                       <tbody>
                         <tr>
@@ -193,8 +193,8 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                     </table>
                   </td>
                   
-                  {/* Borde derecho con gradiente */}
-                  <td width="4" style={{ background: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%)' }}></td>
+                  {/* Borde derecho */}
+                  <td width="4" style={{ backgroundColor: '#2d6a7e' }}></td>
                 </tr>
               </tbody>
             </table>
@@ -295,7 +295,7 @@ export const SignatureGenerator = () => {
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <!-- Columna franja verde-azul -->
-          <td width="113" style="background: linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%); vertical-align: top;">
+          <td width="113" style="background-color: #2d6a7e; vertical-align: top;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
                 <td style="padding: 20px 10px; text-align: center;">
@@ -388,8 +388,8 @@ export const SignatureGenerator = () => {
             </table>
           </td>
           
-          <!-- Borde derecho con gradiente -->
-          <td width="4" style="background: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%);"></td>
+          <!-- Borde derecho -->
+          <td width="4" style="background-color: #2d6a7e;"></td>
         </tr>
       </table>
     </td>
