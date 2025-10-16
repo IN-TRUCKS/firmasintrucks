@@ -83,7 +83,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                 
                 {/* Main Content Row */}
                 <tr>
-                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'top', width: '112px' }}>
+                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'middle', width: '112px' }}>
                     {/* Photo */}
                     <img 
                       src={photoSrc} 
@@ -100,7 +100,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                     />
                   </td>
                   
-                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'top', width: '200px' }}>
+                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'bottom', width: '200px' }}>
                     {/* Name and Position */}
                     <div style={{ marginBottom: '12px' }}>
                       <div style={{ 
@@ -210,7 +210,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                   
                   <td style={{ 
                     paddingTop: '16px', 
-                    verticalAlign: 'top', 
+                    verticalAlign: 'bottom', 
                     borderLeft: '2px solid #f0f0f0', 
                     paddingLeft: '20px', 
                     width: '140px' 
@@ -284,6 +284,11 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                       </div>
                     </div>
                   </td>
+                </tr>
+                
+                {/* Bottom Border Row */}
+                <tr>
+                  <td colSpan={3} style={{ paddingTop: '16px', borderTop: '2px solid #5da89c' }}></td>
                 </tr>
               </tbody>
             </table>
@@ -390,12 +395,12 @@ export const SignatureGenerator = () => {
         
         <!-- Main Content Row -->
         <tr>
-          <td style="padding-top: 16px; padding-right: 20px; vertical-align: top; width: 112px;">
+          <td style="padding-top: 16px; padding-right: 20px; vertical-align: middle; width: 112px;">
             <!-- Photo -->
             <img src="${photoSrc}" alt="${safeName}" style="width: 112px; height: 112px; border-radius: 50%; border: 2px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
           </td>
           
-          <td style="padding-top: 16px; padding-right: 20px; vertical-align: top; width: 200px;">
+          <td style="padding-top: 16px; padding-right: 20px; vertical-align: bottom; width: 200px;">
             <!-- Name and Position -->
             <div style="margin-bottom: 12px;">
               <div style="font-size: 19px; font-weight: 600; color: #2c3e50; margin-bottom: 3px; letter-spacing: -0.4px;">${safeName}</div>
@@ -449,7 +454,7 @@ export const SignatureGenerator = () => {
             </table>
           </td>
           
-          <td style="padding-top: 16px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 20px; width: 140px;">
+          <td style="padding-top: 16px; vertical-align: bottom; border-left: 2px solid #f0f0f0; padding-left: 20px; width: 140px;">
             <!-- Address and Website Column -->
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
@@ -492,6 +497,11 @@ export const SignatureGenerator = () => {
               </div>
             </div>
           </td>
+        </tr>
+        
+        <!-- Bottom Border Row -->
+        <tr>
+          <td colspan="3" style="padding-top: 16px; border-top: 2px solid #5da89c;"></td>
         </tr>
       </table>
     </td>
