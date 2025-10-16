@@ -64,7 +64,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
       style={{
         fontFamily: "'Segoe UI', Arial, sans-serif",
         width: '100%',
-        maxWidth: '450px',
+        maxWidth: '600px',
         background: '#ffffff',
         position: 'relative'
       }}
@@ -88,7 +88,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
               <tbody>
                 <tr>
                   <td style={{ 
-                    padding: '18px 18px 18px 120px'
+                    padding: '18px 25px 18px 120px'
                   }}>
                     <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
                       <tbody>
@@ -100,7 +100,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                         </tr>
                         <tr>
                           {/* Foto con borde verde - posicionada sobre la franja */}
-                          <td style={{ paddingRight: '15px', verticalAlign: 'top', width: '84px', position: 'relative' }}>
+                          <td style={{ paddingRight: '20px', verticalAlign: 'top', width: '84px', position: 'relative' }}>
                             <div style={{ 
                               width: '78px', 
                               height: '78px', 
@@ -126,7 +126,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                           
                           {/* Información principal */}
-                          <td style={{ verticalAlign: 'top', paddingRight: '12px' }}>
+                          <td style={{ verticalAlign: 'top', paddingRight: '25px', width: '50%' }}>
                             <div>
                               <h2 style={{ 
                                 fontSize: '19px', 
@@ -169,26 +169,31 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                   {data.email}
                                 </a>
                               </div>
-                              <div style={{ marginTop: '7px', paddingTop: '7px', borderTop: '1px solid #5da89c' }}>
-                                <div style={{ marginBottom: '3px' }}>
-                                  <span style={{ display: 'inline-block', width: '13px', color: '#5da89c', fontSize: '8px' }}>🌐</span>
-                                  <a href="https://www.intruckscorp.com" style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500 }}>
-                                    www.intruckscorp.com
-                                  </a>
-                                </div>
-                                <div style={{ fontSize: '8px', color: '#666' }}>
-                                  <span style={{ display: 'inline-block', width: '13px', color: '#5da89c', fontSize: '8px' }}>📍</span>
-                                  <span style={{ lineHeight: '1.5' }}>
-                                    6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
-                                  </span>
-                                </div>
+                            </div>
+                          </td>
+                          
+                          {/* Columna derecha - Website y dirección */}
+                          <td style={{ verticalAlign: 'top', paddingRight: '15px', width: '35%' }}>
+                            <div style={{ fontSize: '8.5px', lineHeight: '1.8', color: '#2c3e50' }}>
+                              <div style={{ marginBottom: '3px', paddingBottom: '8px', borderBottom: '1px solid #5da89c' }}>
+                                <span style={{ display: 'inline-block', width: '13px', color: '#5da89c', fontSize: '8px' }}>🌐</span>
+                                <a href="https://www.intruckscorp.com" style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500 }}>
+                                  www.intruckscorp.com
+                                </a>
+                              </div>
+                              <div style={{ fontSize: '8px', color: '#666', marginTop: '8px' }}>
+                                <span style={{ display: 'inline-block', width: '13px', color: '#5da89c', fontSize: '8px', verticalAlign: 'top' }}>📍</span>
+                                <span style={{ lineHeight: '1.5', display: 'inline-block', width: 'calc(100% - 13px)' }}>
+                                  6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                                </span>
                               </div>
                             </div>
                             
                             {/* License info */}
                             <div style={{ marginTop: '10px', fontSize: '6px', color: '#888', lineHeight: '1.4' }}>
                               <div style={{ fontWeight: 700, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
-                              <div>IN CALIFORNIA DBA IN TRUCKS INSURANCE SOLUTIONS</div>
+                              <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                              <div>INSURANCE SOLUTIONS</div>
                               <div>LICENSE # 6006644</div>
                             </div>
                           </td>
@@ -297,7 +302,7 @@ export const SignatureGenerator = () => {
     const photoSrc = signatureData.photo || 'https://via.placeholder.com/140';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 450px; background: #ffffff; position: relative;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative;">
   <tr>
     <td style="padding: 0; position: relative;">
       <!-- Franja diagonal izquierda verde-azul -->
@@ -305,24 +310,24 @@ export const SignatureGenerator = () => {
       
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="position: relative; z-index: 1;">
         <tr>
-          <td style="padding: 18px 18px 18px 120px;">
+          <td style="padding: 18px 25px 18px 120px;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
                 <!-- Logo en la esquina superior derecha -->
-                <td colspan="3" style="padding-bottom: 12px; text-align: right;">
+                <td colspan="4" style="padding-bottom: 12px; text-align: right;">
                   <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 30px; display: inline-block;" />
                 </td>
               </tr>
               <tr>
                 <!-- Foto con borde verde - posicionada sobre la franja -->
-                <td style="padding-right: 15px; vertical-align: top; width: 84px; position: relative;">
+                <td style="padding-right: 20px; vertical-align: top; width: 84px; position: relative;">
                   <div style="width: 78px; height: 78px; border-radius: 50%; border: 3px solid #5da89c; overflow: hidden; box-shadow: 0 4px 12px rgba(93, 168, 156, 0.4); position: relative; left: -84px; background: #ffffff;">
                     <img src="${photoSrc}" alt="${safeName}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                   </div>
                 </td>
                 
                 <!-- Información principal -->
-                <td style="vertical-align: top; padding-right: 12px;">
+                <td style="vertical-align: top; padding-right: 25px; width: 50%;">
                   <div>
                     <h2 style="font-size: 19px; font-weight: 700; color: #5da89c; margin: 0 0 4px 0; line-height: 1.2;">
                       ${safeName}
@@ -354,26 +359,31 @@ export const SignatureGenerator = () => {
                         ${safeEmail}
                       </a>
                     </div>
-                    <div style="margin-top: 7px; padding-top: 7px; border-top: 1px solid #5da89c;">
-                      <div style="margin-bottom: 3px;">
-                        <span style="display: inline-block; width: 13px; color: #5da89c; font-size: 8px;">🌐</span>
-                        <a href="https://www.intruckscorp.com" style="color: #1a3d6d; text-decoration: none; font-weight: 500;">
-                          www.intruckscorp.com
-                        </a>
-                      </div>
-                      <div style="font-size: 8px; color: #666;">
-                        <span style="display: inline-block; width: 13px; color: #5da89c; font-size: 8px;">📍</span>
-                        <span style="line-height: 1.5;">
-                          6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
-                        </span>
-                      </div>
+                  </div>
+                </td>
+                
+                <!-- Columna derecha - Website y dirección -->
+                <td style="vertical-align: top; padding-right: 15px; width: 35%;">
+                  <div style="font-size: 8.5px; line-height: 1.8; color: #2c3e50;">
+                    <div style="margin-bottom: 3px; padding-bottom: 8px; border-bottom: 1px solid #5da89c;">
+                      <span style="display: inline-block; width: 13px; color: #5da89c; font-size: 8px;">🌐</span>
+                      <a href="https://www.intruckscorp.com" style="color: #1a3d6d; text-decoration: none; font-weight: 500;">
+                        www.intruckscorp.com
+                      </a>
+                    </div>
+                    <div style="font-size: 8px; color: #666; margin-top: 8px;">
+                      <span style="display: inline-block; width: 13px; color: #5da89c; font-size: 8px; vertical-align: top;">📍</span>
+                      <span style="line-height: 1.5; display: inline-block; width: calc(100% - 13px);">
+                        6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                      </span>
                     </div>
                   </div>
                   
                   <!-- License info -->
                   <div style="margin-top: 10px; font-size: 6px; color: #888; line-height: 1.4;">
                     <div style="font-weight: 700; color: #666;">IN TRUCKS INSURANCE CORP</div>
-                    <div>IN CALIFORNIA DBA IN TRUCKS INSURANCE SOLUTIONS</div>
+                    <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                    <div>INSURANCE SOLUTIONS</div>
                     <div>LICENSE # 6006644</div>
                   </div>
                 </td>
