@@ -298,8 +298,8 @@ export const SignatureGenerator = () => {
   const [signatureData, setSignatureData] = useState<SignatureData>({
     name: "David Ruiz",
     position: "General Manager",
-    phone: "(754) 757-0996",
-    officePhone: "(954) 280-3218",
+    phone: "",
+    officePhone: "",
     email: "david@intruckscorp.com",
     photo: "",
   });
