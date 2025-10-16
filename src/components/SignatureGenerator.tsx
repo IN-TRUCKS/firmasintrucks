@@ -50,7 +50,7 @@ export const SignatureGenerator = () => {
         <!-- Header Row: Logo -->
         <tr>
           <td colspan="3" style="padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
-            <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 40px; display: block;" />
+            <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 50px; display: block;" />
           </td>
         </tr>
         
