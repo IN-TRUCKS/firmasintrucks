@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Upload, Copy, Check, Phone, Mail, MapPin, Globe } from "lucide-react";
 import { toast } from "sonner";
+import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
 
 interface SignatureData {
@@ -15,6 +16,42 @@ interface SignatureData {
   email: string;
   photo: string;
 }
+
+// Schema de validación con zod para prevenir inyecciones y asegurar datos válidos
+const signatureSchema = z.object({
+  name: z.string()
+    .trim()
+    .min(1, { message: "El nombre es requerido" })
+    .max(100, { message: "El nombre debe tener menos de 100 caracteres" })
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/, { message: "El nombre contiene caracteres no válidos" }),
+  position: z.string()
+    .trim()
+    .min(1, { message: "El cargo es requerido" })
+    .max(100, { message: "El cargo debe tener menos de 100 caracteres" }),
+  phone: z.string()
+    .regex(/^\(\d{3}\) \d{3}-\d{4}$/, { message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX" }),
+  officePhone: z.string()
+    .regex(/^\(\d{3}\) \d{3}-\d{4}$/, { message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX" }),
+  email: z.string()
+    .trim()
+    .email({ message: "Email inválido" })
+    .max(255, { message: "El email debe tener menos de 255 caracteres" })
+    .regex(/@intruckscorp\.com$/, { message: "Solo se permiten correos @intruckscorp.com" }),
+  photo: z.string().max(5000000, { message: "La imagen es demasiado grande" }), // ~5MB en base64
+});
+
+// Función para escapar HTML y prevenir XSS
+const escapeHtml = (text: string): string => {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+    '/': '&#x2F;',
+  };
+  return text.replace(/[&<>"'/]/g, (char) => map[char]);
+};
 
 export const SignatureGenerator = () => {
   const [signatureData, setSignatureData] = useState<SignatureData>({
@@ -53,15 +90,49 @@ export const SignatureGenerator = () => {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Validar tipo de archivo
+      const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+      if (!validTypes.includes(file.type)) {
+        toast.error("Solo se permiten imágenes JPG, PNG o WEBP");
+        return;
+      }
+
+      // Validar tamaño de archivo (máximo 2MB)
+      const maxSize = 2 * 1024 * 1024; // 2MB
+      if (file.size > maxSize) {
+        toast.error("La imagen debe ser menor a 2MB");
+        return;
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setSignatureData({ ...signatureData, photo: reader.result as string });
+      };
+      reader.onerror = () => {
+        toast.error("Error al cargar la imagen");
       };
       reader.readAsDataURL(file);
     }
   };
 
   const generateSignatureHTML = () => {
+    // Validar datos antes de generar la firma
+    try {
+      signatureSchema.parse(signatureData);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const firstError = error.errors[0];
+        toast.error(firstError.message);
+        return '';
+      }
+    }
+
+    // Escapar todos los datos de usuario para prevenir XSS
+    const safeName = escapeHtml(signatureData.name);
+    const safePosition = escapeHtml(signatureData.position);
+    const safeEmail = escapeHtml(signatureData.email);
+    const safePhone = escapeHtml(signatureData.phone);
+    const safeOfficePhone = escapeHtml(signatureData.officePhone);
     const photoSrc = signatureData.photo || 'https://via.placeholder.com/140';
     
     return `
@@ -80,14 +151,14 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 140px;">
             <!-- Photo -->
-            <img src="${photoSrc}" alt="${signatureData.name}" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
+            <img src="${photoSrc}" alt="${safeName}" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
           </td>
           
           <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 250px;">
             <!-- Name and Position -->
             <div style="margin-bottom: 15px;">
-              <div style="font-size: 24px; font-weight: 600; color: #2c3e50; margin-bottom: 4px; letter-spacing: -0.5px;">${signatureData.name}</div>
-              <div style="font-size: 13px; color: #5da89c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${signatureData.position}</div>
+              <div style="font-size: 24px; font-weight: 600; color: #2c3e50; margin-bottom: 4px; letter-spacing: -0.5px;">${safeName}</div>
+              <div style="font-size: 13px; color: #5da89c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${safePosition}</div>
             </div>
             
             <!-- Contact Info Column 1 -->
@@ -100,7 +171,7 @@ export const SignatureGenerator = () => {
                         <span style="color: #5da89c; font-size: 13px;">📱</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.phone}</a>
+                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${safePhone}</a>
                       </td>
                     </tr>
                   </table>
@@ -114,7 +185,7 @@ export const SignatureGenerator = () => {
                         <span style="color: #5da89c; font-size: 13px;">☎️</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.officePhone}</a>
+                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${safeOfficePhone}</a>
                       </td>
                     </tr>
                   </table>
@@ -128,7 +199,7 @@ export const SignatureGenerator = () => {
                         <span style="color: #5da89c; font-size: 13px;">✉️</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="mailto:${signatureData.email}" style="color: #1e4d8b; text-decoration: none; font-size: 13px; font-weight: 500;">${signatureData.email}</a>
+                        <a href="mailto:${safeEmail}" style="color: #1e4d8b; text-decoration: none; font-size: 13px; font-weight: 500;">${safeEmail}</a>
                       </td>
                     </tr>
                   </table>
@@ -258,11 +329,18 @@ export const SignatureGenerator = () => {
               <Input
                 id="name"
                 value={signatureData.name}
-                onChange={(e) =>
-                  setSignatureData({ ...signatureData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value.length <= 100) {
+                    setSignatureData({ ...signatureData, name: value });
+                  }
+                }}
                 placeholder="Ej: David Ruiz"
+                maxLength={100}
               />
+              <p className="text-xs text-muted-foreground mt-1">
+                {signatureData.name.length}/100 caracteres
+              </p>
             </div>
 
             <div>
@@ -270,11 +348,18 @@ export const SignatureGenerator = () => {
               <Input
                 id="position"
                 value={signatureData.position}
-                onChange={(e) =>
-                  setSignatureData({ ...signatureData, position: e.target.value })
-                }
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value.length <= 100) {
+                    setSignatureData({ ...signatureData, position: value });
+                  }
+                }}
                 placeholder="Ej: General Manager"
+                maxLength={100}
               />
+              <p className="text-xs text-muted-foreground mt-1">
+                {signatureData.position.length}/100 caracteres
+              </p>
             </div>
 
             <div>
@@ -303,11 +388,18 @@ export const SignatureGenerator = () => {
                 id="email"
                 type="email"
                 value={signatureData.email}
-                onChange={(e) =>
-                  setSignatureData({ ...signatureData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value.length <= 255) {
+                    setSignatureData({ ...signatureData, email: value });
+                  }
+                }}
                 placeholder="Ej: david@intruckscorp.com"
+                maxLength={255}
               />
+              <p className="text-xs text-muted-foreground mt-1">
+                Debe ser un correo @intruckscorp.com
+              </p>
             </div>
 
             <Button 
