@@ -63,61 +63,61 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
       cellSpacing="0" 
       style={{
         fontFamily: "'Segoe UI', Arial, sans-serif",
-        width: '650px',
-        maxWidth: '650px',
+        width: '520px',
+        maxWidth: '520px',
         background: '#ffffff',
-        borderLeft: '4px solid #5da89c'
+        borderLeft: '3px solid #5da89c'
       }}
     >
       <tbody>
         <tr>
-          <td style={{ padding: '25px 30px' }}>
-            <table cellPadding="0" cellSpacing="0" style={{ width: '590px' }}>
+          <td style={{ padding: '20px 24px' }}>
+            <table cellPadding="0" cellSpacing="0" style={{ width: '472px' }}>
               <tbody>
                 {/* Header Row: Logo */}
                 <tr>
-                  <td colSpan={3} style={{ paddingBottom: '20px', borderBottom: '2px solid #f0f0f0' }}>
-                    <img src={intrucksLogo} alt="InTrucks Corp" style={{ height: '50px', display: 'block' }} />
+                  <td colSpan={3} style={{ paddingBottom: '16px', borderBottom: '2px solid #f0f0f0' }}>
+                    <img src={intrucksLogo} alt="InTrucks Corp" style={{ height: '40px', display: 'block' }} />
                   </td>
                 </tr>
                 
                 {/* Main Content Row */}
                 <tr>
-                  <td style={{ paddingTop: '20px', paddingRight: '25px', verticalAlign: 'top', width: '140px' }}>
+                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'top', width: '112px' }}>
                     {/* Photo */}
                     <img 
                       src={photoSrc} 
                       alt={data.name} 
                       style={{ 
-                        width: '140px', 
-                        height: '140px', 
+                        width: '112px', 
+                        height: '112px', 
                         borderRadius: '50%', 
-                        border: '3px solid #5da89c', 
+                        border: '2px solid #5da89c', 
                         objectFit: 'cover', 
                         display: 'block', 
-                        boxShadow: '0 3px 10px rgba(0,0,0,0.1)' 
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)' 
                       }} 
                     />
                   </td>
                   
-                  <td style={{ paddingTop: '20px', paddingRight: '25px', verticalAlign: 'top', width: '250px' }}>
+                  <td style={{ paddingTop: '16px', paddingRight: '20px', verticalAlign: 'top', width: '200px' }}>
                     {/* Name and Position */}
-                    <div style={{ marginBottom: '15px' }}>
+                    <div style={{ marginBottom: '12px' }}>
                       <div style={{ 
-                        fontSize: '24px', 
+                        fontSize: '19px', 
                         fontWeight: 600, 
                         color: '#2c3e50', 
-                        marginBottom: '4px', 
-                        letterSpacing: '-0.5px' 
+                        marginBottom: '3px', 
+                        letterSpacing: '-0.4px' 
                       }}>
                         {data.name}
                       </div>
                       <div style={{ 
-                        fontSize: '13px', 
+                        fontSize: '10px', 
                         color: '#5da89c', 
                         fontWeight: 600, 
                         textTransform: 'uppercase', 
-                        letterSpacing: '0.5px' 
+                        letterSpacing: '0.4px' 
                       }}>
                         {data.position}
                       </div>
@@ -127,12 +127,12 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                     <table cellPadding="0" cellSpacing="0">
                       <tbody>
                         <tr>
-                          <td style={{ padding: '4px 0' }}>
+                          <td style={{ padding: '3px 0' }}>
                             <table cellPadding="0" cellSpacing="0">
                               <tbody>
                                 <tr>
-                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>📱</span>
+                                  <td style={{ width: '14px', verticalAlign: 'middle', paddingRight: '6px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>📱</span>
                                   </td>
                                   <td style={{ verticalAlign: 'middle' }}>
                                     <a 
@@ -140,7 +140,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                       style={{ 
                                         color: '#2c3e50', 
                                         textDecoration: 'none', 
-                                        fontSize: '13px', 
+                                        fontSize: '10px', 
                                         fontWeight: 500 
                                       }}
                                     >
@@ -153,12 +153,12 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '4px 0' }}>
+                          <td style={{ padding: '3px 0' }}>
                             <table cellPadding="0" cellSpacing="0">
                               <tbody>
                                 <tr>
-                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>☎️</span>
+                                  <td style={{ width: '14px', verticalAlign: 'middle', paddingRight: '6px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>☎️</span>
                                   </td>
                                   <td style={{ verticalAlign: 'middle' }}>
                                     <a 
@@ -166,7 +166,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                       style={{ 
                                         color: '#2c3e50', 
                                         textDecoration: 'none', 
-                                        fontSize: '13px', 
+                                        fontSize: '10px', 
                                         fontWeight: 500 
                                       }}
                                     >
@@ -179,12 +179,12 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '4px 0' }}>
+                          <td style={{ padding: '3px 0' }}>
                             <table cellPadding="0" cellSpacing="0">
                               <tbody>
                                 <tr>
-                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>✉️</span>
+                                  <td style={{ width: '14px', verticalAlign: 'middle', paddingRight: '6px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>✉️</span>
                                   </td>
                                   <td style={{ verticalAlign: 'middle' }}>
                                     <a 
@@ -192,7 +192,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                       style={{ 
                                         color: '#1e4d8b', 
                                         textDecoration: 'none', 
-                                        fontSize: '13px', 
+                                        fontSize: '10px', 
                                         fontWeight: 500 
                                       }}
                                     >
@@ -209,30 +209,30 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                   </td>
                   
                   <td style={{ 
-                    paddingTop: '20px', 
+                    paddingTop: '16px', 
                     verticalAlign: 'top', 
                     borderLeft: '2px solid #f0f0f0', 
-                    paddingLeft: '25px', 
-                    width: '175px' 
+                    paddingLeft: '20px', 
+                    width: '140px' 
                   }}>
                     {/* Address and Website Column */}
                     <table cellPadding="0" cellSpacing="0">
                       <tbody>
                         <tr>
-                          <td style={{ padding: '4px 0' }}>
+                          <td style={{ padding: '3px 0' }}>
                             <table cellPadding="0" cellSpacing="0">
                               <tbody>
                                 <tr>
                                   <td style={{ 
-                                    width: '18px', 
+                                    width: '14px', 
                                     verticalAlign: 'top', 
-                                    paddingRight: '8px', 
+                                    paddingRight: '6px', 
                                     paddingTop: '1px' 
                                   }}>
-                                    <span style={{ color: '#5da89c', fontSize: '12px' }}>📍</span>
+                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>📍</span>
                                   </td>
                                   <td style={{ verticalAlign: 'top' }}>
-                                    <span style={{ fontSize: '11px', color: '#666', lineHeight: 1.5 }}>
+                                    <span style={{ fontSize: '9px', color: '#666', lineHeight: 1.5 }}>
                                       6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309
                                     </span>
                                   </td>
@@ -242,12 +242,12 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '6px 0' }}>
+                          <td style={{ padding: '5px 0' }}>
                             <table cellPadding="0" cellSpacing="0">
                               <tbody>
                                 <tr>
-                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '12px' }}>🌐</span>
+                                  <td style={{ width: '14px', verticalAlign: 'middle', paddingRight: '6px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>🌐</span>
                                   </td>
                                   <td style={{ verticalAlign: 'middle' }}>
                                     <a 
@@ -255,7 +255,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                       style={{ 
                                         color: '#1e4d8b', 
                                         textDecoration: 'none', 
-                                        fontSize: '11px', 
+                                        fontSize: '9px', 
                                         fontWeight: 500 
                                       }}
                                     >
@@ -272,11 +272,11 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                     
                     {/* License Info */}
                     <div style={{ 
-                      marginTop: '15px', 
-                      paddingTop: '15px', 
+                      marginTop: '12px', 
+                      paddingTop: '12px', 
                       borderTop: '1px solid #f0f0f0' 
                     }}>
-                      <div style={{ fontSize: '9px', color: '#888', lineHeight: 1.5 }}>
+                      <div style={{ fontSize: '7px', color: '#888', lineHeight: 1.5 }}>
                         <div style={{ fontWeight: 600, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
                         <div>IN CALIFORNIA DBA IN TRUCKS</div>
                         <div>INSURANCE SOLUTIONS</div>
@@ -377,70 +377,70 @@ export const SignatureGenerator = () => {
     const photoSrc = signatureData.photo || 'https://via.placeholder.com/140';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 650px; max-width: 650px; background: #ffffff; border-left: 4px solid #5da89c;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 520px; max-width: 520px; background: #ffffff; border-left: 3px solid #5da89c;">
   <tr>
-    <td style="padding: 25px 30px;">
-      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width: 590px;">
+    <td style="padding: 20px 24px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width: 472px;">
         <!-- Header Row: Logo -->
         <tr>
-          <td colspan="3" style="padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
-            <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 50px; display: block;" />
+          <td colspan="3" style="padding-bottom: 16px; border-bottom: 2px solid #f0f0f0;">
+            <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 40px; display: block;" />
           </td>
         </tr>
         
         <!-- Main Content Row -->
         <tr>
-          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 140px;">
+          <td style="padding-top: 16px; padding-right: 20px; vertical-align: top; width: 112px;">
             <!-- Photo -->
-            <img src="${photoSrc}" alt="${safeName}" style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" />
+            <img src="${photoSrc}" alt="${safeName}" style="width: 112px; height: 112px; border-radius: 50%; border: 2px solid #5da89c; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
           </td>
           
-          <td style="padding-top: 20px; padding-right: 25px; vertical-align: top; width: 250px;">
+          <td style="padding-top: 16px; padding-right: 20px; vertical-align: top; width: 200px;">
             <!-- Name and Position -->
-            <div style="margin-bottom: 15px;">
-              <div style="font-size: 24px; font-weight: 600; color: #2c3e50; margin-bottom: 4px; letter-spacing: -0.5px;">${safeName}</div>
-              <div style="font-size: 13px; color: #5da89c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${safePosition}</div>
+            <div style="margin-bottom: 12px;">
+              <div style="font-size: 19px; font-weight: 600; color: #2c3e50; margin-bottom: 3px; letter-spacing: -0.4px;">${safeName}</div>
+              <div style="font-size: 10px; color: #5da89c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;">${safePosition}</div>
             </div>
             
             <!-- Contact Info Column 1 -->
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding: 4px 0;">
+                <td style="padding: 3px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
-                        <span style="color: #5da89c; font-size: 13px;">📱</span>
+                      <td style="width: 14px; vertical-align: middle; padding-right: 6px;">
+                        <span style="color: #5da89c; font-size: 10px;">📱</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${safePhone}</a>
+                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 10px; font-weight: 500;">${safePhone}</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td style="padding: 4px 0;">
+                <td style="padding: 3px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
-                        <span style="color: #5da89c; font-size: 13px;">☎️</span>
+                      <td style="width: 14px; vertical-align: middle; padding-right: 6px;">
+                        <span style="color: #5da89c; font-size: 10px;">☎️</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 13px; font-weight: 500;">${safeOfficePhone}</a>
+                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none; font-size: 10px; font-weight: 500;">${safeOfficePhone}</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td style="padding: 4px 0;">
+                <td style="padding: 3px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
-                        <span style="color: #5da89c; font-size: 13px;">✉️</span>
+                      <td style="width: 14px; vertical-align: middle; padding-right: 6px;">
+                        <span style="color: #5da89c; font-size: 10px;">✉️</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="mailto:${safeEmail}" style="color: #1e4d8b; text-decoration: none; font-size: 13px; font-weight: 500;">${safeEmail}</a>
+                        <a href="mailto:${safeEmail}" style="color: #1e4d8b; text-decoration: none; font-size: 10px; font-weight: 500;">${safeEmail}</a>
                       </td>
                     </tr>
                   </table>
@@ -449,32 +449,32 @@ export const SignatureGenerator = () => {
             </table>
           </td>
           
-          <td style="padding-top: 20px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 25px; width: 175px;">
+          <td style="padding-top: 16px; vertical-align: top; border-left: 2px solid #f0f0f0; padding-left: 20px; width: 140px;">
             <!-- Address and Website Column -->
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding: 4px 0;">
+                <td style="padding: 3px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width: 18px; vertical-align: top; padding-right: 8px; padding-top: 1px;">
-                        <span style="color: #5da89c; font-size: 12px;">📍</span>
+                      <td style="width: 14px; vertical-align: top; padding-right: 6px; padding-top: 1px;">
+                        <span style="color: #5da89c; font-size: 10px;">📍</span>
                       </td>
                       <td style="vertical-align: top;">
-                        <span style="font-size: 11px; color: #666; line-height: 1.5;">6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309</span>
+                        <span style="font-size: 9px; color: #666; line-height: 1.5;">6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309</span>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
               <tr>
-                <td style="padding: 6px 0;">
+                <td style="padding: 5px 0;">
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width: 18px; vertical-align: middle; padding-right: 8px;">
-                        <span style="color: #5da89c; font-size: 12px;">🌐</span>
+                      <td style="width: 14px; vertical-align: middle; padding-right: 6px;">
+                        <span style="color: #5da89c; font-size: 10px;">🌐</span>
                       </td>
                       <td style="vertical-align: middle;">
-                        <a href="https://www.intruckscorp.com" style="color: #1e4d8b; text-decoration: none; font-size: 11px; font-weight: 500;">www.intruckscorp.com</a>
+                        <a href="https://www.intruckscorp.com" style="color: #1e4d8b; text-decoration: none; font-size: 9px; font-weight: 500;">www.intruckscorp.com</a>
                       </td>
                     </tr>
                   </table>
@@ -483,8 +483,8 @@ export const SignatureGenerator = () => {
             </table>
             
             <!-- License Info -->
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
-              <div style="font-size: 9px; color: #888; line-height: 1.5;">
+            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0;">
+              <div style="font-size: 7px; color: #888; line-height: 1.5;">
                 <div style="font-weight: 600; color: #666;">IN TRUCKS INSURANCE CORP</div>
                 <div>IN CALIFORNIA DBA IN TRUCKS</div>
                 <div>INSURANCE SOLUTIONS</div>
