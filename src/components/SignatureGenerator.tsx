@@ -69,7 +69,8 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
         background: '#ffffff',
         position: 'relative',
         borderRight: '4px solid transparent',
-        borderImage: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1'
+        borderImage: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1',
+        border: '1px solid #000000'
       }}
     >
       <tbody>
@@ -299,7 +300,7 @@ export const SignatureGenerator = () => {
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative; border-right: 4px solid transparent; border-image: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative; border-right: 4px solid transparent; border-image: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1; border: 1px solid #000000;">
   <tr>
     <td style="padding: 0; position: relative;">
       <!-- Franja diagonal izquierda verde-azul -->
