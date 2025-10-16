@@ -64,148 +64,136 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
       cellSpacing="0" 
       style={{
         fontFamily: "'Segoe UI', Arial, sans-serif",
-        width: '100%',
+        width: '660px',
         maxWidth: '660px',
         background: '#ffffff',
-        position: 'relative',
-        borderRight: '4px solid transparent',
-        borderImage: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1',
         border: '1px solid #000000'
       }}
     >
       <tbody>
         <tr>
-          <td style={{ padding: '0', position: 'relative' }}>
-            {/* Franja diagonal izquierda verde-azul */}
-            <div style={{
-              position: 'absolute',
-              left: '0',
-              top: '0',
-              bottom: '0',
-              width: '119px',
-              background: 'linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%)',
-              clipPath: 'polygon(0 0, 100% 0, 70% 100%, 0 100%)',
-              zIndex: 0
-            }}></div>
-            
-            <table cellPadding="0" cellSpacing="0" style={{ width: '100%', position: 'relative', zIndex: 1 }}>
+          <td style={{ padding: '0' }}>
+            <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
               <tbody>
                 <tr>
-                  <td style={{ 
-                    padding: '20px 28px 20px 132px'
-                  }}>
+                  {/* Columna franja verde-azul */}
+                  <td width="119" style={{ background: 'linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%)', verticalAlign: 'top' }}>
                     <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
                       <tbody>
                         <tr>
-                          {/* Logo en la esquina superior derecha */}
-                          <td colSpan={4} style={{ paddingBottom: '13px', textAlign: 'right' }}>
-                            <img src={intrucksLogo} alt="InTrucks Corp" style={{ height: '33px', display: 'inline-block' }} />
-                          </td>
-                        </tr>
-                        <tr>
-                          {/* Foto con borde verde - posicionada sobre la franja */}
-                          <td style={{ paddingRight: '22px', verticalAlign: 'top', width: '92px', position: 'relative' }}>
-                            <div style={{ 
-                              width: '86px', 
-                              height: '86px', 
-                              borderRadius: '50%',
-                              border: '3px solid #5da89c',
-                              overflow: 'hidden',
-                              boxShadow: '0 4px 12px rgba(93, 168, 156, 0.4)',
-                              position: 'relative',
-                              left: '-92px',
-                              background: '#f5f5f5'
-                            }}>
-                              <img 
-                                src={photoSrc} 
-                                alt={data.name} 
-                                style={{ 
-                                  width: '100%', 
-                                  height: '100%', 
-                                  objectFit: 'cover',
-                                  display: 'block',
-                                  filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none'
-                                }} 
-                              />
-                            </div>
-                          </td>
-                          
-                          {/* Información principal */}
-                          <td style={{ verticalAlign: 'top', paddingRight: '28px', width: '50%' }}>
-                            <div>
-                              <h2 style={{ 
-                                fontSize: '21px', 
-                                fontWeight: 700, 
-                                color: '#5da89c', 
-                                margin: '0 0 4px 0',
-                                lineHeight: '1.2'
-                              }}>
-                                {data.name}
-                              </h2>
-                              <p style={{ 
-                                fontSize: '11px', 
-                                color: '#2c3e50', 
-                                margin: '0 0 13px 0',
-                                fontWeight: 500
-                              }}>
-                                {data.position}
-                              </p>
-                            </div>
-                            
-                            {/* Contacto con iconos */}
-                            <div style={{ fontSize: '9.5px', lineHeight: '1.8', color: '#2c3e50' }}>
-                              <div style={{ marginBottom: '2px' }}>
-                                <span style={{ display: 'inline-block', width: '14px', color: '#5da89c', fontSize: '9px' }}>📱</span>
-                                <span style={{ fontWeight: 600, marginRight: '4px' }}>O</span>
-                                <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
-                                  {data.phone}
-                                </a>
-                              </div>
-                              <div style={{ marginBottom: '2px' }}>
-                                <span style={{ display: 'inline-block', width: '14px', color: '#5da89c', fontSize: '9px' }}>📞</span>
-                                <span style={{ fontWeight: 600, marginRight: '4px' }}>P</span>
-                                <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
-                                  {data.officePhone}
-                                </a>
-                              </div>
-                              <div style={{ marginBottom: '2px' }}>
-                                <span style={{ display: 'inline-block', width: '14px', color: '#5da89c', fontSize: '9px' }}>✉️</span>
-                                <a href={`mailto:${data.email}`} style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500 }}>
-                                  {data.email}
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                          
-                          {/* Columna derecha - Website y dirección */}
-                          <td style={{ verticalAlign: 'top', paddingRight: '17px', width: '35%' }}>
-                            <div style={{ fontSize: '9.5px', lineHeight: '1.8', color: '#2c3e50' }}>
-                              <div style={{ marginBottom: '3px', paddingBottom: '9px', borderBottom: '1px solid #5da89c' }}>
-                                <span style={{ display: 'inline-block', width: '14px', color: '#5da89c', fontSize: '9px' }}>🌐</span>
-                                <a href="https://www.intruckscorp.com" style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500 }}>
-                                  www.intruckscorp.com
-                                </a>
-                              </div>
-                              <div style={{ fontSize: '9px', color: '#666', marginTop: '9px' }}>
-                                <span style={{ display: 'inline-block', width: '14px', color: '#5da89c', fontSize: '9px', verticalAlign: 'top' }}>📍</span>
-                                <span style={{ lineHeight: '1.5', display: 'inline-block', width: 'calc(100% - 14px)' }}>
-                                  6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
-                                </span>
-                              </div>
-                            </div>
-                            
-                            {/* License info */}
-                            <div style={{ marginTop: '11px', fontSize: '6.5px', color: '#888', lineHeight: '1.4' }}>
-                              <div style={{ fontWeight: 700, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
-                              <div>IN CALIFORNIA DBA IN TRUCKS</div>
-                              <div>INSURANCE SOLUTIONS</div>
-                              <div>LICENSE # 6006644</div>
-                            </div>
+                          <td style={{ padding: '20px 10px', textAlign: 'center' }}>
+                            {/* Foto centrada en la franja */}
+                            <img 
+                              src={photoSrc} 
+                              alt={data.name} 
+                              width="86" 
+                              height="86"
+                              style={{ 
+                                width: '86px', 
+                                height: '86px', 
+                                borderRadius: '50%', 
+                                border: '3px solid #5da89c', 
+                                display: 'block', 
+                                margin: '0 auto',
+                                objectFit: 'cover',
+                                filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none'
+                              }} 
+                            />
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
+                  
+                  {/* Columna contenido principal */}
+                  <td style={{ padding: '20px 28px', verticalAlign: 'top' }}>
+                    <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
+                      <tbody>
+                        <tr>
+                          <td colSpan={2} style={{ paddingBottom: '13px', textAlign: 'right' }}>
+                            <img src={intrucksLogo} alt="InTrucks Corp" width="33" height="33" style={{ height: '33px', width: 'auto', display: 'inline-block' }} />
+                          </td>
+                        </tr>
+                        <tr>
+                          {/* Información de contacto */}
+                          <td width="55%" style={{ verticalAlign: 'top', paddingRight: '28px' }}>
+                            <h2 style={{ fontSize: '21px', fontWeight: 700, color: '#5da89c', margin: '0 0 4px 0', lineHeight: '1.2' }}>
+                              {data.name}
+                            </h2>
+                            <p style={{ fontSize: '11px', color: '#2c3e50', margin: '0 0 13px 0', fontWeight: 500 }}>
+                              {data.position}
+                            </p>
+                            
+                            <table cellPadding="0" cellSpacing="0" style={{ fontSize: '9.5px', lineHeight: '1.8', color: '#2c3e50' }}>
+                              <tbody>
+                                <tr>
+                                  <td style={{ padding: '2px 0' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '9px' }}>📱</span>
+                                    <span style={{ fontWeight: 600, margin: '0 4px 0 5px' }}>O</span>
+                                    <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
+                                      {data.phone}
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style={{ padding: '2px 0' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '9px' }}>📞</span>
+                                    <span style={{ fontWeight: 600, margin: '0 4px 0 5px' }}>P</span>
+                                    <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
+                                      {data.officePhone}
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style={{ padding: '2px 0' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '9px' }}>✉️</span>
+                                    <a href={`mailto:${data.email}`} style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500, marginLeft: '5px' }}>
+                                      {data.email}
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                          
+                          {/* Columna derecha */}
+                          <td width="45%" style={{ verticalAlign: 'top', paddingRight: '17px' }}>
+                            <table cellPadding="0" cellSpacing="0" style={{ fontSize: '9.5px', lineHeight: '1.8', color: '#2c3e50' }}>
+                              <tbody>
+                                <tr>
+                                  <td style={{ paddingBottom: '9px', borderBottom: '1px solid #5da89c' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '9px' }}>🌐</span>
+                                    <a href="https://www.intruckscorp.com" style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500, marginLeft: '5px' }}>
+                                      www.intruckscorp.com
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style={{ paddingTop: '9px', fontSize: '9px', color: '#666' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '9px' }}>📍</span>
+                                    <span style={{ marginLeft: '5px' }}>
+                                      6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style={{ paddingTop: '11px', fontSize: '6.5px', color: '#888', lineHeight: '1.4' }}>
+                                    <div style={{ fontWeight: 700, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
+                                    <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                                    <div>INSURANCE SOLUTIONS</div>
+                                    <div>LICENSE # 6006644</div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  
+                  {/* Borde derecho con gradiente */}
+                  <td width="4" style={{ background: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%)' }}></td>
                 </tr>
               </tbody>
             </table>
@@ -300,94 +288,106 @@ export const SignatureGenerator = () => {
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 660px; background: #ffffff; position: relative; border-right: 4px solid transparent; border-image: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1; border: 1px solid #000000;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 660px; max-width: 660px; background: #ffffff; border: 1px solid #000000;">
   <tr>
-    <td style="padding: 0; position: relative;">
-      <!-- Franja diagonal izquierda verde-azul -->
-      <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 119px; background: linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%); clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%); z-index: 0;"></div>
-      
-      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="position: relative; z-index: 1;">
+    <td style="padding: 0;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
-          <td style="padding: 20px 28px 20px 132px;">
+          <!-- Columna franja verde-azul -->
+          <td width="119" style="background: linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%); vertical-align: top;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-                <!-- Logo en la esquina superior derecha -->
-                <td colspan="4" style="padding-bottom: 13px; text-align: right;">
-                  <img src="${intrucksLogo}" alt="InTrucks Corp" style="height: 33px; display: inline-block;" />
-                </td>
-              </tr>
-              <tr>
-                <!-- Foto con borde verde - posicionada sobre la franja -->
-                <td style="padding-right: 22px; vertical-align: top; width: 92px; position: relative;">
-                  <div style="width: 86px; height: 86px; border-radius: 50%; border: 3px solid #5da89c; overflow: hidden; box-shadow: 0 4px 12px rgba(93, 168, 156, 0.4); position: relative; left: -92px; background: #f5f5f5;">
-                    <img src="${photoSrc}" alt="${safeName}" style="width: 100%; height: 100%; object-fit: cover; display: block; ${photoFilter}" />
-                  </div>
-                </td>
-                
-                <!-- Información principal -->
-                <td style="vertical-align: top; padding-right: 28px; width: 50%;">
-                  <div>
-                    <h2 style="font-size: 21px; font-weight: 700; color: #5da89c; margin: 0 0 4px 0; line-height: 1.2;">
-                      ${safeName}
-                    </h2>
-                    <p style="font-size: 11px; color: #2c3e50; margin: 0 0 13px 0; font-weight: 500;">
-                      ${safePosition}
-                    </p>
-                  </div>
-                  
-                  <!-- Contacto con iconos -->
-                  <div style="font-size: 9.5px; line-height: 1.8; color: #2c3e50;">
-                    <div style="margin-bottom: 2px;">
-                      <span style="display: inline-block; width: 14px; color: #5da89c; font-size: 9px;">📱</span>
-                      <span style="font-weight: 600; margin-right: 4px;">O</span>
-                      <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none;">
-                        ${safePhone}
-                      </a>
-                    </div>
-                    <div style="margin-bottom: 2px;">
-                      <span style="display: inline-block; width: 14px; color: #5da89c; font-size: 9px;">📞</span>
-                      <span style="font-weight: 600; margin-right: 4px;">P</span>
-                      <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none;">
-                        ${safeOfficePhone}
-                      </a>
-                    </div>
-                    <div style="margin-bottom: 2px;">
-                      <span style="display: inline-block; width: 14px; color: #5da89c; font-size: 9px;">✉️</span>
-                      <a href="mailto:${safeEmail}" style="color: #1a3d6d; text-decoration: none; font-weight: 500;">
-                        ${safeEmail}
-                      </a>
-                    </div>
-                  </div>
-                </td>
-                
-                <!-- Columna derecha - Website y dirección -->
-                <td style="vertical-align: top; padding-right: 17px; width: 35%;">
-                  <div style="font-size: 9.5px; line-height: 1.8; color: #2c3e50;">
-                    <div style="margin-bottom: 3px; padding-bottom: 9px; border-bottom: 1px solid #5da89c;">
-                      <span style="display: inline-block; width: 14px; color: #5da89c; font-size: 9px;">🌐</span>
-                      <a href="https://www.intruckscorp.com" style="color: #1a3d6d; text-decoration: none; font-weight: 500;">
-                        www.intruckscorp.com
-                      </a>
-                    </div>
-                    <div style="font-size: 9px; color: #666; margin-top: 9px;">
-                      <span style="display: inline-block; width: 14px; color: #5da89c; font-size: 9px; vertical-align: top;">📍</span>
-                      <span style="line-height: 1.5; display: inline-block; width: calc(100% - 14px);">
-                        6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <!-- License info -->
-                  <div style="margin-top: 11px; font-size: 6.5px; color: #888; line-height: 1.4;">
-                    <div style="font-weight: 700; color: #666;">IN TRUCKS INSURANCE CORP</div>
-                    <div>IN CALIFORNIA DBA IN TRUCKS</div>
-                    <div>INSURANCE SOLUTIONS</div>
-                    <div>LICENSE # 6006644</div>
-                  </div>
+                <td style="padding: 20px 10px; text-align: center;">
+                  <!-- Foto centrada en la franja -->
+                  <img src="${photoSrc}" alt="${safeName}" width="86" height="86" style="width: 86px; height: 86px; border-radius: 50%; border: 3px solid #5da89c; display: block; margin: 0 auto; ${photoFilter}" />
                 </td>
               </tr>
             </table>
           </td>
+          
+          <!-- Columna contenido principal -->
+          <td style="padding: 20px 28px; vertical-align: top;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+                <td colspan="2" style="padding-bottom: 13px; text-align: right;">
+                  <img src="${intrucksLogo}" alt="InTrucks Corp" width="33" height="33" style="height: 33px; width: auto; display: inline-block;" />
+                </td>
+              </tr>
+              <tr>
+                <!-- Información de contacto -->
+                <td width="55%" style="vertical-align: top; padding-right: 28px;">
+                  <h2 style="font-size: 21px; font-weight: 700; color: #5da89c; margin: 0 0 4px 0; line-height: 1.2;">
+                    ${safeName}
+                  </h2>
+                  <p style="font-size: 11px; color: #2c3e50; margin: 0 0 13px 0; font-weight: 500;">
+                    ${safePosition}
+                  </p>
+                  
+                  <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9.5px; line-height: 1.8; color: #2c3e50;">
+                    <tr>
+                      <td style="padding: 2px 0;">
+                        <span style="color: #5da89c; font-size: 9px;">📱</span>
+                        <span style="font-weight: 600; margin: 0 4px 0 5px;">O</span>
+                        <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none;">
+                          ${safePhone}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 2px 0;">
+                        <span style="color: #5da89c; font-size: 9px;">📞</span>
+                        <span style="font-weight: 600; margin: 0 4px 0 5px;">P</span>
+                        <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #2c3e50; text-decoration: none;">
+                          ${safeOfficePhone}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 2px 0;">
+                        <span style="color: #5da89c; font-size: 9px;">✉️</span>
+                        <a href="mailto:${safeEmail}" style="color: #1a3d6d; text-decoration: none; font-weight: 500; margin-left: 5px;">
+                          ${safeEmail}
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                
+                <!-- Columna derecha -->
+                <td width="45%" style="vertical-align: top; padding-right: 17px;">
+                  <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9.5px; line-height: 1.8; color: #2c3e50;">
+                    <tr>
+                      <td style="padding-bottom: 9px; border-bottom: 1px solid #5da89c;">
+                        <span style="color: #5da89c; font-size: 9px;">🌐</span>
+                        <a href="https://www.intruckscorp.com" style="color: #1a3d6d; text-decoration: none; font-weight: 500; margin-left: 5px;">
+                          www.intruckscorp.com
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 9px; font-size: 9px; color: #666;">
+                        <span style="color: #5da89c; font-size: 9px;">📍</span>
+                        <span style="margin-left: 5px;">
+                          6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 11px; font-size: 6.5px; color: #888; line-height: 1.4;">
+                        <div style="font-weight: 700; color: #666;">IN TRUCKS INSURANCE CORP</div>
+                        <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                        <div>INSURANCE SOLUTIONS</div>
+                        <div>LICENSE # 6006644</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          
+          <!-- Borde derecho con gradiente -->
+          <td width="4" style="background: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%);"></td>
         </tr>
       </table>
     </td>
