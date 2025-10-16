@@ -67,7 +67,9 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
         width: '100%',
         maxWidth: '600px',
         background: '#ffffff',
-        position: 'relative'
+        position: 'relative',
+        borderRight: '4px solid transparent',
+        borderImage: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1'
       }}
     >
       <tbody>
@@ -95,7 +97,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                       <tbody>
                         <tr>
                           {/* Logo en la esquina superior derecha */}
-                          <td colSpan={3} style={{ paddingBottom: '12px', textAlign: 'right' }}>
+                          <td colSpan={4} style={{ paddingBottom: '12px', textAlign: 'right' }}>
                             <img src={intrucksLogo} alt="InTrucks Corp" style={{ height: '30px', display: 'inline-block' }} />
                           </td>
                         </tr>
@@ -199,14 +201,6 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                               <div>LICENSE # 6006644</div>
                             </div>
                           </td>
-                          
-                          {/* Barra vertical decorativa */}
-                          <td style={{ 
-                            width: '5px', 
-                            background: 'linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%)',
-                            verticalAlign: 'top',
-                            borderRadius: '2px'
-                          }}></td>
                         </tr>
                       </tbody>
                     </table>
@@ -305,7 +299,7 @@ export const SignatureGenerator = () => {
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative; border-right: 4px solid transparent; border-image: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%) 1;">
   <tr>
     <td style="padding: 0; position: relative;">
       <!-- Franja diagonal izquierda verde-azul -->
@@ -390,9 +384,6 @@ export const SignatureGenerator = () => {
                     <div>LICENSE # 6006644</div>
                   </div>
                 </td>
-                
-                <!-- Barra vertical decorativa -->
-                <td style="width: 5px; background: linear-gradient(180deg, #1a3d6d 0%, #5da89c 100%); vertical-align: top; border-radius: 2px;"></td>
               </tr>
             </table>
           </td>
