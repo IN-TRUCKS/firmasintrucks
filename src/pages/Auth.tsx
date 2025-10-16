@@ -41,6 +41,12 @@ export default function Auth() {
       return;
     }
 
+    // Validate InTrucks corporate email domain
+    if (!email.endsWith("@intruckscorp.com")) {
+      toast.error("Solo se permiten correos corporativos con dominio @intruckscorp.com");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -102,7 +108,7 @@ export default function Auth() {
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div>
-            <Label htmlFor="email">Correo Electrónico</Label>
+            <Label htmlFor="email">Correo Electrónico Corporativo</Label>
             <Input
               id="email"
               type="email"
@@ -112,6 +118,9 @@ export default function Auth() {
               disabled={loading}
               required
             />
+            <p className="text-xs text-muted-foreground mt-1">
+              Solo se permiten correos con dominio @intruckscorp.com
+            </p>
           </div>
 
           <div>
