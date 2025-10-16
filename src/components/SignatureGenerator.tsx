@@ -7,6 +7,7 @@ import { Upload, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
+import defaultProfile from "@/assets/default-profile.png";
 
 interface SignatureData {
   name: string;
@@ -55,7 +56,7 @@ const escapeHtml = (text: string): string => {
 
 // Componente seguro de preview - renderiza usando JSX sin dangerouslySetInnerHTML
 const SignaturePreview = ({ data }: { data: SignatureData }) => {
-  const photoSrc = data.photo || 'https://via.placeholder.com/140';
+  const photoSrc = data.photo || defaultProfile;
   
   return (
     <table 
@@ -110,7 +111,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                               boxShadow: '0 4px 12px rgba(93, 168, 156, 0.4)',
                               position: 'relative',
                               left: '-84px',
-                              background: '#ffffff'
+                              background: '#f5f5f5'
                             }}>
                               <img 
                                 src={photoSrc} 
@@ -119,7 +120,8 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                   width: '100%', 
                                   height: '100%', 
                                   objectFit: 'cover',
-                                  display: 'block'
+                                  display: 'block',
+                                  filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none'
                                 }} 
                               />
                             </div>
@@ -299,7 +301,8 @@ export const SignatureGenerator = () => {
     const safeEmail = escapeHtml(signatureData.email);
     const safePhone = escapeHtml(signatureData.phone);
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
-    const photoSrc = signatureData.photo || 'https://via.placeholder.com/140';
+    const photoSrc = signatureData.photo || defaultProfile;
+    const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
     
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 100%; max-width: 600px; background: #ffffff; position: relative;">
@@ -321,8 +324,8 @@ export const SignatureGenerator = () => {
               <tr>
                 <!-- Foto con borde verde - posicionada sobre la franja -->
                 <td style="padding-right: 20px; vertical-align: top; width: 84px; position: relative;">
-                  <div style="width: 78px; height: 78px; border-radius: 50%; border: 3px solid #5da89c; overflow: hidden; box-shadow: 0 4px 12px rgba(93, 168, 156, 0.4); position: relative; left: -84px; background: #ffffff;">
-                    <img src="${photoSrc}" alt="${safeName}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                  <div style="width: 78px; height: 78px; border-radius: 50%; border: 3px solid #5da89c; overflow: hidden; box-shadow: 0 4px 12px rgba(93, 168, 156, 0.4); position: relative; left: -84px; background: #f5f5f5;">
+                    <img src="${photoSrc}" alt="${safeName}" style="width: 100%; height: 100%; object-fit: cover; display: block; ${photoFilter}" />
                   </div>
                 </td>
                 
