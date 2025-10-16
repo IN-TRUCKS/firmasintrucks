@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Upload, Copy, Check, Phone, Mail, MapPin, Globe } from "lucide-react";
+import { Upload, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
@@ -40,7 +40,7 @@ const signatureSchema = z.object({
   photo: z.string().max(5000000, { message: "La imagen es demasiado grande" }), // ~5MB en base64
 });
 
-// Función para escapar HTML y prevenir XSS
+// Función para escapar HTML - solo se usa para generar el HTML que se copia al clipboard
 const escapeHtml = (text: string): string => {
   const map: { [key: string]: string } = {
     '&': '&amp;',
@@ -51,6 +51,247 @@ const escapeHtml = (text: string): string => {
     '/': '&#x2F;',
   };
   return text.replace(/[&<>"'/]/g, (char) => map[char]);
+};
+
+// Componente seguro de preview - renderiza usando JSX sin dangerouslySetInnerHTML
+const SignaturePreview = ({ data }: { data: SignatureData }) => {
+  const photoSrc = data.photo || 'https://via.placeholder.com/140';
+  
+  return (
+    <table 
+      cellPadding="0" 
+      cellSpacing="0" 
+      style={{
+        fontFamily: "'Segoe UI', Arial, sans-serif",
+        width: '650px',
+        maxWidth: '650px',
+        background: '#ffffff',
+        borderLeft: '4px solid #5da89c'
+      }}
+    >
+      <tbody>
+        <tr>
+          <td style={{ padding: '25px 30px' }}>
+            <table cellPadding="0" cellSpacing="0" style={{ width: '590px' }}>
+              <tbody>
+                {/* Header Row: Logo */}
+                <tr>
+                  <td colSpan={3} style={{ paddingBottom: '20px', borderBottom: '2px solid #f0f0f0' }}>
+                    <img src={intrucksLogo} alt="InTrucks Corp" style={{ height: '50px', display: 'block' }} />
+                  </td>
+                </tr>
+                
+                {/* Main Content Row */}
+                <tr>
+                  <td style={{ paddingTop: '20px', paddingRight: '25px', verticalAlign: 'top', width: '140px' }}>
+                    {/* Photo */}
+                    <img 
+                      src={photoSrc} 
+                      alt={data.name} 
+                      style={{ 
+                        width: '140px', 
+                        height: '140px', 
+                        borderRadius: '50%', 
+                        border: '3px solid #5da89c', 
+                        objectFit: 'cover', 
+                        display: 'block', 
+                        boxShadow: '0 3px 10px rgba(0,0,0,0.1)' 
+                      }} 
+                    />
+                  </td>
+                  
+                  <td style={{ paddingTop: '20px', paddingRight: '25px', verticalAlign: 'top', width: '250px' }}>
+                    {/* Name and Position */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <div style={{ 
+                        fontSize: '24px', 
+                        fontWeight: 600, 
+                        color: '#2c3e50', 
+                        marginBottom: '4px', 
+                        letterSpacing: '-0.5px' 
+                      }}>
+                        {data.name}
+                      </div>
+                      <div style={{ 
+                        fontSize: '13px', 
+                        color: '#5da89c', 
+                        fontWeight: 600, 
+                        textTransform: 'uppercase', 
+                        letterSpacing: '0.5px' 
+                      }}>
+                        {data.position}
+                      </div>
+                    </div>
+                    
+                    {/* Contact Info Column 1 */}
+                    <table cellPadding="0" cellSpacing="0">
+                      <tbody>
+                        <tr>
+                          <td style={{ padding: '4px 0' }}>
+                            <table cellPadding="0" cellSpacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>📱</span>
+                                  </td>
+                                  <td style={{ verticalAlign: 'middle' }}>
+                                    <a 
+                                      href={`tel:${data.phone.replace(/\D/g, '')}`} 
+                                      style={{ 
+                                        color: '#2c3e50', 
+                                        textDecoration: 'none', 
+                                        fontSize: '13px', 
+                                        fontWeight: 500 
+                                      }}
+                                    >
+                                      {data.phone}
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '4px 0' }}>
+                            <table cellPadding="0" cellSpacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>☎️</span>
+                                  </td>
+                                  <td style={{ verticalAlign: 'middle' }}>
+                                    <a 
+                                      href={`tel:${data.officePhone.replace(/\D/g, '')}`} 
+                                      style={{ 
+                                        color: '#2c3e50', 
+                                        textDecoration: 'none', 
+                                        fontSize: '13px', 
+                                        fontWeight: 500 
+                                      }}
+                                    >
+                                      {data.officePhone}
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '4px 0' }}>
+                            <table cellPadding="0" cellSpacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '13px' }}>✉️</span>
+                                  </td>
+                                  <td style={{ verticalAlign: 'middle' }}>
+                                    <a 
+                                      href={`mailto:${data.email}`} 
+                                      style={{ 
+                                        color: '#1e4d8b', 
+                                        textDecoration: 'none', 
+                                        fontSize: '13px', 
+                                        fontWeight: 500 
+                                      }}
+                                    >
+                                      {data.email}
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  
+                  <td style={{ 
+                    paddingTop: '20px', 
+                    verticalAlign: 'top', 
+                    borderLeft: '2px solid #f0f0f0', 
+                    paddingLeft: '25px', 
+                    width: '175px' 
+                  }}>
+                    {/* Address and Website Column */}
+                    <table cellPadding="0" cellSpacing="0">
+                      <tbody>
+                        <tr>
+                          <td style={{ padding: '4px 0' }}>
+                            <table cellPadding="0" cellSpacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style={{ 
+                                    width: '18px', 
+                                    verticalAlign: 'top', 
+                                    paddingRight: '8px', 
+                                    paddingTop: '1px' 
+                                  }}>
+                                    <span style={{ color: '#5da89c', fontSize: '12px' }}>📍</span>
+                                  </td>
+                                  <td style={{ verticalAlign: 'top' }}>
+                                    <span style={{ fontSize: '11px', color: '#666', lineHeight: 1.5 }}>
+                                      6750 N. Andrews Ave, Suite 200<br/>Fort Lauderdale, FL 33309
+                                    </span>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '6px 0' }}>
+                            <table cellPadding="0" cellSpacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style={{ width: '18px', verticalAlign: 'middle', paddingRight: '8px' }}>
+                                    <span style={{ color: '#5da89c', fontSize: '12px' }}>🌐</span>
+                                  </td>
+                                  <td style={{ verticalAlign: 'middle' }}>
+                                    <a 
+                                      href="https://www.intruckscorp.com" 
+                                      style={{ 
+                                        color: '#1e4d8b', 
+                                        textDecoration: 'none', 
+                                        fontSize: '11px', 
+                                        fontWeight: 500 
+                                      }}
+                                    >
+                                      www.intruckscorp.com
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                    {/* License Info */}
+                    <div style={{ 
+                      marginTop: '15px', 
+                      paddingTop: '15px', 
+                      borderTop: '1px solid #f0f0f0' 
+                    }}>
+                      <div style={{ fontSize: '9px', color: '#888', lineHeight: 1.5 }}>
+                        <div style={{ fontWeight: 600, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
+                        <div>IN CALIFORNIA DBA IN TRUCKS</div>
+                        <div>INSURANCE SOLUTIONS</div>
+                        <div>LICENSE # 6006644</div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
 };
 
 export const SignatureGenerator = () => {
@@ -426,7 +667,7 @@ export const SignatureGenerator = () => {
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-6">Vista Previa</h2>
           <div className="bg-muted/30 rounded-lg p-4 overflow-auto">
-            <div dangerouslySetInnerHTML={{ __html: generateSignatureHTML() }} />
+            <SignaturePreview data={signatureData} />
           </div>
           <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
             <p className="text-sm text-blue-900">
