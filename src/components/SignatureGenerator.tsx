@@ -64,8 +64,8 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
       cellSpacing="0" 
       style={{
         fontFamily: "'Segoe UI', Arial, sans-serif",
-        width: '660px',
-        maxWidth: '660px',
+        width: '627px',
+        maxWidth: '627px',
         background: '#ffffff',
         border: '1px solid #000000'
       }}
@@ -77,7 +77,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
               <tbody>
                 <tr>
                   {/* Columna franja verde-azul */}
-                  <td width="119" style={{ background: 'linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%)', verticalAlign: 'top' }}>
+                  <td width="113" style={{ background: 'linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%)', verticalAlign: 'top' }}>
                     <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
                       <tbody>
                         <tr>
@@ -106,7 +106,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                   </td>
                   
                   {/* Columna contenido principal */}
-                  <td style={{ padding: '20px 28px', verticalAlign: 'top' }}>
+                  <td style={{ padding: '20px 26px', verticalAlign: 'top' }}>
                     <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
                       <tbody>
                         <tr>
@@ -116,7 +116,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                         </tr>
                         <tr>
                           {/* Información de contacto */}
-                          <td width="55%" style={{ verticalAlign: 'top', paddingRight: '28px' }}>
+                          <td width="55%" style={{ verticalAlign: 'top', paddingRight: '26px' }}>
                             <h2 style={{ fontSize: '21px', fontWeight: 700, color: '#5da89c', margin: '0 0 4px 0', lineHeight: '1.2' }}>
                               {data.name}
                             </h2>
@@ -157,7 +157,7 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                           
                           {/* Columna derecha */}
-                          <td width="45%" style={{ verticalAlign: 'top', paddingRight: '17px' }}>
+                          <td width="45%" style={{ verticalAlign: 'top', paddingRight: '16px' }}>
                             <table cellPadding="0" cellSpacing="0" style={{ fontSize: '9.5px', lineHeight: '1.8', color: '#2c3e50' }}>
                               <tbody>
                                 <tr>
@@ -169,10 +169,11 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td style={{ paddingTop: '9px', fontSize: '9px', color: '#666' }}>
+                                  <td style={{ paddingTop: '9px', fontSize: '9px', color: '#666', lineHeight: '1.5' }}>
                                     <span style={{ color: '#5da89c', fontSize: '9px' }}>📍</span>
                                     <span style={{ marginLeft: '5px' }}>
-                                      6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                                      6750 N. Andrews Ave, Suite 200<br/>
+                                      Fort Lauderdale, FL 33309
                                     </span>
                                   </td>
                                 </tr>
@@ -288,13 +289,13 @@ export const SignatureGenerator = () => {
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 660px; max-width: 660px; background: #ffffff; border: 1px solid #000000;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 627px; max-width: 627px; background: #ffffff; border: 1px solid #000000;">
   <tr>
     <td style="padding: 0;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <!-- Columna franja verde-azul -->
-          <td width="119" style="background: linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%); vertical-align: top;">
+          <td width="113" style="background: linear-gradient(135deg, #1a3d6d 0%, #5da89c 100%); vertical-align: top;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
                 <td style="padding: 20px 10px; text-align: center;">
@@ -306,7 +307,7 @@ export const SignatureGenerator = () => {
           </td>
           
           <!-- Columna contenido principal -->
-          <td style="padding: 20px 28px; vertical-align: top;">
+          <td style="padding: 20px 26px; vertical-align: top;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
                 <td colspan="2" style="padding-bottom: 13px; text-align: right;">
@@ -315,7 +316,7 @@ export const SignatureGenerator = () => {
               </tr>
               <tr>
                 <!-- Información de contacto -->
-                <td width="55%" style="vertical-align: top; padding-right: 28px;">
+                <td width="55%" style="vertical-align: top; padding-right: 26px;">
                   <h2 style="font-size: 21px; font-weight: 700; color: #5da89c; margin: 0 0 4px 0; line-height: 1.2;">
                     ${safeName}
                   </h2>
@@ -354,7 +355,7 @@ export const SignatureGenerator = () => {
                 </td>
                 
                 <!-- Columna derecha -->
-                <td width="45%" style="vertical-align: top; padding-right: 17px;">
+                <td width="45%" style="vertical-align: top; padding-right: 16px;">
                   <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9.5px; line-height: 1.8; color: #2c3e50;">
                     <tr>
                       <td style="padding-bottom: 9px; border-bottom: 1px solid #5da89c;">
@@ -365,10 +366,11 @@ export const SignatureGenerator = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td style="padding-top: 9px; font-size: 9px; color: #666;">
+                      <td style="padding-top: 9px; font-size: 9px; color: #666; line-height: 1.5;">
                         <span style="color: #5da89c; font-size: 9px;">📍</span>
                         <span style="margin-left: 5px;">
-                          6750 N. Andrews Ave, Suite 200 Fort Lauderdale, FL 33309
+                          6750 N. Andrews Ave, Suite 200<br/>
+                          Fort Lauderdale, FL 33309
                         </span>
                       </td>
                     </tr>
