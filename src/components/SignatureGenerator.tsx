@@ -285,11 +285,6 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                     </div>
                   </td>
                 </tr>
-                
-                {/* Bottom Border Row */}
-                <tr>
-                  <td colSpan={3} style={{ paddingTop: '16px', borderTop: '2px solid #5da89c' }}></td>
-                </tr>
               </tbody>
             </table>
           </td>
@@ -497,11 +492,6 @@ export const SignatureGenerator = () => {
               </div>
             </div>
           </td>
-        </tr>
-        
-        <!-- Bottom Border Row -->
-        <tr>
-          <td colspan="3" style="padding-top: 16px; border-top: 2px solid #5da89c;"></td>
         </tr>
       </table>
     </td>
