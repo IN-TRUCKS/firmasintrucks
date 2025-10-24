@@ -91,12 +91,11 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                         border: '4px solid #5da89c', 
                         display: 'block', 
                         margin: '0 auto',
-                        objectFit: 'contain',
-                        objectPosition: 'center center',
+                        objectFit: 'cover',
+                        objectPosition: 'center 35%',
                         filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none',
                         pointerEvents: 'none',
-                        cursor: 'default',
-                        backgroundColor: '#2d6a7e'
+                        cursor: 'default'
                       }}
                     />
                   </td>
@@ -293,7 +292,7 @@ export const SignatureGenerator = () => {
           <!-- Columna franja verde-azul -->
           <td width="130" style="background-color: #2d6a7e; vertical-align: middle; text-align: center;">
             <!-- Foto centrada en la franja -->
-            <img src="${photoSrc}" alt="${safeName}" width="110" height="110" style="width: 110px; height: 110px; border-radius: 50%; border: 4px solid #5da89c; display: block; margin: 0 auto; object-fit: contain; object-position: center center; pointer-events: none; cursor: default; background-color: #2d6a7e; ${photoFilter}" />
+            <img src="${photoSrc}" alt="${safeName}" width="110" height="110" style="width: 110px; height: 110px; border-radius: 50%; border: 4px solid #5da89c; display: block; margin: 0 auto; object-fit: cover; object-position: center 35%; pointer-events: none; cursor: default; ${photoFilter}" />
           </td>
           
           <!-- Columna contenido principal -->
