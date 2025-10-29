@@ -293,7 +293,7 @@ const SignaturePreview = ({
 };
 
 export const SignatureGenerator = () => {
-  const [signatureData, setSignatureData] = useState<SignatureData>({
+  const [signatureDataUSA, setSignatureDataUSA] = useState<SignatureData>({
     name: "David Ruiz",
     position: "General Manager",
     phone: "",
@@ -301,8 +301,18 @@ export const SignatureGenerator = () => {
     email: "david@intruckscorp.com",
     photo: ""
   });
-  const [copied, setCopied] = useState(false);
-  const [showPosition, setShowPosition] = useState(false);
+  const [signatureDataCOL, setSignatureDataCOL] = useState<SignatureData>({
+    name: "David Ruiz",
+    position: "General Manager",
+    phone: "",
+    officePhone: "",
+    email: "david@intruckscorp.com",
+    photo: ""
+  });
+  const [copiedUSA, setCopiedUSA] = useState(false);
+  const [copiedCOL, setCopiedCOL] = useState(false);
+  const [showPositionUSA, setShowPositionUSA] = useState(false);
+  const [showPositionCOL, setShowPositionCOL] = useState(false);
 
   const formatPhoneNumber = (value: string) => {
     const numbers = value.replace(/\D/g, '');
@@ -317,15 +327,22 @@ export const SignatureGenerator = () => {
     }
   };
 
-  const handlePhoneChange = (field: 'phone' | 'officePhone', value: string) => {
+  const handlePhoneChange = (signatureType: SignatureType, field: 'phone' | 'officePhone', value: string) => {
     const formatted = formatPhoneNumber(value);
-    setSignatureData({
-      ...signatureData,
-      [field]: formatted
-    });
+    if (signatureType === 'usa') {
+      setSignatureDataUSA({
+        ...signatureDataUSA,
+        [field]: formatted
+      });
+    } else {
+      setSignatureDataCOL({
+        ...signatureDataCOL,
+        [field]: formatted
+      });
+    }
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (signatureType: SignatureType, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
@@ -342,10 +359,17 @@ export const SignatureGenerator = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSignatureData({
-          ...signatureData,
-          photo: reader.result as string
-        });
+        if (signatureType === 'usa') {
+          setSignatureDataUSA({
+            ...signatureDataUSA,
+            photo: reader.result as string
+          });
+        } else {
+          setSignatureDataCOL({
+            ...signatureDataCOL,
+            photo: reader.result as string
+          });
+        }
       };
       reader.onerror = () => {
         toast.error("Error al cargar la imagen");
@@ -354,7 +378,9 @@ export const SignatureGenerator = () => {
     }
   };
 
-  const generateSignatureHTML = (signatureType: SignatureType) => {
+  const generateSignatureHTML = (signatureType: SignatureType): string => {
+    const signatureData = signatureType === 'usa' ? signatureDataUSA : signatureDataCOL;
+    const showPosition = signatureType === 'usa' ? showPositionUSA : showPositionCOL;
     const address = ADDRESS_MAP[signatureType];
     
     try {
@@ -448,6 +474,7 @@ export const SignatureGenerator = () => {
 
   const copyToClipboard = async (signatureType: SignatureType) => {
     const html = generateSignatureHTML(signatureType);
+    const setCopied = signatureType === 'usa' ? setCopiedUSA : setCopiedCOL;
     try {
       await navigator.clipboard.write([
         new ClipboardItem({
@@ -463,7 +490,14 @@ export const SignatureGenerator = () => {
     }
   };
 
-  const renderEditorPanel = (idPrefix: string, signatureType: SignatureType) => (
+  const renderEditorPanel = (idPrefix: string, signatureType: SignatureType) => {
+    const signatureData = signatureType === 'usa' ? signatureDataUSA : signatureDataCOL;
+    const setSignatureData = signatureType === 'usa' ? setSignatureDataUSA : setSignatureDataCOL;
+    const showPosition = signatureType === 'usa' ? showPositionUSA : showPositionCOL;
+    const setShowPosition = signatureType === 'usa' ? setShowPositionUSA : setShowPositionCOL;
+    const copied = signatureType === 'usa' ? copiedUSA : copiedCOL;
+
+    return (
     <Card className="p-6">
       <h2 className="text-2xl font-semibold mb-6">Datos del Empleado</h2>
       
@@ -484,7 +518,7 @@ export const SignatureGenerator = () => {
                   </div>
                 )}
               </div>
-              <Input id={`photo-${idPrefix}`} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+              <Input id={`photo-${idPrefix}`} type="file" accept="image/*" className="hidden" onChange={(e) => handleImageUpload(signatureType, e)} />
             </label>
           </div>
         </div>
@@ -544,7 +578,7 @@ export const SignatureGenerator = () => {
           <Input
             id={`phone-${idPrefix}`}
             value={signatureData.phone}
-            onChange={(e) => handlePhoneChange('phone', e.target.value)}
+            onChange={(e) => handlePhoneChange(signatureType, 'phone', e.target.value)}
             placeholder="Ej: (000) 000-0000"
           />
         </div>
@@ -554,7 +588,7 @@ export const SignatureGenerator = () => {
           <Input
             id={`officePhone-${idPrefix}`}
             value={signatureData.officePhone}
-            onChange={(e) => handlePhoneChange('officePhone', e.target.value)}
+            onChange={(e) => handlePhoneChange(signatureType, 'officePhone', e.target.value)}
             placeholder="Ej: (000) 000-0000"
           />
         </div>
@@ -594,9 +628,14 @@ export const SignatureGenerator = () => {
         </Button>
       </div>
     </Card>
-  );
+    );
+  };
 
-  const renderPreviewPanel = (signatureType: SignatureType) => (
+  const renderPreviewPanel = (signatureType: SignatureType) => {
+    const signatureData = signatureType === 'usa' ? signatureDataUSA : signatureDataCOL;
+    const showPosition = signatureType === 'usa' ? showPositionUSA : showPositionCOL;
+
+    return (
     <Card className="p-6">
       <h2 className="text-2xl font-semibold mb-6">Vista Previa</h2>
       <div className="bg-muted/30 rounded-lg p-4 overflow-auto">
@@ -616,7 +655,8 @@ export const SignatureGenerator = () => {
         </ol>
       </div>
     </Card>
-  );
+    );
+  };
 
   return (
     <div className="container mx-auto py-8 px-4">
