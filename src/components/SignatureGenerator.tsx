@@ -256,7 +256,7 @@ const SignaturePreview = ({
                   </td>
                 </tr>
                 <tr>
-                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'middle' }}>
+                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'top' }}>
                     <div style={{
                       width: '28px',
                       height: '28px',
@@ -269,11 +269,13 @@ const SignaturePreview = ({
                       <MapPin size={14} color="#ffffff" strokeWidth={2.5} />
                     </div>
                   </td>
-                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
+                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'top', maxWidth: '300px', wordWrap: 'break-word', whiteSpace: 'normal' }}>
                     <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      display: 'block'
+                      display: 'block',
+                      wordWrap: 'break-word',
+                      whiteSpace: 'normal'
                     }}>
                       {address}
                     </a>
@@ -475,13 +477,13 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
+          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: top;">
             <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
               <span style="color: #ffffff; font-size: 14px;">📍</span>
             </div>
           </td>
-          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
-            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: block;">
+          <td style="padding: 5px 0 5px 8px; vertical-align: top; max-width: 300px; word-wrap: break-word; white-space: normal;">
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: block; word-wrap: break-word; white-space: normal;">
               ${escapeHtml(address)}
             </a>
           </td>
