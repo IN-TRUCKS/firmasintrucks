@@ -24,7 +24,7 @@ type SignatureType = 'usa' | 'col';
 
 const ADDRESS_MAP = {
   usa: '6750 N. Andrews Ave, Fort Lauderdale, FL 33309',
-  col: 'Carrera 49a 61sur 75 oficina 404 centro ejecutivo sabana 2'
+  col: 'Carrera 49a 61sur 75 oficina 404 Centro Ejecutivo Sabana 2'
 };
 
 // Schema de validación con zod para prevenir inyecciones y asegurar datos válidos
