@@ -288,33 +288,9 @@ const SignaturePreview = ({
                   <td style={{
                   padding: '0 8px'
                 }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Facebook size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
+                    
                   </td>
-                  <td style={{
-                  padding: '0 0 0 8px'
-                }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Linkedin size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
-                  </td>
+                  
                 </tr>
               </tbody>
             </table>
