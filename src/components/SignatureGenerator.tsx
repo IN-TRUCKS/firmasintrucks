@@ -93,7 +93,7 @@ const SignaturePreview = ({
             margin: '0 auto',
             objectFit: 'cover',
             objectPosition: 'center',
-            filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'grayscale(100%)',
+            filter: !data.photo ? 'opacity(0.4)' : 'none',
             pointerEvents: 'none',
             cursor: 'default'
           }} />
@@ -412,7 +412,7 @@ export const SignatureGenerator = () => {
     const safePhone = escapeHtml(signatureData.phone);
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
     const photoSrc = signatureData.photo || defaultProfile;
-    const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : 'filter: grayscale(100%);';
+    const photoFilter = !signatureData.photo ? 'filter: opacity(0.4);' : '';
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 700px; max-width: 700px; background: #ffffff;">
   <tr>
