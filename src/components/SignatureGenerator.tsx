@@ -103,9 +103,9 @@ const SignaturePreview = ({
             textAlign: 'left',
             marginTop: '20px'
           }}>
-              <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
+              <img src={intrucksLogo} alt="InTrucks Corp" width="140" height="auto" style={{
               height: 'auto',
-              width: '120px',
+              width: '140px',
               display: 'inline-block'
             }} />
             </div>
@@ -402,7 +402,7 @@ export const SignatureGenerator = () => {
       
       <!-- Logo InTrucks -->
       <div style="text-align: left; margin-top: 20px;">
-        <img src="${intrucksLogo}" alt="InTrucks Corp" width="120" style="height: auto; width: 120px; display: inline-block;" />
+        <img src="${intrucksLogo}" alt="InTrucks Corp" width="140" style="height: auto; width: 140px; display: inline-block;" />
       </div>
     </td>
     
