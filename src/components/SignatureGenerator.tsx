@@ -281,51 +281,6 @@ const SignaturePreview = ({
               </tbody>
             </table>
             
-            {/* Iconos sociales */}
-            <table cellPadding="0" cellSpacing="0" style={{
-            marginBottom: '20px'
-          }}>
-              <tbody>
-                <tr>
-                  <td style={{
-                  padding: '0 8px 0 0'
-                }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Youtube size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
-                  </td>
-                  <td style={{
-                  padding: '0 8px'
-                }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Instagram size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
-                  </td>
-                  <td style={{
-                  padding: '0 8px'
-                }}>
-                    
-                  </td>
-                  
-                </tr>
-              </tbody>
-            </table>
           </td>
         </tr>
       </tbody>
@@ -486,32 +441,6 @@ export const SignatureGenerator = () => {
             <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style="color: #000000; text-decoration: none; vertical-align: middle;">
               6750 N. Andrews Ave, Fort Lauderdale, FL 33309
             </a>
-          </td>
-        </tr>
-      </table>
-      
-      <!-- Iconos sociales -->
-      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
-        <tr>
-          <td style="padding: 0 8px 0 0;">
-            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">▶</span>
-            </div>
-          </td>
-          <td style="padding: 0 8px;">
-            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📷</span>
-            </div>
-          </td>
-          <td style="padding: 0 8px;">
-            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">💬</span>
-            </div>
-          </td>
-          <td style="padding: 0 0 0 8px;">
-            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📍</span>
-            </div>
           </td>
         </tr>
       </table>
