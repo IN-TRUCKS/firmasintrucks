@@ -605,7 +605,7 @@ export const SignatureGenerator = () => {
                 setSignatureData({ ...signatureData, email: value });
               }
             }}
-            placeholder="Ej: david@intruckscorp.com"
+            placeholder="Ej: micorreo@intruckscorp.com"
             maxLength={255}
           />
           <p className="text-xs text-muted-foreground mt-1">
