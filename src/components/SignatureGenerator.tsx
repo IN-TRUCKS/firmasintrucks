@@ -525,7 +525,7 @@ export const SignatureGenerator = () => {
             </div>
 
             <div>
-              <Label htmlFor="phone">Teléfono Personal (P)</Label>
+              <Label htmlFor="phone">Telefono personal</Label>
               <Input id="phone" value={signatureData.phone} onChange={e => handlePhoneChange('phone', e.target.value)} placeholder="Ej: (000) 000-0000" />
             </div>
 
