@@ -81,150 +81,150 @@ const SignaturePreview = ({
         <tr>
           {/* Columna izquierda - Foto */}
           <td width="200" style={{
-            padding: '30px',
-            verticalAlign: 'middle',
-            textAlign: 'center'
-          }}>
+          padding: '30px',
+          verticalAlign: 'middle',
+          textAlign: 'center'
+        }}>
             <img src={photoSrc} alt={data.name} width="180" height="180" style={{
-              width: '180px',
-              height: '180px',
-              borderRadius: '50%',
-              display: 'block',
-              margin: '0 auto',
-              objectFit: 'cover',
-              objectPosition: 'center 35%',
-              filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'grayscale(100%)',
-              pointerEvents: 'none',
-              cursor: 'default'
-            }} />
+            width: '180px',
+            height: '180px',
+            borderRadius: '50%',
+            display: 'block',
+            margin: '0 auto',
+            objectFit: 'cover',
+            objectPosition: 'center 35%',
+            filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'grayscale(100%)',
+            pointerEvents: 'none',
+            cursor: 'default'
+          }} />
           </td>
           
           {/* Columna derecha - Contenido */}
           <td style={{
-            padding: '30px 40px 30px 20px',
-            verticalAlign: 'middle'
-          }}>
+          padding: '30px 40px 30px 20px',
+          verticalAlign: 'middle'
+        }}>
             {/* Nombre */}
             <h2 style={{
-              fontSize: '32px',
-              fontWeight: 700,
-              color: '#000000',
-              margin: '0 0 8px 0',
-              lineHeight: '1.2',
-              textTransform: 'uppercase',
-              letterSpacing: '2px'
-            }}>
+            fontSize: '32px',
+            fontWeight: 700,
+            color: '#000000',
+            margin: '0 0 8px 0',
+            lineHeight: '1.2',
+            textTransform: 'uppercase',
+            letterSpacing: '2px'
+          }}>
               {data.name}
             </h2>
             
             {/* Cargo */}
             <p style={{
-              fontSize: '16px',
-              color: '#5da89c',
-              margin: '0 0 15px 0',
-              fontWeight: 400
-            }}>
+            fontSize: '16px',
+            color: '#5da89c',
+            margin: '0 0 15px 0',
+            fontWeight: 400
+          }}>
               {data.position}
             </p>
             
             {/* Línea separadora */}
             <div style={{
-              height: '2px',
-              background: '#5da89c',
-              margin: '15px 0 20px 0'
-            }}></div>
+            height: '2px',
+            background: '#5da89c',
+            margin: '15px 0 20px 0'
+          }}></div>
             
             {/* Información de contacto */}
             <table cellPadding="0" cellSpacing="0" style={{
-              fontSize: '14px',
-              lineHeight: '1.8',
-              color: '#000000',
-              marginBottom: '20px'
-            }}>
+            fontSize: '14px',
+            lineHeight: '1.8',
+            color: '#000000',
+            marginBottom: '20px'
+          }}>
               <tbody>
                 <tr>
                   <td style={{
-                    padding: '5px 0'
-                  }}>
+                  padding: '5px 0'
+                }}>
                     <span style={{
-                      display: 'inline-block',
-                      width: '30px',
-                      height: '30px',
-                      backgroundColor: '#5da89c',
-                      borderRadius: '4px',
-                      textAlign: 'center',
-                      lineHeight: '30px',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
-                    }}>
+                    display: 'inline-block',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: '#5da89c',
+                    borderRadius: '4px',
+                    textAlign: 'center',
+                    lineHeight: '30px',
+                    marginRight: '10px',
+                    verticalAlign: 'middle'
+                  }}>
                       <span style={{
-                        color: '#ffffff',
-                        fontSize: '16px'
-                      }}>✉</span>
+                      color: '#ffffff',
+                      fontSize: '16px'
+                    }}>✉</span>
                     </span>
                     <a href={`mailto:${data.email}`} style={{
-                      color: '#000000',
-                      textDecoration: 'none',
-                      verticalAlign: 'middle'
-                    }}>
+                    color: '#000000',
+                    textDecoration: 'none',
+                    verticalAlign: 'middle'
+                  }}>
                       {data.email}
                     </a>
                   </td>
                 </tr>
                 <tr>
                   <td style={{
-                    padding: '5px 0'
-                  }}>
+                  padding: '5px 0'
+                }}>
                     <span style={{
-                      display: 'inline-block',
-                      width: '30px',
-                      height: '30px',
-                      backgroundColor: '#5da89c',
-                      borderRadius: '4px',
-                      textAlign: 'center',
-                      lineHeight: '30px',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
-                    }}>
+                    display: 'inline-block',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: '#5da89c',
+                    borderRadius: '4px',
+                    textAlign: 'center',
+                    lineHeight: '30px',
+                    marginRight: '10px',
+                    verticalAlign: 'middle'
+                  }}>
                       <span style={{
-                        color: '#ffffff',
-                        fontSize: '16px'
-                      }}>📱</span>
+                      color: '#ffffff',
+                      fontSize: '16px'
+                    }}>📱</span>
                     </span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
-                      color: '#000000',
-                      textDecoration: 'none',
-                      verticalAlign: 'middle'
-                    }}>
+                    color: '#000000',
+                    textDecoration: 'none',
+                    verticalAlign: 'middle'
+                  }}>
                       {data.phone}
                     </a>
                   </td>
                 </tr>
                 <tr>
                   <td style={{
-                    padding: '5px 0'
-                  }}>
+                  padding: '5px 0'
+                }}>
                     <span style={{
-                      display: 'inline-block',
-                      width: '30px',
-                      height: '30px',
-                      backgroundColor: '#5da89c',
-                      borderRadius: '4px',
-                      textAlign: 'center',
-                      lineHeight: '30px',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
-                    }}>
+                    display: 'inline-block',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: '#5da89c',
+                    borderRadius: '4px',
+                    textAlign: 'center',
+                    lineHeight: '30px',
+                    marginRight: '10px',
+                    verticalAlign: 'middle'
+                  }}>
                       <span style={{
-                        color: '#ffffff',
-                        fontSize: '16px'
-                      }}>🌐</span>
+                      color: '#ffffff',
+                      fontSize: '16px'
+                    }}>🌐</span>
                     </span>
                     <a href="https://www.intruckscorp.com" style={{
-                      color: '#000000',
-                      textDecoration: 'none',
-                      verticalAlign: 'middle'
-                    }}>
+                    color: '#000000',
+                    textDecoration: 'none',
+                    verticalAlign: 'middle'
+                  }}>
                       www.intruckscorp.com
                     </a>
                   </td>
@@ -234,60 +234,37 @@ const SignaturePreview = ({
             
             {/* Iconos sociales */}
             <table cellPadding="0" cellSpacing="0" style={{
-              marginBottom: '20px'
-            }}>
+            marginBottom: '20px'
+          }}>
               <tbody>
                 <tr>
-                  <td style={{ padding: '0 8px 0 0' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      border: '2px solid #5da89c',
-                      borderRadius: '50%',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <span style={{ color: '#5da89c', fontSize: '18px' }}>▶</span>
-                    </div>
+                  <td style={{
+                  padding: '0 8px 0 0'
+                }}>
+                    
                   </td>
-                  <td style={{ padding: '0 8px' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      border: '2px solid #5da89c',
-                      borderRadius: '50%',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <span style={{ color: '#5da89c', fontSize: '18px' }}>📷</span>
-                    </div>
+                  
+                  <td style={{
+                  padding: '0 8px'
+                }}>
+                    
                   </td>
-                  <td style={{ padding: '0 8px' }}>
+                  <td style={{
+                  padding: '0 0 0 8px'
+                }}>
                     <div style={{
-                      width: '40px',
-                      height: '40px',
-                      border: '2px solid #5da89c',
-                      borderRadius: '50%',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <span style={{ color: '#5da89c', fontSize: '18px' }}>💬</span>
-                    </div>
-                  </td>
-                  <td style={{ padding: '0 0 0 8px' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      border: '2px solid #5da89c',
-                      borderRadius: '50%',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <span style={{ color: '#5da89c', fontSize: '18px' }}>📍</span>
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <span style={{
+                      color: '#5da89c',
+                      fontSize: '18px'
+                    }}>📍</span>
                     </div>
                   </td>
                 </tr>
@@ -296,13 +273,13 @@ const SignaturePreview = ({
             
             {/* Logo InTrucks */}
             <div style={{
-              textAlign: 'left'
-            }}>
+            textAlign: 'left'
+          }}>
               <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
-                height: 'auto',
-                width: '120px',
-                display: 'inline-block'
-              }} />
+              height: 'auto',
+              width: '120px',
+              display: 'inline-block'
+            }} />
             </div>
           </td>
         </tr>
