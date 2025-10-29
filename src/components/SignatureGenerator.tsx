@@ -164,120 +164,116 @@ const SignaturePreview = ({
               fontSize: '14px',
               lineHeight: '1.8',
               color: '#000000',
-              marginBottom: '20px'
+              borderCollapse: 'collapse'
             }}>
               <tbody>
                 <tr>
-                  <td style={{ padding: '5px 0' }}>
-                    <span style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '30px',
-                      height: '30px',
+                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'middle' }}>
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
                       backgroundColor: '#5da89c',
                       borderRadius: '50%',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}>
-                      <Mail size={16} color="#ffffff" strokeWidth={2.5} />
-                    </span>
+                      <Mail size={14} color="#ffffff" strokeWidth={2.5} />
+                    </div>
+                  </td>
+                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
                     <a href={`mailto:${data.email}`} style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      verticalAlign: 'middle'
+                      display: 'block'
                     }}>
                       {data.email}
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '5px 0' }}>
-                    <span style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '30px',
-                      height: '30px',
+                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'middle' }}>
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
                       backgroundColor: '#5da89c',
                       borderRadius: '50%',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}>
-                      <Phone size={16} color="#ffffff" strokeWidth={2.5} />
-                    </span>
+                      <Phone size={14} color="#ffffff" strokeWidth={2.5} />
+                    </div>
+                  </td>
+                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
                     <span style={{
                       color: '#666666',
-                      fontSize: '12px',
-                      marginRight: '8px',
-                      verticalAlign: 'middle'
-                    }}>P:</span>
+                      fontSize: '11px',
+                      marginRight: '6px'
+                    }}>Personal:</span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      verticalAlign: 'middle',
-                      marginRight: '20px'
+                      marginRight: '15px'
                     }}>
                       {data.phone}
                     </a>
                     <span style={{
                       color: '#666666',
-                      fontSize: '12px',
-                      marginRight: '8px',
-                      verticalAlign: 'middle'
-                    }}>O:</span>
+                      fontSize: '11px',
+                      marginRight: '6px'
+                    }}>Oficina:</span>
                     <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{
                       color: '#000000',
-                      textDecoration: 'none',
-                      verticalAlign: 'middle'
+                      textDecoration: 'none'
                     }}>
                       {data.officePhone}
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '5px 0' }}>
-                    <span style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '30px',
-                      height: '30px',
+                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'middle' }}>
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
                       backgroundColor: '#5da89c',
                       borderRadius: '50%',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}>
-                      <Globe size={16} color="#ffffff" strokeWidth={2.5} />
-                    </span>
+                      <Globe size={14} color="#ffffff" strokeWidth={2.5} />
+                    </div>
+                  </td>
+                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
                     <a href="https://www.intruckscorp.com" style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      verticalAlign: 'middle'
+                      display: 'block'
                     }}>
                       www.intruckscorp.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '5px 0' }}>
-                    <span style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '30px',
-                      height: '30px',
+                  <td width="35" style={{ padding: '5px 0', width: '35px', verticalAlign: 'middle' }}>
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
                       backgroundColor: '#5da89c',
                       borderRadius: '50%',
-                      marginRight: '10px',
-                      verticalAlign: 'middle'
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}>
-                      <MapPin size={16} color="#ffffff" strokeWidth={2.5} />
-                    </span>
+                      <MapPin size={14} color="#ffffff" strokeWidth={2.5} />
+                    </div>
+                  </td>
+                  <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
                     <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      verticalAlign: 'middle'
+                      display: 'block'
                     }}>
                       {address}
                     </a>
@@ -436,48 +432,56 @@ export const SignatureGenerator = () => {
         ${safePosition}
       </p>` : ''}
       <div style="height: 2px; background: #5da89c; margin: 12px 0 15px 0;"></div>
-      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 1.6; color: #000000; margin-bottom: 15px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 1.6; color: #000000; border-collapse: collapse;">
         <tr>
-          <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">✉</span>
-            </span>
-            <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; vertical-align: middle;">
+          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
+            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
+              <span style="color: #ffffff; font-size: 14px;">✉</span>
+            </div>
+          </td>
+          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+            <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; display: block;">
               ${safeEmail}
             </a>
           </td>
         </tr>
         <tr>
-          <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
-            </span>
-            <span style="color: #666666; font-size: 12px; margin-right: 8px; vertical-align: middle;">Personal:</span>
-            <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle; margin-right: 20px;">
+          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
+            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
+              <span style="color: #ffffff; font-size: 14px;">☎</span>
+            </div>
+          </td>
+          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+            <span style="color: #666666; font-size: 11px; margin-right: 6px;">Personal:</span>
+            <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; margin-right: 15px;">
               ${safePhone}
             </a>
-            <span style="color: #666666; font-size: 12px; margin-right: 8px; vertical-align: middle;">Oficina:</span>
-            <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle;">
+            <span style="color: #666666; font-size: 11px; margin-right: 6px;">Oficina:</span>
+            <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none;">
               ${safeOfficePhone}
             </a>
           </td>
         </tr>
         <tr>
-          <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">🌐</span>
-            </span>
-            <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; vertical-align: middle;">
+          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
+            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
+              <span style="color: #ffffff; font-size: 14px;">🌐</span>
+            </div>
+          </td>
+          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+            <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; display: block;">
               www.intruckscorp.com
             </a>
           </td>
         </tr>
         <tr>
-          <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">📍</span>
-            </span>
-            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; vertical-align: middle;">
+          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
+            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
+              <span style="color: #ffffff; font-size: 14px;">📍</span>
+            </div>
+          </td>
+          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: block;">
               ${escapeHtml(address)}
             </a>
           </td>
