@@ -229,6 +229,35 @@ const SignaturePreview = ({
                     </a>
                   </td>
                 </tr>
+                <tr>
+                  <td style={{
+                  padding: '5px 0'
+                }}>
+                    <span style={{
+                    display: 'inline-block',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: '#5da89c',
+                    borderRadius: '4px',
+                    textAlign: 'center',
+                    lineHeight: '30px',
+                    marginRight: '10px',
+                    verticalAlign: 'middle'
+                  }}>
+                      <span style={{
+                      color: '#ffffff',
+                      fontSize: '16px'
+                    }}>📍</span>
+                    </span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style={{
+                    color: '#000000',
+                    textDecoration: 'none',
+                    verticalAlign: 'middle'
+                  }}>
+                      6750 N. Andrews Ave, Fort Lauderdale, FL 33309
+                    </a>
+                  </td>
+                </tr>
               </tbody>
             </table>
             
@@ -420,6 +449,16 @@ export const SignatureGenerator = () => {
             </span>
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; vertical-align: middle;">
               www.intruckscorp.com
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px;">📍</span>
+            </span>
+            <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style="color: #000000; text-decoration: none; vertical-align: middle;">
+              6750 N. Andrews Ave, Fort Lauderdale, FL 33309
             </a>
           </td>
         </tr>
