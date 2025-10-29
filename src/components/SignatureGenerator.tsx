@@ -378,7 +378,7 @@ export const SignatureGenerator = () => {
     }
   };
 
-  const generateSignatureHTML = (signatureType: SignatureType): string => {
+  const generateSignatureHTML = async (signatureType: SignatureType): Promise<string> => {
     const signatureData = signatureType === 'usa' ? signatureDataUSA : signatureDataCOL;
     const showPosition = signatureType === 'usa' ? showPositionUSA : showPositionCOL;
     const address = ADDRESS_MAP[signatureType];
@@ -393,33 +393,50 @@ export const SignatureGenerator = () => {
       }
     }
 
+    // Función para convertir imagen a base64
+    const imageToBase64 = async (src: string): Promise<string> => {
+      try {
+        const response = await fetch(src);
+        const blob = await response.blob();
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      } catch (error) {
+        console.error('Error converting image to base64:', error);
+        return src;
+      }
+    };
+
     const safeName = escapeHtml(signatureData.name);
     const safePosition = escapeHtml(signatureData.position);
     const safeEmail = escapeHtml(signatureData.email);
     const safePhone = escapeHtml(signatureData.phone);
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
-    const photoSrc = signatureData.photo || defaultProfile;
+    const photoSrc = signatureData.photo || await imageToBase64(defaultProfile);
     const photoFilter = !signatureData.photo ? 'filter: opacity(0.4);' : '';
-    const logoSrc = signatureType === 'col' ? intrucksLogoCol : intrucksLogo;
+    const logoSrc = await imageToBase64(signatureType === 'col' ? intrucksLogoCol : intrucksLogo);
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 700px; max-width: 700px; background: #ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 550px !important; max-width: 550px !important; background: #ffffff; border-collapse: collapse;">
   <tr>
-    <td width="200" style="padding: 30px; vertical-align: middle; text-align: center;">
-      <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; pointer-events: none; cursor: default; ${photoFilter}" />
-      <div style="text-align: left; margin-top: 20px;">
-        <img src="${logoSrc}" alt="InTrucks Corp" width="140" style="height: auto; width: 140px; display: inline-block;" />
+    <td width="160" style="padding: 20px; vertical-align: middle; text-align: center; width: 160px !important;">
+      <img src="${photoSrc}" alt="${safeName}" width="140" height="140" style="width: 140px !important; height: 140px !important; min-width: 140px !important; min-height: 140px !important; max-width: 140px !important; max-height: 140px !important; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; ${photoFilter}" />
+      <div style="text-align: left; margin-top: 15px;">
+        <img src="${logoSrc}" alt="InTrucks Corp" width="110" height="auto" style="width: 110px !important; height: auto !important; max-width: 110px !important; display: block;" />
       </div>
     </td>
-    <td style="padding: 30px 40px 30px 20px; vertical-align: middle;">
-      <h2 style="font-size: 32px; font-weight: 700; color: #000000; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px;">
+    <td style="padding: 20px 30px 20px 15px; vertical-align: middle;">
+      <h2 style="font-size: 26px; font-weight: 700; color: #000000; margin: 0 0 6px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 1.5px;">
         ${safeName}
       </h2>
-      ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
+      ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style="font-size: 14px; color: #5da89c; margin: 0 0 12px 0; font-weight: 400;">
         ${safePosition}
       </p>` : ''}
-      <div style="height: 2px; background: #5da89c; margin: 15px 0 20px 0;"></div>
-      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 14px; line-height: 1.8; color: #000000; margin-bottom: 20px;">
+      <div style="height: 2px; background: #5da89c; margin: 12px 0 15px 0;"></div>
+      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 1.6; color: #000000; margin-bottom: 15px;">
         <tr>
           <td style="padding: 5px 0;">
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
@@ -473,9 +490,12 @@ export const SignatureGenerator = () => {
   };
 
   const copyToClipboard = async (signatureType: SignatureType) => {
-    const html = generateSignatureHTML(signatureType);
     const setCopied = signatureType === 'usa' ? setCopiedUSA : setCopiedCOL;
     try {
+      toast.info("Generando firma...");
+      const html = await generateSignatureHTML(signatureType);
+      if (!html) return;
+      
       await navigator.clipboard.write([
         new ClipboardItem({
           "text/html": new Blob([html], { type: "text/html" }),
