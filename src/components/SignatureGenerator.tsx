@@ -422,8 +422,8 @@ export const SignatureGenerator = () => {
   <tr>
     <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px !important;">
       <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px !important; height: 120px !important; min-width: 120px !important; min-height: 120px !important; max-width: 120px !important; max-height: 120px !important; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; ${photoFilter}" />
-      <div style="text-align: left; margin-top: 12px;">
-        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="width: 90px !important; height: auto !important; max-width: 90px !important; display: block;" />
+      <div style="text-align: center; margin-top: 12px;">
+        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="width: 90px !important; height: auto !important; max-width: 90px !important; display: block; margin: 0 auto;" />
       </div>
     </td>
     <td style="padding: 16px 22px 16px 12px; vertical-align: middle;">
