@@ -130,14 +130,7 @@ const SignaturePreview = ({
             </h2>
             
             {/* Cargo */}
-            <p style={{
-            fontSize: '16px',
-            color: '#5da89c',
-            margin: '0 0 15px 0',
-            fontWeight: 400
-          }}>
-              {data.position}
-            </p>
+            
             
             {/* Línea separadora */}
             <div style={{
@@ -512,21 +505,7 @@ export const SignatureGenerator = () => {
               </p>
             </div>
 
-            <div>
-              <Label htmlFor="position">Cargo</Label>
-              <Input id="position" value={signatureData.position} onChange={e => {
-              const value = e.target.value;
-              if (value.length <= 100) {
-                setSignatureData({
-                  ...signatureData,
-                  position: value
-                });
-              }
-            }} placeholder="Ej: General Manager" maxLength={100} />
-              <p className="text-xs text-muted-foreground mt-1">
-                {signatureData.position.length}/100 caracteres
-              </p>
-            </div>
+            
 
             <div>
               <Label htmlFor="phone">Teléfono Móvil</Label>
