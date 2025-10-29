@@ -8,7 +8,6 @@ import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
 import defaultProfile from "@/assets/default-profile.png";
-
 interface SignatureData {
   name: string;
   position: string;
@@ -20,129 +19,202 @@ interface SignatureData {
 
 // Schema de validación con zod para prevenir inyecciones y asegurar datos válidos
 const signatureSchema = z.object({
-  name: z.string()
-    .trim()
-    .min(1, { message: "El nombre es requerido" })
-    .max(100, { message: "El nombre debe tener menos de 100 caracteres" })
-    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/, { message: "El nombre contiene caracteres no válidos" }),
-  position: z.string()
-    .trim()
-    .min(1, { message: "El cargo es requerido" })
-    .max(100, { message: "El cargo debe tener menos de 100 caracteres" }),
-  phone: z.string()
-    .regex(/^\(\d{3}\) \d{3}-\d{4}$/, { message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX" }),
-  officePhone: z.string()
-    .regex(/^\(\d{3}\) \d{3}-\d{4}$/, { message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX" }),
-  email: z.string()
-    .trim()
-    .email({ message: "Email inválido" })
-    .max(255, { message: "El email debe tener menos de 255 caracteres" })
-    .regex(/@intruckscorp\.com$/, { message: "Solo se permiten correos @intruckscorp.com" }),
-  photo: z.string().max(5000000, { message: "La imagen es demasiado grande" }), // ~5MB en base64
+  name: z.string().trim().min(1, {
+    message: "El nombre es requerido"
+  }).max(100, {
+    message: "El nombre debe tener menos de 100 caracteres"
+  }).regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/, {
+    message: "El nombre contiene caracteres no válidos"
+  }),
+  position: z.string().trim().min(1, {
+    message: "El cargo es requerido"
+  }).max(100, {
+    message: "El cargo debe tener menos de 100 caracteres"
+  }),
+  phone: z.string().regex(/^\(\d{3}\) \d{3}-\d{4}$/, {
+    message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX"
+  }),
+  officePhone: z.string().regex(/^\(\d{3}\) \d{3}-\d{4}$/, {
+    message: "Formato de teléfono inválido. Debe ser (XXX) XXX-XXXX"
+  }),
+  email: z.string().trim().email({
+    message: "Email inválido"
+  }).max(255, {
+    message: "El email debe tener menos de 255 caracteres"
+  }).regex(/@intruckscorp\.com$/, {
+    message: "Solo se permiten correos @intruckscorp.com"
+  }),
+  photo: z.string().max(5000000, {
+    message: "La imagen es demasiado grande"
+  }) // ~5MB en base64
 });
 
 // Función para escapar HTML - solo se usa para generar el HTML que se copia al clipboard
 const escapeHtml = (text: string): string => {
-  const map: { [key: string]: string } = {
+  const map: {
+    [key: string]: string;
+  } = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
     "'": '&#039;',
-    '/': '&#x2F;',
+    '/': '&#x2F;'
   };
-  return text.replace(/[&<>"'/]/g, (char) => map[char]);
+  return text.replace(/[&<>"'/]/g, char => map[char]);
 };
 
 // Componente seguro de preview - renderiza usando JSX sin dangerouslySetInnerHTML
-const SignaturePreview = ({ data }: { data: SignatureData }) => {
+const SignaturePreview = ({
+  data
+}: {
+  data: SignatureData;
+}) => {
   const photoSrc = data.photo || defaultProfile;
-  
-  return (
-    <table 
-      cellPadding="0" 
-      cellSpacing="0" 
-      style={{
-        fontFamily: "'Segoe UI', Arial, sans-serif",
-        width: '627px',
-        maxWidth: '627px',
-        background: '#ffffff',
-        border: '1px solid #000000'
-      }}
-    >
+  return <table cellPadding="0" cellSpacing="0" style={{
+    fontFamily: "'Segoe UI', Arial, sans-serif",
+    width: '627px',
+    maxWidth: '627px',
+    background: '#ffffff',
+    border: '1px solid #000000'
+  }}>
       <tbody>
         <tr>
-          <td style={{ padding: '0' }}>
-            <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
+          <td style={{
+          padding: '0'
+        }}>
+            <table cellPadding="0" cellSpacing="0" style={{
+            width: '100%'
+          }}>
               <tbody>
                 <tr>
                   {/* Columna franja verde-azul */}
-                  <td width="130" style={{ backgroundColor: '#2d6a7e', verticalAlign: 'middle', textAlign: 'center' }}>
+                  <td width="130" style={{
+                  backgroundColor: '#2d6a7e',
+                  verticalAlign: 'middle',
+                  textAlign: 'center'
+                }}>
                     {/* Foto centrada en la franja */}
-                    <img 
-                      src={photoSrc} 
-                      alt={data.name} 
-                      width="110" 
-                      height="110"
-                      style={{ 
-                        width: '110px', 
-                        height: '110px', 
-                        borderRadius: '50%', 
-                        border: '4px solid #5da89c', 
-                        display: 'block', 
-                        margin: '0 auto',
-                        objectFit: 'cover',
-                        objectPosition: 'center 35%',
-                        filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none',
-                        pointerEvents: 'none',
-                        cursor: 'default'
-                      }}
-                    />
+                    <img src={photoSrc} alt={data.name} width="110" height="110" style={{
+                    width: '110px',
+                    height: '110px',
+                    borderRadius: '50%',
+                    border: '4px solid #5da89c',
+                    display: 'block',
+                    margin: '0 auto',
+                    objectFit: 'cover',
+                    objectPosition: 'center 35%',
+                    filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'none',
+                    pointerEvents: 'none',
+                    cursor: 'default'
+                  }} />
                   </td>
                   
                   {/* Columna contenido principal */}
-                  <td style={{ padding: '22px 28px', verticalAlign: 'top' }}>
-                    <table cellPadding="0" cellSpacing="0" style={{ width: '100%' }}>
+                  <td style={{
+                  padding: '22px 28px',
+                  verticalAlign: 'top'
+                }}>
+                    <table cellPadding="0" cellSpacing="0" style={{
+                    width: '100%'
+                  }}>
                       <tbody>
                         <tr>
-                          <td colSpan={2} style={{ paddingBottom: '16px', textAlign: 'right' }}>
-                            <img src={intrucksLogo} alt="InTrucks Corp" width="36" height="36" style={{ height: '36px', width: 'auto', display: 'inline-block' }} />
+                          <td colSpan={2} style={{
+                          paddingBottom: '16px',
+                          textAlign: 'right'
+                        }}>
+                            <img src={intrucksLogo} alt="InTrucks Corp" width="36" height="36" style={{
+                            height: '36px',
+                            width: 'auto',
+                            display: 'inline-block'
+                          }} />
                           </td>
                         </tr>
                         <tr>
                           {/* Información de contacto */}
-                          <td width="50%" style={{ verticalAlign: 'top', paddingRight: '28px' }}>
-                            <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#5da89c', margin: '0 0 5px 0', lineHeight: '1.2' }}>
+                          <td width="50%" style={{
+                          verticalAlign: 'top',
+                          paddingRight: '28px'
+                        }}>
+                            <h2 style={{
+                            fontSize: '22px',
+                            fontWeight: 700,
+                            color: '#5da89c',
+                            margin: '0 0 5px 0',
+                            lineHeight: '1.2'
+                          }}>
                               {data.name}
                             </h2>
-                            <p style={{ fontSize: '11.5px', color: '#2c3e50', margin: '0 0 15px 0', fontWeight: 500 }}>
+                            <p style={{
+                            fontSize: '11.5px',
+                            color: '#2c3e50',
+                            margin: '0 0 15px 0',
+                            fontWeight: 500
+                          }}>
                               {data.position}
                             </p>
                             
-                            <table cellPadding="0" cellSpacing="0" style={{ fontSize: '10px', lineHeight: '2', color: '#2c3e50' }}>
+                            <table cellPadding="0" cellSpacing="0" style={{
+                            fontSize: '10px',
+                            lineHeight: '2',
+                            color: '#2c3e50'
+                          }}>
                               <tbody>
                                 <tr>
-                                  <td style={{ padding: '3px 0' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>📱</span>
-                                    <span style={{ fontWeight: 600, margin: '0 5px 0 6px' }}>O</span>
-                                    <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
+                                  <td style={{
+                                  padding: '3px 0'
+                                }}>
+                                    <span style={{
+                                    color: '#5da89c',
+                                    fontSize: '10px'
+                                  }}>📱</span>
+                                    <span style={{
+                                    fontWeight: 600,
+                                    margin: '0 5px 0 6px'
+                                  }}>O</span>
+                                    <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
+                                    color: '#2c3e50',
+                                    textDecoration: 'none'
+                                  }}>
                                       {data.phone}
                                     </a>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td style={{ padding: '3px 0' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>📞</span>
-                                    <span style={{ fontWeight: 600, margin: '0 5px 0 6px' }}>P</span>
-                                    <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{ color: '#2c3e50', textDecoration: 'none' }}>
+                                  <td style={{
+                                  padding: '3px 0'
+                                }}>
+                                    <span style={{
+                                    color: '#5da89c',
+                                    fontSize: '10px'
+                                  }}>📞</span>
+                                    <span style={{
+                                    fontWeight: 600,
+                                    margin: '0 5px 0 6px'
+                                  }}>P</span>
+                                    <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{
+                                    color: '#2c3e50',
+                                    textDecoration: 'none'
+                                  }}>
                                       {data.officePhone}
                                     </a>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td style={{ padding: '3px 0' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>✉️</span>
-                                    <a href={`mailto:${data.email}`} style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500, marginLeft: '6px' }}>
+                                  <td style={{
+                                  padding: '3px 0'
+                                }}>
+                                    <span style={{
+                                    color: '#5da89c',
+                                    fontSize: '10px'
+                                  }}>✉️</span>
+                                    <a href={`mailto:${data.email}`} style={{
+                                    color: '#1a3d6d',
+                                    textDecoration: 'none',
+                                    fontWeight: 500,
+                                    marginLeft: '6px'
+                                  }}>
                                       {data.email}
                                     </a>
                                   </td>
@@ -152,29 +224,65 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                           </td>
                           
                           {/* Columna derecha */}
-                          <td width="50%" style={{ verticalAlign: 'top', paddingRight: '18px' }}>
-                            <table cellPadding="0" cellSpacing="0" style={{ fontSize: '10px', lineHeight: '2', color: '#2c3e50' }}>
+                          <td width="50%" style={{
+                          verticalAlign: 'top',
+                          paddingRight: '18px'
+                        }}>
+                            <table cellPadding="0" cellSpacing="0" style={{
+                            fontSize: '10px',
+                            lineHeight: '2',
+                            color: '#2c3e50'
+                          }}>
                               <tbody>
                                 <tr>
-                                  <td style={{ paddingBottom: '10px', borderBottom: '1px solid #5da89c' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>🌐</span>
-                                    <a href="https://www.intruckscorp.com" style={{ color: '#1a3d6d', textDecoration: 'none', fontWeight: 500, marginLeft: '6px' }}>
+                                  <td style={{
+                                  paddingBottom: '10px',
+                                  borderBottom: '1px solid #5da89c'
+                                }}>
+                                    <span style={{
+                                    color: '#5da89c',
+                                    fontSize: '10px'
+                                  }}>🌐</span>
+                                    <a href="https://www.intruckscorp.com" style={{
+                                    color: '#1a3d6d',
+                                    textDecoration: 'none',
+                                    fontWeight: 500,
+                                    marginLeft: '6px'
+                                  }}>
                                       www.intruckscorp.com
                                     </a>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td style={{ paddingTop: '10px', fontSize: '9.5px', color: '#666', lineHeight: '1.6' }}>
-                                    <span style={{ color: '#5da89c', fontSize: '10px' }}>📍</span>
-                                    <span style={{ marginLeft: '6px' }}>
-                                      6750 N. Andrews Ave, Suite 200<br/>
+                                  <td style={{
+                                  paddingTop: '10px',
+                                  fontSize: '9.5px',
+                                  color: '#666',
+                                  lineHeight: '1.6'
+                                }}>
+                                    <span style={{
+                                    color: '#5da89c',
+                                    fontSize: '10px'
+                                  }}>📍</span>
+                                    <span style={{
+                                    marginLeft: '6px'
+                                  }}>
+                                      6750 N. Andrews Ave, Suite 200<br />
                                       Fort Lauderdale, FL 33309
                                     </span>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td style={{ paddingTop: '12px', fontSize: '7px', color: '#888', lineHeight: '1.5' }}>
-                                    <div style={{ fontWeight: 700, color: '#666' }}>IN TRUCKS INSURANCE CORP</div>
+                                  <td style={{
+                                  paddingTop: '12px',
+                                  fontSize: '7px',
+                                  color: '#888',
+                                  lineHeight: '1.5'
+                                }}>
+                                    <div style={{
+                                    fontWeight: 700,
+                                    color: '#666'
+                                  }}>IN TRUCKS INSURANCE CORP</div>
                                     <div>IN CALIFORNIA DBA IN TRUCKS</div>
                                     <div>INSURANCE SOLUTIONS</div>
                                     <div>LICENSE # 6006644</div>
@@ -189,17 +297,17 @@ const SignaturePreview = ({ data }: { data: SignatureData }) => {
                   </td>
                   
                   {/* Borde derecho */}
-                  <td width="4" style={{ backgroundColor: '#2d6a7e' }}></td>
+                  <td width="4" style={{
+                  backgroundColor: '#2d6a7e'
+                }}></td>
                 </tr>
               </tbody>
             </table>
           </td>
         </tr>
       </tbody>
-    </table>
-  );
+    </table>;
 };
-
 export const SignatureGenerator = () => {
   const [signatureData, setSignatureData] = useState<SignatureData>({
     name: "David Ruiz",
@@ -207,18 +315,16 @@ export const SignatureGenerator = () => {
     phone: "",
     officePhone: "",
     email: "david@intruckscorp.com",
-    photo: "",
+    photo: ""
   });
-
   const [copied, setCopied] = useState(false);
-
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
     const numbers = value.replace(/\D/g, '');
-    
+
     // Limit to 10 digits
     const limitedNumbers = numbers.slice(0, 10);
-    
+
     // Format as (XXX) XXX-XXXX
     if (limitedNumbers.length <= 3) {
       return limitedNumbers;
@@ -228,12 +334,13 @@ export const SignatureGenerator = () => {
       return `(${limitedNumbers.slice(0, 3)}) ${limitedNumbers.slice(3, 6)}-${limitedNumbers.slice(6)}`;
     }
   };
-
   const handlePhoneChange = (field: 'phone' | 'officePhone', value: string) => {
     const formatted = formatPhoneNumber(value);
-    setSignatureData({ ...signatureData, [field]: formatted });
+    setSignatureData({
+      ...signatureData,
+      [field]: formatted
+    });
   };
-
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -250,10 +357,12 @@ export const SignatureGenerator = () => {
         toast.error("La imagen debe ser menor a 2MB");
         return;
       }
-
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSignatureData({ ...signatureData, photo: reader.result as string });
+        setSignatureData({
+          ...signatureData,
+          photo: reader.result as string
+        });
       };
       reader.onerror = () => {
         toast.error("Error al cargar la imagen");
@@ -261,7 +370,6 @@ export const SignatureGenerator = () => {
       reader.readAsDataURL(file);
     }
   };
-
   const generateSignatureHTML = () => {
     // Validar datos antes de generar la firma
     try {
@@ -282,7 +390,6 @@ export const SignatureGenerator = () => {
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
     const photoSrc = signatureData.photo || defaultProfile;
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : '';
-    
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 627px; max-width: 627px; background: #ffffff; border: 1px solid #000000;">
   <tr>
@@ -386,16 +493,17 @@ export const SignatureGenerator = () => {
 </table>
     `.trim();
   };
-
   const copyToClipboard = async () => {
     const html = generateSignatureHTML();
     try {
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          "text/html": new Blob([html], { type: "text/html" }),
-          "text/plain": new Blob([html], { type: "text/plain" }),
+      await navigator.clipboard.write([new ClipboardItem({
+        "text/html": new Blob([html], {
+          type: "text/html"
         }),
-      ]);
+        "text/plain": new Blob([html], {
+          type: "text/plain"
+        })
+      })]);
       setCopied(true);
       toast.success("Firma copiada al portapapeles");
       setTimeout(() => setCopied(false), 2000);
@@ -403,16 +511,10 @@ export const SignatureGenerator = () => {
       toast.error("Error al copiar la firma");
     }
   };
-
-  return (
-    <div className="container mx-auto py-8 px-4">
+  return <div className="container mx-auto py-8 px-4">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
-          Generador de Firmas InTrucks Corp
-        </h1>
-        <p className="text-muted-foreground">
-          Crea firmas de correo electrónico profesionales para tu equipo
-        </p>
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">Generador de firmas In Trucks</h1>
+        <p className="text-muted-foreground">No es dar el paso sino dejar la huella </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
@@ -426,46 +528,29 @@ export const SignatureGenerator = () => {
               <div className="mt-2">
                 <label htmlFor="photo" className="cursor-pointer">
                   <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary transition-colors">
-                    {signatureData.photo ? (
-                      <img
-                        src={signatureData.photo}
-                        alt="Preview"
-                        className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-secondary"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center gap-2">
+                    {signatureData.photo ? <img src={signatureData.photo} alt="Preview" className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-secondary" /> : <div className="flex flex-col items-center gap-2">
                         <Upload className="w-12 h-12 text-muted-foreground" />
                         <span className="text-sm text-muted-foreground">
                           Haz clic para subir una foto
                         </span>
-                      </div>
-                    )}
+                      </div>}
                   </div>
-                  <Input
-                    id="photo"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleImageUpload}
-                  />
+                  <Input id="photo" type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                 </label>
               </div>
             </div>
 
             <div>
               <Label htmlFor="name">Nombre Completo</Label>
-              <Input
-                id="name"
-                value={signatureData.name}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value.length <= 100) {
-                    setSignatureData({ ...signatureData, name: value });
-                  }
-                }}
-                placeholder="Ej: David Ruiz"
-                maxLength={100}
-              />
+              <Input id="name" value={signatureData.name} onChange={e => {
+              const value = e.target.value;
+              if (value.length <= 100) {
+                setSignatureData({
+                  ...signatureData,
+                  name: value
+                });
+              }
+            }} placeholder="Ej: David Ruiz" maxLength={100} />
               <p className="text-xs text-muted-foreground mt-1">
                 {signatureData.name.length}/100 caracteres
               </p>
@@ -473,18 +558,15 @@ export const SignatureGenerator = () => {
 
             <div>
               <Label htmlFor="position">Cargo</Label>
-              <Input
-                id="position"
-                value={signatureData.position}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value.length <= 100) {
-                    setSignatureData({ ...signatureData, position: value });
-                  }
-                }}
-                placeholder="Ej: General Manager"
-                maxLength={100}
-              />
+              <Input id="position" value={signatureData.position} onChange={e => {
+              const value = e.target.value;
+              if (value.length <= 100) {
+                setSignatureData({
+                  ...signatureData,
+                  position: value
+                });
+              }
+            }} placeholder="Ej: General Manager" maxLength={100} />
               <p className="text-xs text-muted-foreground mt-1">
                 {signatureData.position.length}/100 caracteres
               </p>
@@ -492,60 +574,38 @@ export const SignatureGenerator = () => {
 
             <div>
               <Label htmlFor="phone">Teléfono Móvil</Label>
-              <Input
-                id="phone"
-                value={signatureData.phone}
-                onChange={(e) => handlePhoneChange('phone', e.target.value)}
-                placeholder="Ej: (000) 000-0000"
-              />
+              <Input id="phone" value={signatureData.phone} onChange={e => handlePhoneChange('phone', e.target.value)} placeholder="Ej: (000) 000-0000" />
             </div>
 
             <div>
               <Label htmlFor="officePhone">Teléfono Oficina</Label>
-              <Input
-                id="officePhone"
-                value={signatureData.officePhone}
-                onChange={(e) => handlePhoneChange('officePhone', e.target.value)}
-                placeholder="Ej: (000) 000-0000"
-              />
+              <Input id="officePhone" value={signatureData.officePhone} onChange={e => handlePhoneChange('officePhone', e.target.value)} placeholder="Ej: (000) 000-0000" />
             </div>
 
             <div>
               <Label htmlFor="email">Correo Electrónico</Label>
-              <Input
-                id="email"
-                type="email"
-                value={signatureData.email}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value.length <= 255) {
-                    setSignatureData({ ...signatureData, email: value });
-                  }
-                }}
-                placeholder="Ej: david@intruckscorp.com"
-                maxLength={255}
-              />
+              <Input id="email" type="email" value={signatureData.email} onChange={e => {
+              const value = e.target.value;
+              if (value.length <= 255) {
+                setSignatureData({
+                  ...signatureData,
+                  email: value
+                });
+              }
+            }} placeholder="Ej: david@intruckscorp.com" maxLength={255} />
               <p className="text-xs text-muted-foreground mt-1">
                 Debe ser un correo @intruckscorp.com
               </p>
             </div>
 
-            <Button 
-              onClick={copyToClipboard} 
-              className="w-full"
-              size="lg"
-            >
-              {copied ? (
-                <>
+            <Button onClick={copyToClipboard} className="w-full" size="lg">
+              {copied ? <>
                   <Check className="w-4 h-4 mr-2" />
                   ¡Copiado!
-                </>
-              ) : (
-                <>
+                </> : <>
                   <Copy className="w-4 h-4 mr-2" />
                   Copiar Firma para Correo
-                </>
-              )}
+                </>}
             </Button>
           </div>
         </Card>
@@ -571,6 +631,5 @@ export const SignatureGenerator = () => {
           </div>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
