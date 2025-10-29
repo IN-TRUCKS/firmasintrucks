@@ -142,7 +142,7 @@ const SignaturePreview = ({
               {data.name}
             </h2>
             
-            {showPosition && data.position && (
+            {((signatureType === 'col' && data.position) || (showPosition && data.position)) && (
               <p style={{
                 fontSize: '16px',
                 color: '#5da89c',
@@ -387,7 +387,7 @@ export const SignatureGenerator = () => {
       <h2 style="font-size: 32px; font-weight: 700; color: #000000; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px;">
         ${safeName}
       </h2>
-      ${showPosition && signatureData.position ? `<p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
+      ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
         ${safePosition}
       </p>` : ''}
       <div style="height: 2px; background: #5da89c; margin: 15px 0 20px 0;"></div>
@@ -507,14 +507,19 @@ export const SignatureGenerator = () => {
         </div>
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Checkbox 
-              id={`show-position-${idPrefix}`}
-              checked={showPosition}
-              onCheckedChange={(checked) => setShowPosition(checked as boolean)}
-            />
+          {signatureType === 'usa' && (
+            <div className="flex items-center gap-2 mb-2">
+              <Checkbox 
+                id={`show-position-${idPrefix}`}
+                checked={showPosition}
+                onCheckedChange={(checked) => setShowPosition(checked as boolean)}
+              />
+              <Label htmlFor={`position-${idPrefix}`}>Cargo</Label>
+            </div>
+          )}
+          {signatureType === 'col' && (
             <Label htmlFor={`position-${idPrefix}`}>Cargo</Label>
-          </div>
+          )}
           <Input
             id={`position-${idPrefix}`}
             value={signatureData.position}
