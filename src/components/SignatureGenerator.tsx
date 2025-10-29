@@ -255,21 +255,7 @@ const SignaturePreview = ({
           }}>
               <tbody>
                 <tr>
-                  <td style={{
-                  padding: '0 8px 0 0'
-                }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Youtube size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
-                  </td>
+                  
                   
                   <td style={{
                   padding: '0 8px'
@@ -304,17 +290,7 @@ const SignaturePreview = ({
                   <td style={{
                   padding: '0 0 0 8px'
                 }}>
-                    <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <MapPin size={20} color="#5da89c" strokeWidth={2} />
-                    </div>
+                    
                   </td>
                 </tr>
               </tbody>
