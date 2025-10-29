@@ -202,9 +202,7 @@ const SignaturePreview = ({
                     fontSize: '12px',
                     marginRight: '8px',
                     verticalAlign: 'middle'
-                  }}>
-                      Personal:
-                    </span>
+                  }}>P:</span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
                     color: '#000000',
                     textDecoration: 'none',
@@ -218,9 +216,7 @@ const SignaturePreview = ({
                     fontSize: '12px',
                     marginRight: '8px',
                     verticalAlign: 'middle'
-                  }}>
-                      Oficina:
-                    </span>
+                  }}>O:</span>
                     <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{
                     color: '#000000',
                     textDecoration: 'none',
