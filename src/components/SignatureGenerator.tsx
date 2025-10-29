@@ -9,6 +9,7 @@ import { Upload, Copy, Check, Mail, Phone, Globe, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
+import intrucksLogoCol from "@/assets/intrucks-logo-col.png";
 import defaultProfile from "@/assets/default-profile.png";
 
 interface SignatureData {
@@ -118,7 +119,7 @@ const SignaturePreview = ({
               textAlign: 'left',
               marginTop: '20px'
             }}>
-              <img src={intrucksLogo} alt="InTrucks Corp" width="140" height="auto" style={{
+              <img src={signatureType === 'col' ? intrucksLogoCol : intrucksLogo} alt="InTrucks Corp" width="140" height="auto" style={{
                 height: 'auto',
                 width: '140px',
                 display: 'inline-block'
@@ -373,6 +374,7 @@ export const SignatureGenerator = () => {
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
     const photoSrc = signatureData.photo || defaultProfile;
     const photoFilter = !signatureData.photo ? 'filter: opacity(0.4);' : '';
+    const logoSrc = signatureType === 'col' ? intrucksLogoCol : intrucksLogo;
     
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 700px; max-width: 700px; background: #ffffff;">
@@ -380,7 +382,7 @@ export const SignatureGenerator = () => {
     <td width="200" style="padding: 30px; vertical-align: middle; text-align: center;">
       <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; pointer-events: none; cursor: default; ${photoFilter}" />
       <div style="text-align: left; margin-top: 20px;">
-        <img src="${intrucksLogo}" alt="InTrucks Corp" width="140" style="height: auto; width: 140px; display: inline-block;" />
+        <img src="${logoSrc}" alt="InTrucks Corp" width="140" style="height: auto; width: 140px; display: inline-block;" />
       </div>
     </td>
     <td style="padding: 30px 40px 30px 20px; vertical-align: middle;">
