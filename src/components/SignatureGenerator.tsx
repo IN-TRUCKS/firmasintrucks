@@ -505,10 +505,27 @@ export const SignatureGenerator = () => {
               </p>
             </div>
 
-            
+            <div>
+              <Label htmlFor="position">Cargo</Label>
+              <Input
+                id="position"
+                value={signatureData.position}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value.length <= 100) {
+                    setSignatureData({ ...signatureData, position: value });
+                  }
+                }}
+                placeholder="Ej: General Manager"
+                maxLength={100}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                {signatureData.position.length}/100 caracteres
+              </p>
+            </div>
 
             <div>
-              <Label htmlFor="phone">Teléfono Móvil</Label>
+              <Label htmlFor="phone">Teléfono Personal (P)</Label>
               <Input id="phone" value={signatureData.phone} onChange={e => handlePhoneChange('phone', e.target.value)} placeholder="Ej: (000) 000-0000" />
             </div>
 
