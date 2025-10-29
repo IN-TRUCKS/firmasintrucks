@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Upload, Copy, Check } from "lucide-react";
+import { Upload, Copy, Check, Mail, Phone, Globe, MapPin, Youtube, Instagram, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
@@ -147,20 +147,17 @@ const SignaturePreview = ({
                   padding: '5px 0'
                 }}>
                     <span style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     width: '30px',
                     height: '30px',
                     backgroundColor: '#5da89c',
                     borderRadius: '4px',
-                    textAlign: 'center',
-                    lineHeight: '30px',
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <span style={{
-                      color: '#ffffff',
-                      fontSize: '16px'
-                    }}>✉</span>
+                      <Mail size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href={`mailto:${data.email}`} style={{
                     color: '#000000',
@@ -176,20 +173,17 @@ const SignaturePreview = ({
                   padding: '5px 0'
                 }}>
                     <span style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     width: '30px',
                     height: '30px',
                     backgroundColor: '#5da89c',
                     borderRadius: '4px',
-                    textAlign: 'center',
-                    lineHeight: '30px',
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <span style={{
-                      color: '#ffffff',
-                      fontSize: '16px'
-                    }}>📱</span>
+                      <Phone size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
                     color: '#000000',
@@ -205,20 +199,17 @@ const SignaturePreview = ({
                   padding: '5px 0'
                 }}>
                     <span style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     width: '30px',
                     height: '30px',
                     backgroundColor: '#5da89c',
                     borderRadius: '4px',
-                    textAlign: 'center',
-                    lineHeight: '30px',
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <span style={{
-                      color: '#ffffff',
-                      fontSize: '16px'
-                    }}>🌐</span>
+                      <Globe size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href="https://www.intruckscorp.com" style={{
                     color: '#000000',
@@ -234,20 +225,17 @@ const SignaturePreview = ({
                   padding: '5px 0'
                 }}>
                     <span style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     width: '30px',
                     height: '30px',
                     backgroundColor: '#5da89c',
                     borderRadius: '4px',
-                    textAlign: 'center',
-                    lineHeight: '30px',
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <span style={{
-                      color: '#ffffff',
-                      fontSize: '16px'
-                    }}>📍</span>
+                      <MapPin size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style={{
                     color: '#000000',
@@ -270,13 +258,48 @@ const SignaturePreview = ({
                   <td style={{
                   padding: '0 8px 0 0'
                 }}>
-                    
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Youtube size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
                   </td>
                   
                   <td style={{
                   padding: '0 8px'
                 }}>
-                    
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Instagram size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
+                  </td>
+                  <td style={{
+                  padding: '0 8px'
+                }}>
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <MessageCircle size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
                   </td>
                   <td style={{
                   padding: '0 0 0 8px'
@@ -290,10 +313,7 @@ const SignaturePreview = ({
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                      <span style={{
-                      color: '#5da89c',
-                      fontSize: '18px'
-                    }}>📍</span>
+                      <MapPin size={20} color="#5da89c" strokeWidth={2} />
                     </div>
                   </td>
                 </tr>
@@ -425,7 +445,7 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding: 5px 0;">
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px;">✉</span>
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">✉</span>
             </span>
             <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; vertical-align: middle;">
               ${safeEmail}
@@ -435,7 +455,7 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding: 5px 0;">
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px;">📱</span>
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
             </span>
             <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle;">
               ${safePhone}
@@ -445,7 +465,7 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding: 5px 0;">
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px;">🌐</span>
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">🌐</span>
             </span>
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; vertical-align: middle;">
               www.intruckscorp.com
@@ -455,7 +475,7 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding: 5px 0;">
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 16px;">📍</span>
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">📍</span>
             </span>
             <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style="color: #000000; text-decoration: none; vertical-align: middle;">
               6750 N. Andrews Ave, Fort Lauderdale, FL 33309
@@ -469,22 +489,22 @@ export const SignatureGenerator = () => {
         <tr>
           <td style="padding: 0 8px 0 0;">
             <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px;">▶</span>
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">▶</span>
             </div>
           </td>
           <td style="padding: 0 8px;">
             <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px;">📷</span>
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📷</span>
             </div>
           </td>
           <td style="padding: 0 8px;">
             <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px;">💬</span>
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">💬</span>
             </div>
           </td>
           <td style="padding: 0 0 0 8px;">
             <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
-              <span style="color: #5da89c; font-size: 18px;">📍</span>
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📍</span>
             </div>
           </td>
         </tr>
