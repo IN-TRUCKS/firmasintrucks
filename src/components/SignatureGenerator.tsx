@@ -176,7 +176,7 @@ const SignaturePreview = ({
                       width: '30px',
                       height: '30px',
                       backgroundColor: '#5da89c',
-                      borderRadius: '4px',
+                      borderRadius: '50%',
                       marginRight: '10px',
                       verticalAlign: 'middle'
                     }}>
@@ -200,7 +200,7 @@ const SignaturePreview = ({
                       width: '30px',
                       height: '30px',
                       backgroundColor: '#5da89c',
-                      borderRadius: '4px',
+                      borderRadius: '50%',
                       marginRight: '10px',
                       verticalAlign: 'middle'
                     }}>
@@ -244,7 +244,7 @@ const SignaturePreview = ({
                       width: '30px',
                       height: '30px',
                       backgroundColor: '#5da89c',
-                      borderRadius: '4px',
+                      borderRadius: '50%',
                       marginRight: '10px',
                       verticalAlign: 'middle'
                     }}>
@@ -268,7 +268,7 @@ const SignaturePreview = ({
                       width: '30px',
                       height: '30px',
                       backgroundColor: '#5da89c',
-                      borderRadius: '4px',
+                      borderRadius: '50%',
                       marginRight: '10px',
                       verticalAlign: 'middle'
                     }}>
@@ -396,7 +396,7 @@ export const SignatureGenerator = () => {
       <table cellpadding="0" cellspacing="0" border="0" style="font-size: 14px; line-height: 1.8; color: #000000; margin-bottom: 20px;">
         <tr>
           <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
               <span style="color: #ffffff; font-size: 16px; font-weight: bold;">✉</span>
             </span>
             <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; vertical-align: middle;">
@@ -406,7 +406,7 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
               <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
             </span>
             <span style="color: #666666; font-size: 12px; margin-right: 8px; vertical-align: middle;">Personal:</span>
@@ -421,7 +421,7 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
               <span style="color: #ffffff; font-size: 16px; font-weight: bold;">🌐</span>
             </span>
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; vertical-align: middle;">
@@ -431,7 +431,7 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td style="padding: 5px 0;">
-            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
               <span style="color: #ffffff; font-size: 16px; font-weight: bold;">📍</span>
             </span>
             <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; vertical-align: middle;">
