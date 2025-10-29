@@ -7,6 +7,7 @@ import { Upload, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
+import intrucksFamilyLogo from "@/assets/intrucks-family-logo.png";
 import defaultProfile from "@/assets/default-profile.png";
 interface SignatureData {
   name: string;
@@ -318,6 +319,7 @@ export const SignatureGenerator = () => {
     photo: ""
   });
   const [copied, setCopied] = useState(false);
+  
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
     const numbers = value.replace(/\D/g, '');
@@ -334,6 +336,7 @@ export const SignatureGenerator = () => {
       return `(${limitedNumbers.slice(0, 3)}) ${limitedNumbers.slice(3, 6)}-${limitedNumbers.slice(6)}`;
     }
   };
+  
   const handlePhoneChange = (field: 'phone' | 'officePhone', value: string) => {
     const formatted = formatPhoneNumber(value);
     setSignatureData({
@@ -341,6 +344,7 @@ export const SignatureGenerator = () => {
       [field]: formatted
     });
   };
+  
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -370,6 +374,8 @@ export const SignatureGenerator = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  
   const generateSignatureHTML = () => {
     // Validar datos antes de generar la firma
     try {
@@ -493,6 +499,7 @@ export const SignatureGenerator = () => {
 </table>
     `.trim();
   };
+  
   const copyToClipboard = async () => {
     const html = generateSignatureHTML();
     try {
@@ -511,10 +518,18 @@ export const SignatureGenerator = () => {
       toast.error("Error al copiar la firma");
     }
   };
+  
   return <div className="container mx-auto py-8 px-4">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">Generador de firmas In Trucks</h1>
-        <p className="text-muted-foreground">No es dar el paso sino dejar la huella </p>
+      <div className="relative flex items-center justify-center mb-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+            Generador de firmas In Trucks
+          </h1>
+          <p className="text-muted-foreground">No es dar el paso sino dejar la huella </p>
+        </div>
+        <div className="absolute right-0 top-0">
+          <img src={intrucksFamilyLogo} alt="InTrucks Family" className="h-20 w-auto" />
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
