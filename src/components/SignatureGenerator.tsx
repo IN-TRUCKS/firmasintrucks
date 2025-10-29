@@ -525,11 +525,8 @@ export const SignatureGenerator = () => {
                   checked={showPosition}
                   onCheckedChange={(checked) => setShowPosition(checked as boolean)}
                 />
-                <Label htmlFor="show-position" className="cursor-pointer">
-                  Mostrar cargo en la firma
-                </Label>
+                <Label htmlFor="position">Cargo</Label>
               </div>
-              <Label htmlFor="position">Cargo</Label>
               <Input
                 id="position"
                 value={signatureData.position}
