@@ -273,7 +273,8 @@ const SignaturePreview = ({
                     <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} style={{
                       color: '#000000',
                       textDecoration: 'none',
-                      display: 'block'
+                      display: 'block',
+                      whiteSpace: 'nowrap'
                     }}>
                       {address}
                     </a>
@@ -481,7 +482,7 @@ export const SignatureGenerator = () => {
             </div>
           </td>
           <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
-            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: block;">
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: inline-block; white-space: nowrap;">
               ${escapeHtml(address)}
             </a>
           </td>
