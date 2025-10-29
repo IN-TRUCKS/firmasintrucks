@@ -415,75 +415,74 @@ export const SignatureGenerator = () => {
     const photoSrc = signatureData.photo || await imageToBase64(defaultProfile);
     const photoFilter = !signatureData.photo ? 'filter: opacity(0.4);' : '';
     const logoSrc = await imageToBase64(signatureType === 'col' ? intrucksLogoCol : intrucksLogo);
+    const addressNoBreak = escapeHtml(address).replace(/ /g, '&nbsp;');
     
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 550px !important; max-width: 550px !important; background: #ffffff; border-collapse: collapse;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 500px !important; max-width: 500px !important; background: #ffffff; border-collapse: collapse;">
   <tr>
-    <td width="160" style="padding: 20px; vertical-align: middle; text-align: center; width: 160px !important;">
-      <img src="${photoSrc}" alt="${safeName}" width="140" height="140" style="width: 140px !important; height: 140px !important; min-width: 140px !important; min-height: 140px !important; max-width: 140px !important; max-height: 140px !important; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; ${photoFilter}" />
-      <div style="text-align: left; margin-top: 15px;">
-        <img src="${logoSrc}" alt="InTrucks Corp" width="110" height="auto" style="width: 110px !important; height: auto !important; max-width: 110px !important; display: block;" />
+    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px !important;">
+      <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px !important; height: 120px !important; min-width: 120px !important; min-height: 120px !important; max-width: 120px !important; max-height: 120px !important; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; ${photoFilter}" />
+      <div style="text-align: left; margin-top: 12px;">
+        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="width: 90px !important; height: auto !important; max-width: 90px !important; display: block;" />
       </div>
     </td>
-    <td style="padding: 20px 30px 20px 15px; vertical-align: middle;">
-      <h2 style="font-size: 26px; font-weight: 700; color: #000000; margin: 0 0 6px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 1.5px;">
+    <td style="padding: 16px 22px 16px 12px; vertical-align: middle;">
+      <h2 style="font-size: 22px; font-weight: 700; color: #000000; margin: 0 0 4px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px;">
         ${safeName}
       </h2>
-      ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style="font-size: 14px; color: #5da89c; margin: 0 0 12px 0; font-weight: 400;">
-        ${safePosition}
-      </p>` : ''}
-      <div style="height: 2px; background: #5da89c; margin: 12px 0 15px 0;"></div>
-      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 1.6; color: #000000; border-collapse: collapse;">
+      ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style=\"font-size: 12px; color: #5da89c; margin: 0 0 8px 0; font-weight: 400;\">\n        ${safePosition}\n      </p>` : ''}
+      <div style="height: 2px; background: #5da89c; margin: 8px 0 10px 0;"></div>
+      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 12px; line-height: 1.5; color: #000000; border-collapse: collapse;">
         <tr>
-          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
-            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
-              <span style="color: #ffffff; font-size: 14px;">✉</span>
+          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
+            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
+              <span style="color: #ffffff; font-size: 12px;">✉</span>
             </div>
           </td>
-          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+          <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; display: block;">
               ${safeEmail}
             </a>
           </td>
         </tr>
         <tr>
-          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
-            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
-              <span style="color: #ffffff; font-size: 14px;">☎</span>
+          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
+            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
+              <span style="color: #ffffff; font-size: 12px;">☎</span>
             </div>
           </td>
-          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
-            <span style="color: #666666; font-size: 11px; margin-right: 6px;">Personal:</span>
-            <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; margin-right: 15px;">
+          <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
+            <span style="color: #666666; font-size: 10px; margin-right: 6px;">Personal:</span>
+            <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; margin-right: 12px;">
               ${safePhone}
             </a>
-            <span style="color: #666666; font-size: 11px; margin-right: 6px;">Oficina:</span>
+            <span style="color: #666666; font-size: 10px; margin-right: 6px;">Oficina:</span>
             <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none;">
               ${safeOfficePhone}
             </a>
           </td>
         </tr>
         <tr>
-          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
-            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
-              <span style="color: #ffffff; font-size: 14px;">🌐</span>
+          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
+            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
+              <span style="color: #ffffff; font-size: 12px;">🌐</span>
             </div>
           </td>
-          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+          <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; display: block;">
               www.intruckscorp.com
             </a>
           </td>
         </tr>
         <tr>
-          <td width="35" style="padding: 5px 0; width: 35px; vertical-align: middle;">
-            <div style="width: 28px; height: 28px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 28px;">
-              <span style="color: #ffffff; font-size: 14px;">📍</span>
+          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
+            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
+              <span style="color: #ffffff; font-size: 12px;">📍</span>
             </div>
           </td>
-          <td style="padding: 5px 0 5px 8px; vertical-align: middle;">
+          <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: inline-block; white-space: nowrap;">
-              ${escapeHtml(address)}
+              ${addressNoBreak}
             </a>
           </td>
         </tr>
