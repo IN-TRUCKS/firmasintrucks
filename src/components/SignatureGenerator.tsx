@@ -197,12 +197,54 @@ const SignaturePreview = ({
                   }}>
                       <Phone size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
+                    <span style={{
+                    color: '#666666',
+                    fontSize: '12px',
+                    marginRight: '8px',
+                    verticalAlign: 'middle'
+                  }}>
+                      Personal:
+                    </span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
                     color: '#000000',
                     textDecoration: 'none',
                     verticalAlign: 'middle'
                   }}>
                       {data.phone}
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{
+                  padding: '5px 0'
+                }}>
+                    <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: '#5da89c',
+                    borderRadius: '4px',
+                    marginRight: '10px',
+                    verticalAlign: 'middle'
+                  }}>
+                      <Phone size={16} color="#ffffff" strokeWidth={2.5} />
+                    </span>
+                    <span style={{
+                    color: '#666666',
+                    fontSize: '12px',
+                    marginRight: '8px',
+                    verticalAlign: 'middle'
+                  }}>
+                      Oficina:
+                    </span>
+                    <a href={`tel:${data.officePhone.replace(/\D/g, '')}`} style={{
+                    color: '#000000',
+                    textDecoration: 'none',
+                    verticalAlign: 'middle'
+                  }}>
+                      {data.officePhone}
                     </a>
                   </td>
                 </tr>
@@ -438,8 +480,20 @@ export const SignatureGenerator = () => {
             <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
               <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
             </span>
+            <span style="color: #666666; font-size: 12px; margin-right: 8px; vertical-align: middle;">Personal:</span>
             <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle;">
               ${safePhone}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
+            </span>
+            <span style="color: #666666; font-size: 12px; margin-right: 8px; vertical-align: middle;">Oficina:</span>
+            <a href="tel:${signatureData.officePhone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle;">
+              ${safeOfficePhone}
             </a>
           </td>
         </tr>
