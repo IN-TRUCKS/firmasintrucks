@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Upload, Copy, Check, Mail, Phone, Globe, MapPin, Youtube, Instagram, MessageCircle, Facebook, Linkedin, Twitter } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -66,9 +67,11 @@ const escapeHtml = (text: string): string => {
 
 // Componente seguro de preview - renderiza usando JSX sin dangerouslySetInnerHTML
 const SignaturePreview = ({
-  data
+  data,
+  showPosition
 }: {
   data: SignatureData;
+  showPosition: boolean;
 }) => {
   const photoSrc = data.photo || defaultProfile;
   return <table cellPadding="0" cellSpacing="0" style={{
@@ -130,7 +133,16 @@ const SignaturePreview = ({
             </h2>
             
             {/* Cargo */}
-            
+            {showPosition && data.position && (
+              <p style={{
+                fontSize: '16px',
+                color: '#5da89c',
+                margin: '0 0 15px 0',
+                fontWeight: 400
+              }}>
+                {data.position}
+              </p>
+            )}
             
             {/* Línea separadora */}
             <div style={{
@@ -289,6 +301,7 @@ export const SignatureGenerator = () => {
     photo: ""
   });
   const [copied, setCopied] = useState(false);
+  const [showPosition, setShowPosition] = useState(false);
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
     const numbers = value.replace(/\D/g, '');
@@ -382,9 +395,9 @@ export const SignatureGenerator = () => {
       </h2>
       
       <!-- Cargo -->
-      <p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
+      ${showPosition && signatureData.position ? `<p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
         ${safePosition}
-      </p>
+      </p>` : ''}
       
       <!-- Línea separadora -->
       <div style="height: 2px; background: #5da89c; margin: 15px 0 20px 0;"></div>
@@ -506,6 +519,16 @@ export const SignatureGenerator = () => {
             </div>
 
             <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Checkbox 
+                  id="show-position" 
+                  checked={showPosition}
+                  onCheckedChange={(checked) => setShowPosition(checked as boolean)}
+                />
+                <Label htmlFor="show-position" className="cursor-pointer">
+                  Mostrar cargo en la firma
+                </Label>
+              </div>
               <Label htmlFor="position">Cargo</Label>
               <Input
                 id="position"
@@ -566,7 +589,7 @@ export const SignatureGenerator = () => {
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-6">Vista Previa</h2>
           <div className="bg-muted/30 rounded-lg p-4 overflow-auto">
-            <SignaturePreview data={signatureData} />
+            <SignaturePreview data={signatureData} showPosition={showPosition} />
           </div>
           <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
             <p className="text-sm text-blue-900">
