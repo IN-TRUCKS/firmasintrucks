@@ -565,7 +565,7 @@ export const SignatureGenerator = () => {
                 setSignatureData({ ...signatureData, position: value });
               }
             }}
-            placeholder="Ej: General Manager"
+            placeholder={signatureType === 'col' ? "gerente de asuntos no importantes" : "Ej: General Manager"}
             maxLength={100}
           />
           <p className="text-xs text-muted-foreground mt-1">
