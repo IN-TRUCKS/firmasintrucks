@@ -97,6 +97,18 @@ const SignaturePreview = ({
             pointerEvents: 'none',
             cursor: 'default'
           }} />
+            
+            {/* Logo InTrucks */}
+            <div style={{
+            textAlign: 'left',
+            marginTop: '20px'
+          }}>
+              <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
+              height: 'auto',
+              width: '120px',
+              display: 'inline-block'
+            }} />
+            </div>
           </td>
           
           {/* Columna derecha - Contenido */}
@@ -294,17 +306,6 @@ const SignaturePreview = ({
                 </tr>
               </tbody>
             </table>
-            
-            {/* Logo InTrucks */}
-            <div style={{
-            textAlign: 'right'
-          }}>
-              <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
-              height: 'auto',
-              width: '120px',
-              display: 'inline-block'
-            }} />
-            </div>
           </td>
         </tr>
       </tbody>
@@ -398,6 +399,11 @@ export const SignatureGenerator = () => {
     <!-- Columna izquierda - Foto -->
     <td width="200" style="padding: 30px; vertical-align: middle; text-align: center;">
       <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center 35%; pointer-events: none; cursor: default; ${photoFilter}" />
+      
+      <!-- Logo InTrucks -->
+      <div style="text-align: left; margin-top: 20px;">
+        <img src="${intrucksLogo}" alt="InTrucks Corp" width="120" style="height: auto; width: 120px; display: inline-block;" />
+      </div>
     </td>
     
     <!-- Columna derecha - Contenido -->
@@ -484,11 +490,6 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
       </table>
-      
-      <!-- Logo InTrucks -->
-      <div style="text-align: right;">
-        <img src="${intrucksLogo}" alt="InTrucks Corp" width="120" style="height: auto; width: 120px; display: inline-block;" />
-      </div>
     </td>
   </tr>
 </table>
