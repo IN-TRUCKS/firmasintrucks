@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Upload, Copy, Check, Mail, Phone, Globe, MapPin, Youtube, Instagram, MessageCircle } from "lucide-react";
+import { Upload, Copy, Check, Mail, Phone, Globe, MapPin, Youtube, Instagram, MessageCircle, Facebook, Linkedin, Twitter } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
@@ -255,8 +255,21 @@ const SignaturePreview = ({
           }}>
               <tbody>
                 <tr>
-                  
-                  
+                  <td style={{
+                  padding: '0 8px 0 0'
+                }}>
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Youtube size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
+                  </td>
                   <td style={{
                   padding: '0 8px'
                 }}>
@@ -284,13 +297,23 @@ const SignaturePreview = ({
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                      <MessageCircle size={20} color="#5da89c" strokeWidth={2} />
+                      <Facebook size={20} color="#5da89c" strokeWidth={2} />
                     </div>
                   </td>
                   <td style={{
                   padding: '0 0 0 8px'
                 }}>
-                    
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Linkedin size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -298,7 +321,7 @@ const SignaturePreview = ({
             
             {/* Logo InTrucks */}
             <div style={{
-            textAlign: 'left'
+            textAlign: 'right'
           }}>
               <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
               height: 'auto',
@@ -487,7 +510,7 @@ export const SignatureGenerator = () => {
       </table>
       
       <!-- Logo InTrucks -->
-      <div style="text-align: left;">
+      <div style="text-align: right;">
         <img src="${intrucksLogo}" alt="InTrucks Corp" width="120" style="height: auto; width: 120px; display: inline-block;" />
       </div>
     </td>
