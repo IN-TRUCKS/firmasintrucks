@@ -73,21 +73,21 @@ const SignaturePreview = ({
   const photoSrc = data.photo || defaultProfile;
   return <table cellPadding="0" cellSpacing="0" style={{
     fontFamily: "'Segoe UI', Arial, sans-serif",
-    width: '600px',
-    maxWidth: '600px',
+    width: '700px',
+    maxWidth: '700px',
     background: '#ffffff'
   }}>
       <tbody>
         <tr>
           {/* Columna izquierda - Foto */}
-          <td width="220" style={{
-          padding: '20px',
+          <td width="200" style={{
+          padding: '30px',
           verticalAlign: 'middle',
           textAlign: 'center'
         }}>
-            <img src={photoSrc} alt={data.name} width="200" height="200" style={{
-            width: '200px',
-            height: '200px',
+            <img src={photoSrc} alt={data.name} width="180" height="180" style={{
+            width: '180px',
+            height: '180px',
             borderRadius: '50%',
             display: 'block',
             margin: '0 auto',
@@ -101,12 +101,12 @@ const SignaturePreview = ({
           
           {/* Columna derecha - Contenido */}
           <td style={{
-          padding: '20px 30px 20px 15px',
+          padding: '30px 40px 30px 20px',
           verticalAlign: 'middle'
         }}>
             {/* Nombre */}
             <h2 style={{
-            fontSize: '28px',
+            fontSize: '32px',
             fontWeight: 700,
             color: '#000000',
             margin: '0 0 8px 0',
@@ -119,9 +119,9 @@ const SignaturePreview = ({
             
             {/* Cargo */}
             <p style={{
-            fontSize: '14px',
+            fontSize: '16px',
             color: '#5da89c',
-            margin: '0 0 12px 0',
+            margin: '0 0 15px 0',
             fontWeight: 400
           }}>
               {data.position}
@@ -131,33 +131,33 @@ const SignaturePreview = ({
             <div style={{
             height: '2px',
             background: '#5da89c',
-            margin: '12px 0 15px 0'
+            margin: '15px 0 20px 0'
           }}></div>
             
             {/* Información de contacto */}
             <table cellPadding="0" cellSpacing="0" style={{
-            fontSize: '13px',
-            lineHeight: '1.6',
+            fontSize: '14px',
+            lineHeight: '1.8',
             color: '#000000',
-            marginBottom: '15px'
+            marginBottom: '20px'
           }}>
               <tbody>
                 <tr>
                   <td style={{
-                  padding: '3px 0'
+                  padding: '5px 0'
                 }}>
                     <span style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '26px',
-                    height: '26px',
+                    width: '30px',
+                    height: '30px',
                     backgroundColor: '#5da89c',
                     borderRadius: '4px',
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <Mail size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Mail size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href={`mailto:${data.email}`} style={{
                     color: '#000000',
@@ -183,7 +183,7 @@ const SignaturePreview = ({
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <Phone size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Phone size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href={`tel:${data.phone.replace(/\D/g, '')}`} style={{
                     color: '#000000',
@@ -209,7 +209,7 @@ const SignaturePreview = ({
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <Globe size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Globe size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href="https://www.intruckscorp.com" style={{
                     color: '#000000',
@@ -235,7 +235,7 @@ const SignaturePreview = ({
                     marginRight: '10px',
                     verticalAlign: 'middle'
                   }}>
-                      <MapPin size={14} color="#ffffff" strokeWidth={2.5} />
+                      <MapPin size={16} color="#ffffff" strokeWidth={2.5} />
                     </span>
                     <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style={{
                     color: '#000000',
@@ -251,46 +251,70 @@ const SignaturePreview = ({
             
             {/* Iconos sociales */}
             <table cellPadding="0" cellSpacing="0" style={{
-            marginBottom: '15px'
+            marginBottom: '20px'
           }}>
               <tbody>
                 <tr>
                   <td style={{
-                  padding: '0 6px 0 0'
+                  padding: '0 8px 0 0'
                 }}>
                     <div style={{
-                    width: '34px',
-                    height: '34px',
+                    width: '40px',
+                    height: '40px',
                     border: '2px solid #5da89c',
                     borderRadius: '50%',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                      <Youtube size={18} color="#5da89c" strokeWidth={2} />
-                    </div>
-                  </td>
-                  <td style={{
-                  padding: '0 6px'
-                }}>
-                    <div style={{
-                    width: '34px',
-                    height: '34px',
-                    border: '2px solid #5da89c',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                      <Instagram size={18} color="#5da89c" strokeWidth={2} />
+                      <Youtube size={20} color="#5da89c" strokeWidth={2} />
                     </div>
                   </td>
                   <td style={{
                   padding: '0 8px'
                 }}>
-                    
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Instagram size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
                   </td>
-                  
+                  <td style={{
+                  padding: '0 8px'
+                }}>
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Facebook size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
+                  </td>
+                  <td style={{
+                  padding: '0 0 0 8px'
+                }}>
+                    <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '2px solid #5da89c',
+                    borderRadius: '50%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                      <Linkedin size={20} color="#5da89c" strokeWidth={2} />
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -299,9 +323,9 @@ const SignaturePreview = ({
             <div style={{
             textAlign: 'right'
           }}>
-              <img src={intrucksLogo} alt="InTrucks Corp" width="100" height="auto" style={{
+              <img src={intrucksLogo} alt="InTrucks Corp" width="120" height="auto" style={{
               height: 'auto',
-              width: '100px',
+              width: '120px',
               display: 'inline-block'
             }} />
             </div>
@@ -393,34 +417,34 @@ export const SignatureGenerator = () => {
     const photoSrc = signatureData.photo || defaultProfile;
     const photoFilter = !signatureData.photo ? 'filter: grayscale(100%) opacity(0.4);' : 'filter: grayscale(100%);';
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 600px; max-width: 600px; background: #ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 700px; max-width: 700px; background: #ffffff;">
   <tr>
     <!-- Columna izquierda - Foto -->
-    <td width="220" style="padding: 20px; vertical-align: middle; text-align: center;">
-      <img src="${photoSrc}" alt="${safeName}" width="200" height="200" style="width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center 35%; pointer-events: none; cursor: default; ${photoFilter}" />
+    <td width="200" style="padding: 30px; vertical-align: middle; text-align: center;">
+      <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center 35%; pointer-events: none; cursor: default; ${photoFilter}" />
     </td>
     
     <!-- Columna derecha - Contenido -->
-    <td style="padding: 20px 30px 20px 15px; vertical-align: middle;">
+    <td style="padding: 30px 40px 30px 20px; vertical-align: middle;">
       <!-- Nombre -->
-      <h2 style="font-size: 28px; font-weight: 700; color: #000000; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px;">
+      <h2 style="font-size: 32px; font-weight: 700; color: #000000; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 2px;">
         ${safeName}
       </h2>
       
       <!-- Cargo -->
-      <p style="font-size: 14px; color: #5da89c; margin: 0 0 12px 0; font-weight: 400;">
+      <p style="font-size: 16px; color: #5da89c; margin: 0 0 15px 0; font-weight: 400;">
         ${safePosition}
       </p>
       
       <!-- Línea separadora -->
-      <div style="height: 2px; background: #5da89c; margin: 12px 0 15px 0;"></div>
+      <div style="height: 2px; background: #5da89c; margin: 15px 0 20px 0;"></div>
       
       <!-- Información de contacto -->
-      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; line-height: 1.6; color: #000000; margin-bottom: 15px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 14px; line-height: 1.8; color: #000000; margin-bottom: 20px;">
         <tr>
-          <td style="padding: 3px 0;">
-            <span style="display: inline-block; width: 26px; height: 26px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 26px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 14px; font-weight: bold;">✉</span>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">✉</span>
             </span>
             <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; vertical-align: middle;">
               ${safeEmail}
@@ -428,9 +452,9 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td style="padding: 3px 0;">
-            <span style="display: inline-block; width: 26px; height: 26px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 26px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 14px; font-weight: bold;">☎</span>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">☎</span>
             </span>
             <a href="tel:${signatureData.phone.replace(/\D/g, '')}" style="color: #000000; text-decoration: none; vertical-align: middle;">
               ${safePhone}
@@ -438,9 +462,9 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td style="padding: 3px 0;">
-            <span style="display: inline-block; width: 26px; height: 26px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 26px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 14px; font-weight: bold;">🌐</span>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">🌐</span>
             </span>
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; vertical-align: middle;">
               www.intruckscorp.com
@@ -448,9 +472,9 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td style="padding: 3px 0;">
-            <span style="display: inline-block; width: 26px; height: 26px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 26px; margin-right: 10px; vertical-align: middle;">
-              <span style="color: #ffffff; font-size: 14px; font-weight: bold;">📍</span>
+          <td style="padding: 5px 0;">
+            <span style="display: inline-block; width: 30px; height: 30px; background-color: #5da89c; border-radius: 4px; text-align: center; line-height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span style="color: #ffffff; font-size: 16px; font-weight: bold;">📍</span>
             </span>
             <a href="https://www.google.com/maps/search/?api=1&query=6750+N.+Andrews+Ave,+Fort+Lauderdale,+FL+33309" style="color: #000000; text-decoration: none; vertical-align: middle;">
               6750 N. Andrews Ave, Fort Lauderdale, FL 33309
@@ -460,26 +484,26 @@ export const SignatureGenerator = () => {
       </table>
       
       <!-- Iconos sociales -->
-      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 15px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
         <tr>
-          <td style="padding: 0 6px 0 0;">
-            <div style="width: 34px; height: 34px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 30px;">
-              <span style="color: #5da89c; font-size: 16px; font-weight: bold;">▶</span>
+          <td style="padding: 0 8px 0 0;">
+            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">▶</span>
             </div>
           </td>
-          <td style="padding: 0 6px;">
-            <div style="width: 34px; height: 34px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 30px;">
-              <span style="color: #5da89c; font-size: 16px; font-weight: bold;">📷</span>
+          <td style="padding: 0 8px;">
+            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📷</span>
             </div>
           </td>
-          <td style="padding: 0 6px;">
-            <div style="width: 34px; height: 34px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 30px;">
-              <span style="color: #5da89c; font-size: 16px; font-weight: bold;">💬</span>
+          <td style="padding: 0 8px;">
+            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">💬</span>
             </div>
           </td>
-          <td style="padding: 0 0 0 6px;">
-            <div style="width: 34px; height: 34px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 30px;">
-              <span style="color: #5da89c; font-size: 16px; font-weight: bold;">📍</span>
+          <td style="padding: 0 0 0 8px;">
+            <div style="width: 40px; height: 40px; border: 2px solid #5da89c; border-radius: 50%; display: inline-block; text-align: center; line-height: 36px;">
+              <span style="color: #5da89c; font-size: 18px; font-weight: bold;">📍</span>
             </div>
           </td>
         </tr>
@@ -487,7 +511,7 @@ export const SignatureGenerator = () => {
       
       <!-- Logo InTrucks -->
       <div style="text-align: right;">
-        <img src="${intrucksLogo}" alt="InTrucks Corp" width="100" style="height: auto; width: 100px; display: inline-block;" />
+        <img src="${intrucksLogo}" alt="InTrucks Corp" width="120" style="height: auto; width: 120px; display: inline-block;" />
       </div>
     </td>
   </tr>
