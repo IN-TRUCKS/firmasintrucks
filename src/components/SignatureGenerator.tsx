@@ -92,7 +92,7 @@ const SignaturePreview = ({
             display: 'block',
             margin: '0 auto',
             objectFit: 'cover',
-            objectPosition: 'center 35%',
+            objectPosition: 'center',
             filter: !data.photo ? 'grayscale(100%) opacity(0.4)' : 'grayscale(100%)',
             pointerEvents: 'none',
             cursor: 'default'
@@ -418,7 +418,7 @@ export const SignatureGenerator = () => {
   <tr>
     <!-- Columna izquierda - Foto -->
     <td width="200" style="padding: 30px; vertical-align: middle; text-align: center;">
-      <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center 35%; pointer-events: none; cursor: default; ${photoFilter}" />
+      <img src="${photoSrc}" alt="${safeName}" width="180" height="180" style="width: 180px; height: 180px; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; pointer-events: none; cursor: default; ${photoFilter}" />
       
       <!-- Logo InTrucks -->
       <div style="text-align: left; margin-top: 20px;">
