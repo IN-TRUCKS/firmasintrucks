@@ -534,7 +534,7 @@ export const SignatureGenerator = () => {
                 setSignatureData({ ...signatureData, name: value });
               }
             }}
-            placeholder="Ej: David Ruiz"
+            placeholder="Pepito Perez"
             maxLength={100}
           />
           <p className="text-xs text-muted-foreground mt-1">
