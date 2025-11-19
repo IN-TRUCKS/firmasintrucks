@@ -522,7 +522,7 @@ export const SignatureGenerator = () => {
       <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; border-collapse: collapse;">
         <tr>
           <td width="120" height="120" style="width: 120px; height: 120px; line-height: 0; font-size: 0;">
-            <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="display: block; border: none; ${photoFilter}" />
+            <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px; height: 120px; max-width: 120px; max-height: 120px; border-radius: 60px; display: block; border: none; ${photoFilter}" />
           </td>
         </tr>
       </table>
