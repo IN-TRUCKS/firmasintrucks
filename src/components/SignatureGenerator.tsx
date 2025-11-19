@@ -550,10 +550,10 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
       </table>
-      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 140px; margin-top: 12px; border-collapse: collapse;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; margin-top: 12px; border-collapse: collapse;">
         <tr>
-          <td width="140" height="37" style="width: 140px; height: 37px; line-height: 0; font-size: 0;">
-            <img src="${logoSrc}" alt="InTrucks Corp" width="140" height="37" style="display: block; width: 140px; height: 37px; max-width: 140px; max-height: 37px; border: none;" />
+          <td width="120" height="32" style="width: 120px; height: 32px; line-height: 0; font-size: 0;">
+            <img src="${logoSrc}" alt="InTrucks Corp" width="120" height="32" style="display: block; width: 120px; height: 32px; max-width: 120px; max-height: 32px; border: none;" />
           </td>
         </tr>
       </table>
