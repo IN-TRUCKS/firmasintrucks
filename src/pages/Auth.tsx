@@ -102,8 +102,8 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-teal-50 to-blue-100 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8 shadow-xl">
+    <div className="min-h-screen tech-minimal-bg flex items-center justify-center p-4">
+      <Card className="w-full max-w-md p-8 bg-white shadow-2xl border border-gray-100">
         <div className="flex flex-col items-center mb-8">
           <img src={intrucksLogo} alt="InTrucks Corp" className="h-16 mb-6" />
           <h1 className="text-2xl font-bold text-center">

@@ -171,12 +171,39 @@ All colors MUST be HSL.
     }
   }
   
-  .glass-card {
-    background: hsla(0, 0%, 100%, 0.05);
-    backdrop-filter: blur(16px);
-    border: 1px solid hsla(var(--futuristic-electric-blue), 0.2);
-    box-shadow: 
-      0 8px 32px 0 rgba(31, 38, 135, 0.37),
-      0 0 20px 0 hsla(var(--futuristic-electric-blue), 0.1);
+  .tech-minimal-bg {
+    background: linear-gradient(135deg, 
+      hsl(215 25% 97%) 0%, 
+      hsl(210 40% 98%) 50%, 
+      hsl(0 0% 100%) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Rejilla de puntos minimalista */
+  .tech-minimal-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at center, hsl(210 30% 85% / 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  
+  /* Formas geométricas abstractas */
+  .tech-minimal-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 15% 20%, hsl(210 65% 60% / 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, hsl(168 45% 50% / 0.06) 0%, transparent 35%);
+    animation: subtle-pulse 15s ease-in-out infinite;
+  }
+  
+  @keyframes subtle-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
 }
