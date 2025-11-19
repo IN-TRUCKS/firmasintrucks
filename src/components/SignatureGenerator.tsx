@@ -127,10 +127,10 @@ const SignaturePreview = ({
               src={photoSrc}
               alt={data.name}
               width="180"
-              height="180"
+              height="220"
               style={{
                 width: "180px",
-                height: "180px",
+                height: "220px",
                 borderRadius: "50%",
                 display: "block",
                 margin: "0 auto",
@@ -521,8 +521,8 @@ export const SignatureGenerator = () => {
     <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px;">
       <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; border-collapse: collapse;">
         <tr>
-          <td width="120" height="120" style="width: 120px; height: 120px; line-height: 0; font-size: 0;">
-            <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px; height: 120px; max-width: 120px; max-height: 120px; border-radius: 60px; display: block; border: none; ${photoFilter}" />
+          <td width="120" height="140" style="width: 120px; height: 140px; line-height: 0; font-size: 0;">
+            <img src="${photoSrc}" alt="${safeName}" width="120" height="140" style="width: 120px; height: 140px; max-width: 120px; max-height: 140px; border-radius: 50%; display: block; border: none; ${photoFilter}" />
           </td>
         </tr>
       </table>
