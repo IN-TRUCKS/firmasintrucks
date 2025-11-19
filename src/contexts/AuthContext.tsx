@@ -57,9 +57,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const response = await fetch('https://api.nowcerts.com/api/token', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ email, password }),
+      body: new URLSearchParams({
+        grant_type: 'password',
+        username: email,
+        password: password,
+      }),
     });
 
     if (!response.ok) {
