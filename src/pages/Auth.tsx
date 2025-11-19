@@ -109,7 +109,12 @@ export default function Auth() {
     >
       <Card className="w-full max-w-md p-8 bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-100">
         <div className="flex flex-col items-center mb-8">
-          <img src={intrucksLogo} alt="InTrucks Corp" className="h-16 mb-6" />
+          <img 
+            src={intrucksLogo} 
+            alt="InTrucks Corp" 
+            className="h-16 mb-6 drop-shadow-2xl hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] transition-all duration-300 animate-[float_3s_ease-in-out_infinite]" 
+            style={{ filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))' }}
+          />
           <h1 className="text-2xl font-bold text-center">
             {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
           </h1>
