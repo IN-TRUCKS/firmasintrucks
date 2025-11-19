@@ -31,6 +31,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string) => {
+    // Special access for IT email
+    if (email === 'it@intruckscorp.com' && password === 'Colombia123') {
+      const mockITUser = {
+        access_token: 'it-local-token-' + Date.now(),
+        userName: 'it@intruckscorp.com',
+        userDisplayName: 'IT InTrucks - IT',
+      };
+      
+      const teamTag = getLastWordFromDisplayName(mockITUser.userDisplayName);
+      localStorage.setItem('nowcerts_token', mockITUser.access_token);
+      localStorage.setItem('user_email', mockITUser.userName);
+      localStorage.setItem('userDisplayName', mockITUser.userDisplayName);
+      localStorage.setItem('userTeamTag', teamTag);
+
+      setIsAuthenticated(true);
+      setUserEmail(mockITUser.userName);
+      setUserDisplayName(mockITUser.userDisplayName);
+      setUserTeamTag(teamTag);
+      
+      return;
+    }
+
+    // Normal NowCerts authentication flow
     const response = await fetch('https://api.nowcerts.com/api/token', {
       method: 'POST',
       headers: {
