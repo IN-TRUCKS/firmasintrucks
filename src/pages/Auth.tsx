@@ -9,6 +9,14 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import intrucksLogo from "@/assets/intrucks-logo.png";
 
+const ALLOWED_EMAILS = [
+  'jorge@intruckscorp.com',
+  'procesos@intruckscorp.com',
+  'paula.venegas@intruckscorp.com',
+  'david@intruckscorp.com',
+  'it@intruckscorp.com'
+];
+
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -41,9 +49,9 @@ export default function Auth() {
       return;
     }
 
-    // Validate InTrucks corporate email domain
-    if (!email.endsWith("@intruckscorp.com")) {
-      toast.error("Solo se permiten correos corporativos con dominio @intruckscorp.com");
+    // Validate email is in the allowed list
+    if (!ALLOWED_EMAILS.includes(email.toLowerCase())) {
+      toast.error("Este correo no está autorizado. Contacta al administrador.");
       return;
     }
 
@@ -94,21 +102,21 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8">
+    <div className="min-h-screen futuristic-bg flex items-center justify-center p-4">
+      <Card className="w-full max-w-md p-8 glass-card">
         <div className="flex flex-col items-center mb-8">
           <img src={intrucksLogo} alt="InTrucks Corp" className="h-16 mb-6" />
-          <h1 className="text-2xl font-bold text-center">
+          <h1 className="text-2xl font-bold text-center text-white">
             {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
           </h1>
-          <p className="text-muted-foreground text-center mt-2">
+          <p className="text-gray-300 text-center mt-2">
             Generador de Firmas InTrucks Corp
           </p>
         </div>
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div>
-            <Label htmlFor="email">Correo Electrónico Corporativo</Label>
+            <Label htmlFor="email" className="text-white">Correo Electrónico Autorizado</Label>
             <Input
               id="email"
               type="email"
@@ -118,13 +126,13 @@ export default function Auth() {
               disabled={loading}
               required
             />
-            <p className="text-xs text-muted-foreground mt-1">
-              Solo se permiten correos con dominio @intruckscorp.com
+            <p className="text-xs text-gray-400 mt-1">
+              Solo correos autorizados pueden acceder
             </p>
           </div>
 
           <div>
-            <Label htmlFor="password">Contraseña</Label>
+            <Label htmlFor="password" className="text-white">Contraseña</Label>
             <Input
               id="password"
               type="password"
@@ -151,7 +159,7 @@ export default function Auth() {
         <div className="mt-6 text-center">
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="text-sm text-primary hover:underline"
+            className="text-sm text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
             disabled={loading}
           >
             {isLogin
