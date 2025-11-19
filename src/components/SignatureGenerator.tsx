@@ -518,10 +518,12 @@ export const SignatureGenerator = () => {
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 500px !important; max-width: 500px !important; background: #ffffff; border-collapse: collapse;">
   <tr>
-    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px !important;">
-      <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px !important; height: 120px !important; min-width: 120px !important; min-height: 120px !important; max-width: 120px !important; max-height: 120px !important; border-radius: 50%; display: block; margin: 0 auto; object-fit: cover; object-position: center; ${photoFilter}" />
-      <div style="text-align: center; margin-top: 12px;">
-        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="width: 90px !important; height: auto !important; max-width: 90px !important; display: block; margin: 0 auto;" />
+    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px; min-width: 140px; max-width: 140px;">
+      <div style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+        <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px; height: 120px; display: block; border: none; ${photoFilter}" />
+      </div>
+      <div style="width: 90px; margin: 12px auto 0 auto;">
+        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="display: block; border: none;" />
       </div>
     </td>
     <td style="padding: 16px 22px 16px 12px; vertical-align: middle;">
