@@ -438,17 +438,41 @@ export const SignatureGenerator = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
-        if (signatureType === "usa") {
-          setSignatureDataUSA({
-            ...signatureDataUSA,
-            photo: reader.result as string,
-          });
-        } else {
-          setSignatureDataCOL({
-            ...signatureDataCOL,
-            photo: reader.result as string,
-          });
-        }
+        const img = new Image();
+        img.onload = () => {
+          // Crear canvas con dimensiones óptimas (180x220px)
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          canvas.width = 180;
+          canvas.height = 220;
+          
+          // Dibujar imagen con mejor calidad
+          if (ctx) {
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, 180, 220);
+            
+            // Convertir a base64 con calidad alta (0.95)
+            const optimizedBase64 = canvas.toDataURL('image/jpeg', 0.95);
+            
+            if (signatureType === "usa") {
+              setSignatureDataUSA({
+                ...signatureDataUSA,
+                photo: optimizedBase64,
+              });
+            } else {
+              setSignatureDataCOL({
+                ...signatureDataCOL,
+                photo: optimizedBase64,
+              });
+            }
+          }
+        };
+        img.onerror = () => {
+          toast.error("Error al procesar la imagen");
+        };
+        img.src = reader.result as string;
       };
       reader.onerror = () => {
         toast.error("Error al cargar la imagen");
@@ -518,11 +542,11 @@ export const SignatureGenerator = () => {
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 500px !important; max-width: 500px !important; background: #ffffff; border-collapse: collapse;">
   <tr>
-    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px;">
-      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; border-collapse: collapse;">
+    <td width="170" style="padding: 16px; vertical-align: middle; text-align: center; width: 170px;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 150px; border-collapse: collapse;">
         <tr>
-          <td width="120" height="140" style="width: 120px; height: 140px; line-height: 0; font-size: 0;">
-            <img src="${photoSrc}" alt="${safeName}" width="120" height="140" style="width: 120px; height: 140px; max-width: 120px; max-height: 140px; border-radius: 50%; display: block; border: none; ${photoFilter}" />
+          <td width="150" height="175" style="width: 150px; height: 175px; line-height: 0; font-size: 0;">
+            <img src="${photoSrc}" alt="${safeName}" width="150" height="175" style="width: 150px; height: 175px; max-width: 150px; max-height: 175px; border-radius: 50%; display: block; border: none; ${photoFilter}" />
           </td>
         </tr>
       </table>
