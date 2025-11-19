@@ -20,7 +20,6 @@ const ALLOWED_EMAILS = [
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
-  const [oauthLoading, setOauthLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -30,52 +29,18 @@ export default function Auth() {
     // Check if user is already logged in
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        // Validate email for OAuth logins
-        const userEmail = session.user.email?.toLowerCase();
-        if (userEmail && !ALLOWED_EMAILS.includes(userEmail)) {
-          supabase.auth.signOut();
-          toast.error("Este correo de Microsoft no está autorizado. Contacta al administrador.");
-          return;
-        }
         navigate("/");
       }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        // Validate email for OAuth logins
-        const userEmail = session.user.email?.toLowerCase();
-        if (userEmail && !ALLOWED_EMAILS.includes(userEmail)) {
-          supabase.auth.signOut();
-          toast.error("Este correo de Microsoft no está autorizado. Contacta al administrador.");
-          return;
-        }
         navigate("/");
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate]);
-
-  const handleMicrosoftSignIn = async () => {
-    setOauthLoading(true);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'azure',
-        options: {
-          redirectTo: `${window.location.origin}/`,
-        },
-      });
-
-      if (error) {
-        toast.error("Error al conectar con Microsoft. Intenta nuevamente.");
-        setOauthLoading(false);
-      }
-    } catch (error) {
-      toast.error("Error al conectar con Microsoft. Intenta nuevamente.");
-      setOauthLoading(false);
-    }
-  };
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,88 +126,53 @@ export default function Auth() {
           </p>
         </div>
 
-        <div className="space-y-4">
-          <Button
-            type="button"
-            onClick={handleMicrosoftSignIn}
-            className="w-full bg-[#2F2F2F] hover:bg-[#1F1F1F] text-white"
-            disabled={oauthLoading || loading}
-          >
-            {oauthLoading ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Conectando con Microsoft...
-              </>
-            ) : (
-              <>
-                <svg className="w-5 h-5 mr-2" viewBox="0 0 23 23" fill="none">
-                  <path d="M0 0h10.93v10.93H0z" fill="#F25022"/>
-                  <path d="M12.07 0H23v10.93H12.07z" fill="#7FBA00"/>
-                  <path d="M0 12.07h10.93V23H0z" fill="#00A4EF"/>
-                  <path d="M12.07 12.07H23V23H12.07z" fill="#FFB900"/>
-                </svg>
-                Iniciar sesión con Microsoft
-              </>
-            )}
-          </Button>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-border" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-muted-foreground">o</span>
-            </div>
+        <form onSubmit={handleAuth} className="space-y-4">
+          <div>
+            <Label htmlFor="email">Correo Electrónico Autorizado</Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="tu@intruckscorp.com"
+              disabled={loading}
+              required
+            />
+            <p className="text-xs text-muted-foreground mt-1">
+              Solo correos autorizados pueden acceder
+            </p>
           </div>
 
-          <form onSubmit={handleAuth} className="space-y-4">
-            <div>
-              <Label htmlFor="email">Correo Electrónico Autorizado</Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="tu@intruckscorp.com"
-                disabled={loading || oauthLoading}
-                required
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                Solo correos autorizados pueden acceder
-              </p>
-            </div>
+          <div>
+            <Label htmlFor="password">Contraseña</Label>
+            <Input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              disabled={loading}
+              required
+            />
+          </div>
 
-            <div>
-              <Label htmlFor="password">Contraseña</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                disabled={loading || oauthLoading}
-                required
-              />
-            </div>
-
-            <Button type="submit" className="w-full" disabled={loading || oauthLoading}>
-              {loading ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Procesando...
-                </>
-              ) : (
-                <>{isLogin ? "Iniciar Sesión" : "Crear Cuenta"}</>
-              )}
-            </Button>
-          </form>
-        </div>
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Procesando...
+              </>
+            ) : (
+              <>{isLogin ? "Iniciar Sesión" : "Crear Cuenta"}</>
+            )}
+          </Button>
+        </form>
 
         <div className="mt-6 text-center">
           <button
             onClick={() => setIsLogin(!isLogin)}
             className="text-sm text-primary hover:underline"
-            disabled={loading || oauthLoading}
+            disabled={loading}
           >
             {isLogin
               ? "¿No tienes cuenta? Regístrate"
