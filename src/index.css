@@ -43,6 +43,12 @@ All colors MUST be HSL.
     --gradient-brand: linear-gradient(135deg, hsl(210 65% 33%) 0%, hsl(168 45% 50%) 100%);
     --intrucks-navy: 210 65% 33%;
     --intrucks-teal: 168 45% 50%;
+    
+    /* Futuristic background colors */
+    --futuristic-dark: 220 40% 8%;
+    --futuristic-electric-blue: 210 100% 60%;
+    --futuristic-purple: 270 80% 50%;
+    --futuristic-cyan: 180 100% 50%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -112,5 +118,65 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .futuristic-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--futuristic-dark)) 0%, 
+      hsl(220 50% 12%) 50%, 
+      hsl(var(--futuristic-dark)) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .futuristic-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, hsla(var(--futuristic-electric-blue), 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsla(var(--futuristic-purple), 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsla(var(--futuristic-cyan), 0.08) 0%, transparent 60%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  
+  .futuristic-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(90deg, hsla(var(--futuristic-electric-blue), 0.03) 1px, transparent 1px),
+      linear-gradient(0deg, hsla(var(--futuristic-electric-blue), 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes grid-move {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
+  }
+  
+  .glass-card {
+    background: hsla(0, 0%, 100%, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--futuristic-electric-blue), 0.2);
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.37),
+      0 0 20px 0 hsla(var(--futuristic-electric-blue), 0.1);
   }
 }
