@@ -431,7 +431,11 @@ export const SignatureGenerator = () => {
         ${safeName}
       </h2>
       ${(signatureType === 'col' && signatureData.position) || (showPosition && signatureData.position) ? `<p style=\"font-size: 12px; color: #5da89c; margin: 0 0 8px 0; font-weight: 400;\">\n        ${safePosition}\n      </p>` : ''}
-      <div style="height: 2px; background: #5da89c; margin: 8px 0 10px 0;"></div>
+      <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin: 8px 0 10px 0;">
+        <tr>
+          <td style="height: 2px; background-color: #5da89c; line-height: 0; font-size: 0;">&nbsp;</td>
+        </tr>
+      </table>
       <table cellpadding="0" cellspacing="0" border="0" style="font-size: 12px; line-height: 1.5; color: #000000; border-collapse: collapse;">
         <tr>
           <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
