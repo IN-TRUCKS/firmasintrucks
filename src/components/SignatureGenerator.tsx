@@ -411,6 +411,20 @@ export const SignatureGenerator = () => {
       }
     };
 
+    // Función para generar iconos como imágenes base64
+    const generateIconBase64 = (iconType: 'mail' | 'phone' | 'globe' | 'mapPin'): string => {
+      const svgPaths = {
+        mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+        phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+        globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+        mapPin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'
+      };
+
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="#ffffff" stroke="#5da89c" stroke-width="2"/><g transform="translate(7, 7)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5da89c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${svgPaths[iconType]}</svg></g></svg>`;
+
+      return `data:image/svg+xml;base64,${btoa(svg)}`;
+    };
+
     const safeName = escapeHtml(signatureData.name);
     const safePosition = escapeHtml(signatureData.position);
     const safeEmail = escapeHtml(signatureData.email);
@@ -442,10 +456,8 @@ export const SignatureGenerator = () => {
       </table>
       <table cellpadding="0" cellspacing="0" border="0" style="font-size: 12px; line-height: 1.5; color: #000000; border-collapse: collapse;">
         <tr>
-          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5da89c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </div>
+          <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
+            <img src="${generateIconBase64('mail')}" alt="Email" width="28" height="28" style="display: block; border: none;" />
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="mailto:${safeEmail}" style="color: #000000; text-decoration: none; display: block;">
