@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import intrucksLogo from "@/assets/intrucks-logo.png";
+import authBackground from "@/assets/auth-background.jpg";
 
 const ALLOWED_EMAILS = [
   'jorge@intruckscorp.com',
@@ -102,8 +103,11 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen tech-minimal-bg flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8 bg-white shadow-2xl border border-gray-100">
+    <div 
+      className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${authBackground})` }}
+    >
+      <Card className="w-full max-w-md p-8 bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-100">
         <div className="flex flex-col items-center mb-8">
           <img src={intrucksLogo} alt="InTrucks Corp" className="h-16 mb-6" />
           <h1 className="text-2xl font-bold text-center">
