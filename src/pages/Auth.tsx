@@ -1,102 +1,59 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo-family.png";
 import authBackground from "@/assets/auth-background.jpg";
 
-const ALLOWED_EMAILS = [
-  'jorge@intruckscorp.com',
-  'procesos@intruckscorp.com',
-  'paula.venegas@intruckscorp.com',
-  'david@intruckscorp.com',
-  'it@intruckscorp.com'
-];
+const loginSchema = z.object({
+  email: z
+    .string()
+    .email("Email inválido")
+    .endsWith("@intruckscorp.com", "Debe usar correo corporativo"),
+  password: z.string().min(1, "La contraseña es requerida"),
+});
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const { login, isAuthenticated } = useAuth();
 
   useEffect(() => {
-    // Check if user is already logged in
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        navigate("/");
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        navigate("/");
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate]);
+    // Redirect if already authenticated
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email || !password) {
-      toast.error("Por favor completa todos los campos");
-      return;
-    }
 
-    // Validate email is in the allowed list
-    if (!ALLOWED_EMAILS.includes(email.toLowerCase())) {
-      toast.error("Este correo no está autorizado. Contacta al administrador.");
-      return;
+    // Validate with Zod
+    try {
+      loginSchema.parse({ email, password });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+        return;
+      }
     }
 
     setLoading(true);
 
     try {
-      if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (error) {
-          if (error.message.includes("Invalid login credentials")) {
-            toast.error("Credenciales inválidas");
-          } else {
-            toast.error(error.message);
-          }
-          return;
-        }
-
-        toast.success("¡Bienvenido!");
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/`,
-          },
-        });
-
-        if (error) {
-          if (error.message.includes("User already registered")) {
-            toast.error("Este correo ya está registrado");
-          } else {
-            toast.error(error.message);
-          }
-          return;
-        }
-
-        toast.success("¡Cuenta creada exitosamente!");
-      }
+      await login(email, password);
+      toast.success("¡Bienvenido!");
+      navigate("/");
     } catch (error: any) {
-      toast.error("Error al procesar la solicitud");
+      toast.error(error.message || "Error al iniciar sesión");
     } finally {
       setLoading(false);
     }
@@ -119,7 +76,7 @@ export default function Auth() {
             }}
           />
           <h1 className="text-2xl font-bold text-center">
-            {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
+            Iniciar Sesión
           </h1>
           <p className="text-muted-foreground text-center mt-2">
             Generador de Firmas InTrucks Corp
@@ -128,7 +85,7 @@ export default function Auth() {
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div>
-            <Label htmlFor="email">Correo Electrónico Autorizado</Label>
+            <Label htmlFor="email">Correo Electrónico Corporativo</Label>
             <Input
               id="email"
               type="email"
@@ -138,9 +95,6 @@ export default function Auth() {
               disabled={loading}
               required
             />
-            <p className="text-xs text-muted-foreground mt-1">
-              Solo correos autorizados pueden acceder
-            </p>
           </div>
 
           <div>
@@ -163,22 +117,10 @@ export default function Auth() {
                 Procesando...
               </>
             ) : (
-              <>{isLogin ? "Iniciar Sesión" : "Crear Cuenta"}</>
+              <>Iniciar Sesión</>
             )}
           </Button>
         </form>
-
-        <div className="mt-6 text-center">
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-sm text-primary hover:underline"
-            disabled={loading}
-          >
-            {isLogin
-              ? "¿No tienes cuenta? Regístrate"
-              : "¿Ya tienes cuenta? Inicia sesión"}
-          </button>
-        </div>
       </Card>
     </div>
   );
