@@ -518,13 +518,21 @@ export const SignatureGenerator = () => {
     return `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; width: 500px !important; max-width: 500px !important; background: #ffffff; border-collapse: collapse;">
   <tr>
-    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px; min-width: 140px; max-width: 140px;">
-      <div style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
-        <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px; height: 120px; display: block; border: none; ${photoFilter}" />
-      </div>
-      <div style="width: 90px; margin: 12px auto 0 auto;">
-        <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="display: block; border: none;" />
-      </div>
+    <td width="140" style="padding: 16px; vertical-align: middle; text-align: center; width: 140px;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; border-collapse: collapse;">
+        <tr>
+          <td width="120" height="120" style="width: 120px; height: 120px; line-height: 0; font-size: 0;">
+            <img src="${photoSrc}" alt="${safeName}" width="120" height="120" style="width: 120px; height: 120px; max-width: 120px; max-height: 120px; border-radius: 60px; display: block; border: none; ${photoFilter}" />
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 90px; margin-top: 12px; border-collapse: collapse;">
+        <tr>
+          <td width="90" style="width: 90px; line-height: 0; font-size: 0;">
+            <img src="${logoSrc}" alt="InTrucks Corp" width="90" height="auto" style="display: block; width: 90px; border: none;" />
+          </td>
+        </tr>
+      </table>
     </td>
     <td style="padding: 16px 22px 16px 12px; vertical-align: middle;">
       <h2 style="font-size: 22px; font-weight: 700; color: #000000; margin: 0 0 4px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px;">
