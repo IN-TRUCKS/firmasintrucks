@@ -440,21 +440,21 @@ export const SignatureGenerator = () => {
       reader.onloadend = () => {
         const img = new Image();
         img.onload = () => {
-          // Crear canvas con dimensiones óptimas (180x220px)
+          // Crear canvas con dimensiones óptimas (450x525px - 3x resolución para pantallas Retina)
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          canvas.width = 180;
-          canvas.height = 220;
+          canvas.width = 450;
+          canvas.height = 525;
 
           // Dibujar imagen con mejor calidad
           if (ctx) {
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = "high";
-            ctx.drawImage(img, 0, 0, 180, 220);
+            ctx.drawImage(img, 0, 0, 450, 525);
 
-            // Convertir a base64 con calidad alta (0.95)
-            const optimizedBase64 = canvas.toDataURL("image/jpeg", 0.95);
+            // Convertir a base64 en formato PNG sin compresión para máxima calidad
+            const optimizedBase64 = canvas.toDataURL("image/png", 1.0);
 
             if (signatureType === "usa") {
               setSignatureDataUSA({
