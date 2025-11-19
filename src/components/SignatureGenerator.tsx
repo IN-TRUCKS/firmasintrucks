@@ -172,13 +172,14 @@ const SignaturePreview = ({
                     <div style={{
                       width: '28px',
                       height: '28px',
-                      backgroundColor: '#5da89c',
+                      backgroundColor: '#ffffff',
+                      border: '2px solid #5da89c',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}>
-                      <Mail size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Mail size={14} color="#5da89c" strokeWidth={2.5} />
                     </div>
                   </td>
                   <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
@@ -196,13 +197,14 @@ const SignaturePreview = ({
                     <div style={{
                       width: '28px',
                       height: '28px',
-                      backgroundColor: '#5da89c',
+                      backgroundColor: '#ffffff',
+                      border: '2px solid #5da89c',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}>
-                      <Phone size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Phone size={14} color="#5da89c" strokeWidth={2.5} />
                     </div>
                   </td>
                   <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
@@ -236,13 +238,14 @@ const SignaturePreview = ({
                     <div style={{
                       width: '28px',
                       height: '28px',
-                      backgroundColor: '#5da89c',
+                      backgroundColor: '#ffffff',
+                      border: '2px solid #5da89c',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}>
-                      <Globe size={14} color="#ffffff" strokeWidth={2.5} />
+                      <Globe size={14} color="#5da89c" strokeWidth={2.5} />
                     </div>
                   </td>
                   <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
@@ -260,13 +263,14 @@ const SignaturePreview = ({
                     <div style={{
                       width: '28px',
                       height: '28px',
-                      backgroundColor: '#5da89c',
+                      backgroundColor: '#ffffff',
+                      border: '2px solid #5da89c',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}>
-                      <MapPin size={14} color="#ffffff" strokeWidth={2.5} />
+                      <MapPin size={14} color="#5da89c" strokeWidth={2.5} />
                     </div>
                   </td>
                   <td style={{ padding: '5px 0 5px 8px', verticalAlign: 'middle' }}>
@@ -439,8 +443,8 @@ export const SignatureGenerator = () => {
       <table cellpadding="0" cellspacing="0" border="0" style="font-size: 12px; line-height: 1.5; color: #000000; border-collapse: collapse;">
         <tr>
           <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
-              <span style="color: #ffffff; font-size: 12px;">✉</span>
+            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; text-align: center; line-height: 20px;">
+              <span style="color: #5da89c; font-size: 12px; font-weight: bold;">✉</span>
             </div>
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
@@ -451,8 +455,8 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
-              <span style="color: #ffffff; font-size: 12px;">☎</span>
+            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; text-align: center; line-height: 20px;">
+              <span style="color: #5da89c; font-size: 12px; font-weight: bold;">☎</span>
             </div>
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
@@ -468,8 +472,8 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
-              <span style="color: #ffffff; font-size: 12px;">🌐</span>
+            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; text-align: center; line-height: 20px;">
+              <span style="color: #5da89c; font-size: 12px; font-weight: bold;">W</span>
             </div>
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
@@ -480,8 +484,8 @@ export const SignatureGenerator = () => {
         </tr>
         <tr>
           <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #5da89c; border-radius: 50%; text-align: center; line-height: 24px;">
-              <span style="color: #ffffff; font-size: 12px;">📍</span>
+            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; text-align: center; line-height: 20px;">
+              <span style="color: #5da89c; font-size: 12px; font-weight: bold;">●</span>
             </div>
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
