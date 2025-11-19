@@ -112,8 +112,11 @@ export default function Auth() {
           <img 
             src={intrucksLogo} 
             alt="InTrucks Corp" 
-            className="h-16 mb-6 drop-shadow-2xl hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] transition-all duration-300 animate-[float_3s_ease-in-out_infinite]" 
-            style={{ filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))' }}
+            className="h-24 mb-8 drop-shadow-2xl hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] transition-all duration-300 animate-[float_3s_ease-in-out_infinite]" 
+            style={{ 
+              filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))',
+              WebkitBoxReflect: 'below 2px linear-gradient(transparent, transparent 40%, rgba(255, 255, 255, 0.2))'
+            }}
           />
           <h1 className="text-2xl font-bold text-center">
             {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
