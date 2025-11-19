@@ -466,10 +466,8 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5da89c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
+          <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
+            <img src="${generateIconBase64('phone')}" alt="Phone" width="28" height="28" style="display: block; border: none;" />
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <span style="color: #666666; font-size: 10px; margin-right: 6px;">Personal:</span>
@@ -483,10 +481,8 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5da89c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            </div>
+          <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
+            <img src="${generateIconBase64('globe')}" alt="Website" width="28" height="28" style="display: block; border: none;" />
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="https://www.intruckscorp.com" style="color: #000000; text-decoration: none; display: block;">
@@ -495,10 +491,8 @@ export const SignatureGenerator = () => {
           </td>
         </tr>
         <tr>
-          <td width="30" style="padding: 4px 0; width: 30px; vertical-align: middle;">
-            <div style="width: 24px; height: 24px; background-color: #ffffff; border: 2px solid #5da89c; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5da89c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
+          <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
+            <img src="${generateIconBase64('mapPin')}" alt="Location" width="28" height="28" style="display: block; border: none;" />
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
             <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" style="color: #000000; text-decoration: none; display: inline-block; white-space: nowrap;">
