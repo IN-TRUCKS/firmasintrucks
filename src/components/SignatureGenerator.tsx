@@ -265,7 +265,7 @@ const SignaturePreview = ({
                     <span
                       style={{
                         color: "#666666",
-                        fontSize: "14px",
+                        fontSize: "15px",
                         marginRight: "6px",
                       }}
                     >
@@ -284,7 +284,7 @@ const SignaturePreview = ({
                     <span
                       style={{
                         color: "#666666",
-                        fontSize: "14px",
+                        fontSize: "15px",
                         marginRight: "6px",
                       }}
                     >
