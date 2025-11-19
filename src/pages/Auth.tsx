@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
-import intrucksLogo from "@/assets/auth-background.jpg";
+import intrucksLogo from "@/assets/intrucks-logo-family.png";
 import authBackground from "@/assets/auth-background.jpg";
 
 const ALLOWED_EMAILS = [
