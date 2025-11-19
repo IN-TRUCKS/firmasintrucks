@@ -584,11 +584,11 @@ export const SignatureGenerator = () => {
             <img src="${generateIconBase64("phone")}" alt="Phone" width="28" height="28" style="display: block; border: none;" />
           </td>
           <td style="padding: 4px 0 4px 8px; vertical-align: middle;">
-            <span style="color: #666666; font-size: 14px; margin-right: 6px;">Personal:</span>
+            <span style="color: #666666; font-size: 13px; margin-right: 6px;">Personal:</span>
             <a href="tel:${signatureData.phone.replace(/\D/g, "")}" style="color: #000000; text-decoration: none; margin-right: 12px;">
               ${safePhone}
             </a>
-            <span style="color: #666666; font-size: 14px; margin-right: 6px;">Oficina:</span>
+            <span style="color: #666666; font-size: 13px; margin-right: 6px;">Oficina:</span>
             <a href="tel:${signatureData.officePhone.replace(/\D/g, "")}" style="color: #000000; text-decoration: none;">
               ${safeOfficePhone}
             </a>
