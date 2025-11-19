@@ -9,7 +9,7 @@ import { Upload, Copy, Check, Mail, Phone, Globe, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import intrucksLogo from "@/assets/intrucks-logo.png";
-import intrucksLogoCol from "@/assets/intrucks-logo-col.png";
+import intrucksLogoCol from "@/assets/intrucks-logo.png";
 import defaultProfile from "@/assets/default-profile.png";
 
 interface SignatureData {
@@ -441,21 +441,21 @@ export const SignatureGenerator = () => {
         const img = new Image();
         img.onload = () => {
           // Crear canvas con dimensiones óptimas (180x220px)
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
           canvas.width = 180;
           canvas.height = 220;
-          
+
           // Dibujar imagen con mejor calidad
           if (ctx) {
             ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
+            ctx.imageSmoothingQuality = "high";
             ctx.drawImage(img, 0, 0, 180, 220);
-            
+
             // Convertir a base64 con calidad alta (0.95)
-            const optimizedBase64 = canvas.toDataURL('image/jpeg', 0.95);
-            
+            const optimizedBase64 = canvas.toDataURL("image/jpeg", 0.95);
+
             if (signatureType === "usa") {
               setSignatureDataUSA({
                 ...signatureDataUSA,
