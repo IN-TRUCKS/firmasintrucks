@@ -266,7 +266,7 @@ const SignaturePreview = ({
                       style={{
                         color: "#666666",
                         fontSize: "11px",
-                        marginRight: "6px",
+                        marginRight: "15px",
                       }}
                     >
                       Personal:
@@ -285,7 +285,7 @@ const SignaturePreview = ({
                       style={{
                         color: "#666666",
                         fontSize: "11px",
-                        marginRight: "6px",
+                        marginRight: "15px",
                       }}
                     >
                       Office:
