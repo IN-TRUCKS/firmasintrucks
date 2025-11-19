@@ -112,7 +112,7 @@ export default function Auth() {
           <img 
             src={intrucksLogo} 
             alt="InTrucks Corp" 
-            className="h-24 mb-8 drop-shadow-2xl hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] transition-all duration-300 animate-[float_3s_ease-in-out_infinite]" 
+            className="h-32 mb-8 drop-shadow-2xl hover:drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] transition-all duration-300" 
             style={{ 
               filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))',
               WebkitBoxReflect: 'below 2px linear-gradient(transparent, transparent 40%, rgba(255, 255, 255, 0.2))'
