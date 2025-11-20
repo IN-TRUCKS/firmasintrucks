@@ -126,11 +126,11 @@ const SignaturePreview = ({
             <img
               src={photoSrc}
               alt={data.name}
-              width="180"
-              height="220"
+              width="150"
+              height="175"
               style={{
-                width: "180px",
-                height: "220px",
+                width: "150px",
+                height: "175px",
                 borderRadius: "50%",
                 display: "block",
                 margin: "0 auto",
@@ -440,18 +440,18 @@ export const SignatureGenerator = () => {
       reader.onloadend = () => {
         const img = new Image();
         img.onload = () => {
-          // Crear canvas con dimensiones óptimas (450x525px - 3x resolución para pantallas Retina)
+          // Crear canvas con dimensiones exactas de uso final (150x175px) para eliminar redimensionamiento
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          canvas.width = 450;
-          canvas.height = 525;
+          canvas.width = 150;
+          canvas.height = 175;
 
           // Dibujar imagen con mejor calidad
           if (ctx) {
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = "high";
-            ctx.drawImage(img, 0, 0, 450, 525);
+            ctx.drawImage(img, 0, 0, 150, 175);
 
             // Convertir a base64 en formato PNG sin compresión para máxima calidad
             const optimizedBase64 = canvas.toDataURL("image/png", 1.0);
