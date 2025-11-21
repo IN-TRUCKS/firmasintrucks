@@ -536,7 +536,7 @@ export const SignatureGenerator = () => {
     const safeOfficePhone = escapeHtml(signatureData.officePhone);
     const photoSrc = signatureData.photo || (await imageToBase64(defaultProfile));
     const photoFilter = !signatureData.photo ? "filter: opacity(0.4);" : "";
-    const logoSrc = await imageToBase64(signatureType === "col" ? intrucksLogoCol : intrucksLogo);
+    const Logosignaturesrc = await imageToBase64(signatureType === "col" ? intrucksLogoCol : intrucksLogo);
     const addressNoBreak = escapeHtml(address).replace(/ /g, "&nbsp;");
 
     return `
@@ -553,7 +553,7 @@ export const SignatureGenerator = () => {
       <table cellpadding="0" cellspacing="0" border="0" align="center" style="width: 120px; margin-top: 12px; border-collapse: collapse;">
         <tr>
           <td width="120" height="32" style="width: 120px; height: 32px; line-height: 0; font-size: 0;">
-            <img src="${logoSrc}" alt="InTrucks Corp" width="120" height="32" style="display: block; width: 120px; height: 32px; max-width: 120px; max-height: 32px; border: none;" />
+            <img src="${Logosignaturesrc}" alt="InTrucks Corp" width="120" height="32" style="display: block; width: 120px; height: 32px; max-width: 120px; max-height: 32px; border: none;" />
           </td>
         </tr>
       </table>
