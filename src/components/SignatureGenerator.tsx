@@ -588,7 +588,7 @@ export const SignatureGenerator = () => {
             <a href="tel:${signatureData.phone.replace(/\D/g, "")}" style="color: #000000; text-decoration: none; margin-right: 12px;">
               ${safePhone}
             </a>
-            <span style="color: #666666; font-size: 13px; margin-right: 6px;">Oficina:</span>
+            <span style="color: #666666; font-size: 13px; margin-right: 6px;">Office:</span>
             <a href="tel:${signatureData.officePhone.replace(/\D/g, "")}" style="color: #000000; text-decoration: none;">
               ${safeOfficePhone}
             </a>
