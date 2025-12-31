@@ -244,63 +244,65 @@ const SignaturePreview = ({
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td width="35" style={{ padding: "5px 0", width: "35px", verticalAlign: "middle" }}>
-                    <div
-                      style={{
-                        width: "28px",
-                        height: "28px",
-                        backgroundColor: "#ffffff",
-                        border: "2px solid #5da89c",
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Phone size={14} color="#5da89c" strokeWidth={2.5} />
-                    </div>
-                  </td>
-                  <td style={{ padding: "5px 0 5px 8px", verticalAlign: "middle" }}>
-                    <span
-                      style={{
-                        color: "#666666",
-                        fontSize: "14px",
-                        marginRight: "6px",
-                      }}
-                    >
-                      Personal:
-                    </span>
-                    <a
-                      href={`tel:${data.phone.replace(/\D/g, "")}`}
-                      style={{
-                        color: "#000000",
-                        textDecoration: "none",
-                        marginRight: "15px",
-                      }}
-                    >
-                      {data.phone}
-                    </a>
-                    <span
-                      style={{
-                        color: "#666666",
-                        fontSize: "14px",
-                        marginRight: "6px",
-                      }}
-                    >
-                      Office:
-                    </span>
-                    <a
-                      href={`tel:${data.officePhone.replace(/\D/g, "")}`}
-                      style={{
-                        color: "#000000",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {data.officePhone}
-                    </a>
-                  </td>
-                </tr>
+                {signatureType !== "col" && (
+                  <tr>
+                    <td width="35" style={{ padding: "5px 0", width: "35px", verticalAlign: "middle" }}>
+                      <div
+                        style={{
+                          width: "28px",
+                          height: "28px",
+                          backgroundColor: "#ffffff",
+                          border: "2px solid #5da89c",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Phone size={14} color="#5da89c" strokeWidth={2.5} />
+                      </div>
+                    </td>
+                    <td style={{ padding: "5px 0 5px 8px", verticalAlign: "middle" }}>
+                      <span
+                        style={{
+                          color: "#666666",
+                          fontSize: "14px",
+                          marginRight: "6px",
+                        }}
+                      >
+                        Personal:
+                      </span>
+                      <a
+                        href={`tel:${data.phone.replace(/\D/g, "")}`}
+                        style={{
+                          color: "#000000",
+                          textDecoration: "none",
+                          marginRight: "15px",
+                        }}
+                      >
+                        {data.phone}
+                      </a>
+                      <span
+                        style={{
+                          color: "#666666",
+                          fontSize: "14px",
+                          marginRight: "6px",
+                        }}
+                      >
+                        Office:
+                      </span>
+                      <a
+                        href={`tel:${data.officePhone.replace(/\D/g, "")}`}
+                        style={{
+                          color: "#000000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {data.officePhone}
+                      </a>
+                    </td>
+                  </tr>
+                )}
                 <tr>
                   <td width="35" style={{ padding: "5px 0", width: "35px", verticalAlign: "middle" }}>
                     <div
@@ -579,6 +581,7 @@ export const SignatureGenerator = () => {
             </a>
           </td>
         </tr>
+        ${signatureType !== "col" ? `
         <tr>
           <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
             <img src="${generateIconBase64("phone")}" alt="Phone" width="28" height="28" style="display: block; border: none;" />
@@ -594,6 +597,7 @@ export const SignatureGenerator = () => {
             </a>
           </td>
         </tr>
+        ` : ""}
         <tr>
           <td width="32" style="padding: 4px 0; width: 32px; vertical-align: middle;">
             <img src="${generateIconBase64("globe")}" alt="Website" width="28" height="28" style="display: block; border: none;" />
@@ -727,25 +731,29 @@ export const SignatureGenerator = () => {
             <p className="text-xs text-muted-foreground mt-1">{signatureData.position.length}/100 caracteres</p>
           </div>
 
-          <div>
-            <Label htmlFor={`phone-${idPrefix}`}>Teléfono personal</Label>
-            <Input
-              id={`phone-${idPrefix}`}
-              value={signatureData.phone}
-              onChange={(e) => handlePhoneChange(signatureType, "phone", e.target.value)}
-              placeholder="Ej: (000) 000-0000"
-            />
-          </div>
+          {signatureType !== "col" && (
+            <>
+              <div>
+                <Label htmlFor={`phone-${idPrefix}`}>Teléfono personal</Label>
+                <Input
+                  id={`phone-${idPrefix}`}
+                  value={signatureData.phone}
+                  onChange={(e) => handlePhoneChange(signatureType, "phone", e.target.value)}
+                  placeholder="Ej: (000) 000-0000"
+                />
+              </div>
 
-          <div>
-            <Label htmlFor={`officePhone-${idPrefix}`}>Teléfono Oficina</Label>
-            <Input
-              id={`officePhone-${idPrefix}`}
-              value={signatureData.officePhone}
-              onChange={(e) => handlePhoneChange(signatureType, "officePhone", e.target.value)}
-              placeholder="Ej: (000) 000-0000"
-            />
-          </div>
+              <div>
+                <Label htmlFor={`officePhone-${idPrefix}`}>Teléfono Oficina</Label>
+                <Input
+                  id={`officePhone-${idPrefix}`}
+                  value={signatureData.officePhone}
+                  onChange={(e) => handlePhoneChange(signatureType, "officePhone", e.target.value)}
+                  placeholder="Ej: (000) 000-0000"
+                />
+              </div>
+            </>
+          )}
 
           <div>
             <Label htmlFor={`email-${idPrefix}`}>Correo Electrónico</Label>
