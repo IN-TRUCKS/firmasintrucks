@@ -489,7 +489,10 @@ export const SignatureGenerator = () => {
     const address = ADDRESS_MAP[signatureType];
 
     try {
-      signatureSchema.parse(signatureData);
+      const schemaToUse =
+        signatureType === "usa" ? signatureSchema : signatureSchema.omit({ phone: true, officePhone: true });
+
+      schemaToUse.parse(signatureData);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const firstError = error.errors[0];
